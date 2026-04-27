@@ -244,3 +244,27 @@ $(".navbar-toggler").click(function () {
 });
 
 // ========================navbar ends here ===================
+
+
+// ========================mega-tab-btn starts here ===================
+document.querySelectorAll('.mega-tab-btn').forEach(button => {
+
+  button.addEventListener('click', function () {
+
+    const tabId = this.getAttribute('data-tab');
+
+    document.querySelectorAll('.mega-tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    document.querySelectorAll('.mega-content').forEach(content => {
+      content.classList.remove('active');
+    });
+
+    this.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+
+  });
+
+});
+// ========================mega-tab-btn ends here ===================

@@ -1,0 +1,489 @@
+/* <!-- font family  --> */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* .orbitron-bold {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+} */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange-color: #F79533;
+  --orange-color-2: #EA831B;
+  --orange-color-3: #B4702B;
+  --white-color: #FFFFFF;
+  --gray-color: #C0C0C0;
+  --gray-color-2: #E5E5E5;
+  --gray-color-3: #E0E0E0;
+  --black-color: #000;
+  --black-color-2: #141414;
+  --black-color-3: #252525;
+  --black-color-4: #262626;
+  --black-color-5: #1C1C1C;
+
+
+}
+
+
+body {
+  background-color: var(--black-color-2);
+}
+
+.orange-color {
+  color: var(--orange-color);
+}
+
+.orange-color-2 {
+  color: var(--orange-color-2);
+}
+
+.orange-color-3 {
+  color: var(--orange-color-3);
+}
+
+.white-color {
+  color: var(--white-color);
+}
+
+.black-color {
+  color: var(--black-color);
+}
+
+.black-color-2 {
+  color: var(--black-color-2);
+}
+
+.black-color-3 {
+  color: var(--black-color-3);
+}
+
+.black-color-4 {
+  color: var(--black-color-4);
+}
+
+.black-color-5 {
+  color: var(--black-color-5);
+}
+
+.gray-color {
+  color: var(--gray-color);
+}
+
+.gray-color-2 {
+  color: var(--gray-color-2);
+}
+
+.gray-color-3 {
+  color: var(--gray-color-3);
+}
+
+.bg-black {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+/* primary font */
+.orbitron-thin {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.orbitron-extralight {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.orbitron-light {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.orbitron-regular {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.orbitron-medium {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.orbitron-semibold {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.orbitron-bold {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.orbitron-extrabold {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.orbitron-black {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.orbitron-thin-italic {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: italic;
+}
+
+
+/* secondary font 2 */
+.montserrat-thin {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.montserrat-extralight {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.montserrat-light {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-medium {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-semibold {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-bold {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-extrabold {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.montserrat-black {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.montserrat-thin-italic {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+h3 {
+  font-size: 37px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 24px;
+}
+
+h6 {
+  font-size: 20px;
+}
+
+p,
+.paragraph {
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a.primary-button,
+button.primary-button {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(29deg, #b4702be7, #EA831B, #b4702be7);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  color: var(--white-color);
+  padding: 7px 15px;
+  border-radius: 35px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 100px rgba(234, 131, 27, 0.7);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(234, 131, 27, 0.7);
+  }
+}
+
+.primary-button .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.primary-button-icon::after {
+  content: '';
+  display: inline-block;
+  background-image: url(../images/move-arrow.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+
+a.secondary-button {
+  color: var(--orange-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.secondary-button-icon::after {
+  content: '\f054';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  display: inline-block;
+  font-size: 10px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
+
+
+a.third-button {
+  background-color: var(--orange-color);
+  color: var(--black-color);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 35px;
+  transition: all 0.3s ease;
+  border: 3px solid var(--orange-color);
+
+  &:hover {
+    /* background-color: var(--orange-color-2); */
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 100px rgba(234, 131, 27, 0.7);
+  }
+}
+
+a.fourth-button {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--orange-color);
+  color: var(--orange-color);
+  padding: 12px 19px;
+  border-radius: 35px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  /* box-shadow: 0 0 100px rgba(234, 131, 27, 0.7); */
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    /* box-shadow: 0 0 18px rgba(234, 131, 27, 0.7); */
+    background: linear-gradient(29deg, #b4702be7, #EA831B, #b4702be7);
+    color: var(--black-color-2);
+
+  }
+}
+
+.container-fluid {
+  padding: 1px 70px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+
+
+/* button.buttonn {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul li {
+  line-height: 33px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+} */
+
+::selection {
+  color: var(--white-color);
+  background: var(--orange-color);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-color-3);
+  cursor: grab;
+}
+
+
+/* carosial  nav button common */
+.owl-theme .owl-nav button {
+  background: var(--orange-color) !important;
+  color: var(--black-color-2);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    color: var(--white-color);
+  }
+
+  &:focus {
+    color: var(--white-color);
+  }
+}
+
+/* carosial Owl-dots common */
+.owl-theme .owl-dots .owl-dot span {
+  background-color: var(--gray-color);
+  width: 28px;
+  height: 7px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+  background: var(--orange-color);
+  width: 60px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 5px 4px;
+}
+
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: var(--orange-color);
+}
+
+/* ======================================= css for pages =========================== */
+
