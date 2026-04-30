@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitecore Biztech</title>
+  <title>Demo Biztech</title>
   <!-- font awesome link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -20,7 +20,230 @@
 
   <!-- css file link  -->
   <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    /* Multi-level Dropdown Core Styles */
+    .dropdown-submenu {
+      position: relative;
+    }
 
+    /* Top-level dropdown arrows */
+    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle::after {
+      content: "\f107" !important;
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      vertical-align: middle;
+      margin-left: 8px;
+      border: none !important;
+      transition: transform 0.3s;
+    }
+
+    .navbar-nav .nav-item.dropdown:hover > .nav-link.dropdown-toggle::after {
+      transform: rotate(180deg);
+    }
+
+    /* Nested dropdown items */
+    .dropdown-submenu > .dropdown-item {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .dropdown-submenu > .dropdown-item::after {
+      content: "\f105" !important;
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 11px;
+      margin-left: 15px;
+      border: none !important;
+      transition: transform 0.3s;
+    }
+
+    /* Nested Dropdown Menu Positioning (Desktop) */
+    @media (min-width: 992px) {
+      .dropdown-submenu > .dropdown-menu {
+        top: 0 !important;
+        left: 100% !important;
+        margin-top: -5px !important;
+        margin-left: 0 !important;
+        display: none !important;
+        min-width: 220px;
+        background-color: #141414 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 15px 0 35px rgba(0, 0, 0, 0.6) !important;
+        border-radius: 12px !important;
+        z-index: 1001;
+        transform: none !important;
+      }
+
+      .dropdown-submenu:hover > .dropdown-menu {
+        display: block !important;
+        animation: subMenuIn 0.25s ease-out;
+      }
+
+      /* Mega Dropdown Desktop Positioning */
+      .mega-dropdown-menu {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 100vw !important;
+        max-width: 1400px !important;
+        padding: 0 70px !important;
+        background: transparent !important;
+        border: none !important;
+        top: 100% !important;
+      }
+
+      .mega-tabs-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        overflow: visible !important;
+        background-color: var(--black-color-2);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+      }
+
+      .navbar-nav .dropdown:hover > .dropdown-menu {
+        display: block !important;
+      }
+    }
+
+    @keyframes subMenuIn {
+      from { opacity: 0; transform: translateX(10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Support for sub-dropdown-grid within mega-content */
+    .mega-content .sub-dropdown-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      position: static !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin-top: 1.5rem !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .sub-dropdown-grid .dropdown-item {
+      padding: 12px 18px !important;
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(255, 255, 255, 0.06) !important;
+      border-radius: 10px !important;
+      color: #94a3b8 !important;
+      white-space: normal !important;
+    }
+
+    .sub-dropdown-grid .dropdown-item:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: var(--orange-color) !important;
+    }
+
+    /* Responsive & Mobile Alignment Fixes */
+    @media (max-width: 991px) {
+      .navbar-bg-clr {
+        border-radius: 20px !important;
+        width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+
+      /* Fix fixed-width elements causing overflow */
+      .trusted-caro {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 15px;
+        margin-top: 50px !important;
+      }
+
+      .circle-image-wrapper1, .circle-image-wrapper2, .circle-image-wrapper3 {
+        width: 280px !important;
+        height: 280px !important;
+        margin: 0 auto !important;
+      }
+
+      /* Mobile Navigation Expand Fix */
+      .navbar-collapse {
+        background-color: var(--black-color-5);
+        border-radius: 15px;
+        margin-top: 15px;
+        padding: 15px !important;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .mega-dropdown-menu {
+        width: 100% !important;
+        position: static !important;
+        transform: none !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: none;
+      }
+
+      .dropdown.show .mega-dropdown-menu {
+        display: block !important;
+      }
+
+      .mega-tabs-wrapper {
+        flex-direction: column;
+        width: 100% !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      .mega-tabs-nav {
+        width: 100% !important;
+        border-right: none !important;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .mega-tabs-content {
+        width: 100% !important;
+        padding: 20px 0 !important;
+      }
+
+      .sub-dropdown-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .dropdown-submenu > .dropdown-menu {
+        position: static !important;
+        left: 0 !important;
+        width: 100% !important;
+        margin-left: 15px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        display: none !important;
+      }
+
+      .dropdown-submenu.show > .dropdown-menu {
+        display: block !important;
+      }
+    }
+    ul.sub-nested-dropdown{
+        background-color: #141414 !important;
+        padding: 15px;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    ul.sub-nested-dropdown li{
+        margin-bottom: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,10 +261,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-              <!-- <div class="hori-selector">
+              <div class="hori-selector">
                 <div class="left"></div>
                 <div class="right"></div>
-              </div> -->
+              </div>
               <li class="nav-item dropdown mega-tab-dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="sitecoreDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,10 +295,9 @@
                         <span>Sitecore Project</span>
                         <i class="fa-solid fa-arrow-right"></i>
                       </button>
-                      <!-- <button class="mega-tab-btn" data-tab="tab5">
+                      <button class="mega-tab-btn" data-tab="tab5">
                         <span>Sitecore Support</span>
                         <i class="fa-solid fa-arrow-right"></i>
-                      </button> -->
                     </div>
 
                     <!-- Right Content -->
@@ -84,86 +306,73 @@
                       <div class="mega-content active" id="tab1">
                         <h4>Sitecore DXP</h4>
                         <p>
-                          Create scalable, high-performance digital experiences with cutting-edge technologies and
-                          frameworks.
+                          Build scalable, fast, and responsive websites using modern frameworks and technologies.
                         </p>
                         <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">Agentic Sitecore DXP Implementation</a></li>
                           <li><a class="dropdown-item" href="#">Migration to Sitecore</a></li>
                           <li><a class="dropdown-item" href="#">Sitecore Upgrade</a></li>
-                          <li><a class="dropdown-item" href="#">Sitecore Implementation</a></li>
+                          <!-- <li><a class="dropdown-item" href="#">Sitecore Implementation</a></li> -->
+
+                          <li class="dropdown-submenu">
+                            <a class="dropdown-item" href="#">Sitecore Implementation</a>
+                            <ul class="dropdown-menu sub-nested-dropdown">
+                              <li><a class="dropdown-item" href="#">ERP Integration</a></li>
+                              <li><a class="dropdown-item" href="#">Cloud Infrastructure</a></li>
+                              <li><a class="dropdown-item" href="#">Data Analytics</a></li>
+                            </ul>
+                          </li>
+
                           <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
                           <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+
                           <li class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Sitecore Accelerator</a>
+                            <a class="dropdown-item" href="#">Enterprise Solutions</a>
                             <ul class="dropdown-menu sub-nested-dropdown">
-                              <li><a class="dropdown-item" href="#">Life Science Accelerator</a></li>
-                              <li><a class="dropdown-item" href="#">Automation Accelerator</a></li>
+                              <li><a class="dropdown-item" href="#">ERP Integration</a></li>
+                              <li><a class="dropdown-item" href="#">Cloud Infrastructure</a></li>
+                              <li><a class="dropdown-item" href="#">Data Analytics</a></li>
                             </ul>
                           </li>
                         </ul>
+
+
                       </div>
+
                       <div class="mega-content" id="tab2">
-                        <h4>Sitecore CDP</h4>
+                        <span class="mega-badge">Enterprise CMS</span>
+                        <h4>Sitecore Solutions</h4>
                         <p>
-                          Unify customer data from all touchpoints to deliver personalized, real-time experiences at
-                          scale.
+                          Enterprise-grade Sitecore implementation, migration, and optimization services.
                         </p>
-                        <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">Customer Data Integration</a></li>
-                          <li><a class="dropdown-item" href="#">Audience Segmentation</a></li>
-                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
-                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
-                          <li><a class="dropdown-item" href="#">Data Analytics & Insights</a></li>
-                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
-                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
-                          <li><a class="dropdown-item" href="#">CDP Implementation & Consulting</a></li>
-                        </ul>
+                        <a href="#" class="mega-btn">Explore Service</a>
                       </div>
 
                       <div class="mega-content" id="tab3">
-                        <h4>Sitecore DAM</h4>
+                        <span class="mega-badge">Design</span>
+                        <h4>Creative UI/UX Design</h4>
                         <p>
-                          Streamline your content workflow with Sitecore's digital asset management solution for
-                          seamless brand consistency.
+                          Create engaging digital experiences with clean and conversion-focused interfaces.
                         </p>
-                        <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">Digital Asset Management Implementation</a></li>
-                          <li><a class="dropdown-item" href="#">Asset Organization & Metadata Management</a></li>
-                          <li><a class="dropdown-item" href="#">Brand Asset Governance</a></li>
-                          <li><a class="dropdown-item" href="#">Workflow & Approval Automation</a></li>
-                          <li><a class="dropdown-item" href="#">Asset Distribution & Delivery</a></li>
-                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
-                          <li><a class="dropdown-item" href="#">Integration with CMS & Marketing Tools</a></li>
-                          <li><a class="dropdown-item" href="#">DAM Migration & Optimization</a></li>
-                        </ul>
+                        <a href="#" class="mega-btn">Explore Service</a>
                       </div>
 
                       <div class="mega-content" id="tab4">
-                        <h4>Sitecore Projects</h4>
+                        <span class="mega-badge">Cloud</span>
+                        <h4>Cloud Infrastructure</h4>
                         <p>
-                          We build high-performance, scalable digital experiences using modern frameworks and
-                          cutting-edge technologies to drive real business impact.
+                          Deploy secure and scalable cloud solutions for enterprise applications.
                         </p>
-                        <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">Resource</a></li>
-                          <li><a class="dropdown-item" href="#">webinar </a></li>
-                        </ul>
+                        <a href="#" class="mega-btn">Explore Service</a>
                       </div>
 
                       <div class="mega-content" id="tab5">
-                        <h4>Sitecore Support</h4>
+                        <span class="mega-badge">Support</span>
+                        <h4>Website Maintenance</h4>
                         <p>
-                          24*7 monitoring and support for your digital platforms.
+                          Continuous monitoring, updates, and support for your digital platforms.
                         </p>
-                        <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">24/7 Sitecore Monitoring</a></li>
-                          <li><a class="dropdown-item" href="#">Sitecore Performance Optimization</a></li>
-                          <li><a class="dropdown-item" href="#">Security Management</a></li>
-                          <li><a class="dropdown-item" href="#">Patch & Upgrade Management</a></li>
-                          <li><a class="dropdown-item" href="#">Technical Support & Troubleshooting</a></li>
-                          <li><a class="dropdown-item" href="#">Cost Optimization Services</a></li>
-                        </ul>
+                        <a href="#" class="mega-btn">Explore Service</a>
                       </div>
 
                     </div>

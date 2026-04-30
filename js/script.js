@@ -16,7 +16,7 @@ $(document).ready(function () {
       touchDrag: false,
       slideTransition: 'linear',
       autoplaySpeed: 3000,
-    // smartSpeed: 3000,
+      // smartSpeed: 3000,
       responsive: {
         0: {
           items: 2,
@@ -34,12 +34,12 @@ $(document).ready(function () {
           items: 6,
         },
       },
-      
-    });
-    jQuery('.trusted-customers').trigger('play.owl.autoplay',[3000]);
 
-    function setSpeed(){
-        jQuery('.trusted-customers').trigger('play.owl.autoplay',[3000]);
+    });
+    jQuery('.trusted-customers').trigger('play.owl.autoplay', [3000]);
+
+    function setSpeed() {
+      jQuery('.trusted-customers').trigger('play.owl.autoplay', [3000]);
     }
     setTimeout(setSpeed, 1000);
 
@@ -116,13 +116,13 @@ $(document).ready(function () {
       },
     });
 
-     // ================= for contact-owl-carousel ===============
-     $(".biz-contact-owl-carousel").owlCarousel({
+    // ================= for contact-owl-carousel ===============
+    $(".biz-contact-owl-carousel").owlCarousel({
       loop: false,
       margin: 20,
       nav: false,
       dots: true,
-      smartSpeed:800,
+      smartSpeed: 800,
       responsive: {
         0: {
           dots: true,
@@ -160,7 +160,7 @@ $(document).ready(function () {
         const index = $(this).data("index");
         $carousel.trigger("stop.owl.autoplay"); // Stop autoplay on hover
         $carousel.trigger("to.owl.carousel", [index, 300]);
-      },  
+      },
       function () {
         $carousel.trigger("play.owl.autoplay", [1300]); // Resume autoplay when hover ends
       }
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   // for active button in sitecore content page end here
 
-  
+
   //AOS animation starts
   AOS.init({
     duration: 1200,
@@ -247,24 +247,26 @@ $(".navbar-toggler").click(function () {
 
 
 // ========================mega-tab-btn starts here ===================
-document.querySelectorAll('.mega-tab-btn').forEach(button => {
+$(document).on('click', '.mega-tab-btn', function (e) {
+  e.preventDefault();
+  const tabId = $(this).data('tab');
+  const $wrapper = $(this).closest('.mega-tabs-wrapper');
 
-  button.addEventListener('click', function () {
+  // If it's a main tab (left side)
+  if ($(this).closest('.mega-tabs-nav').length) {
+    $wrapper.find('.mega-tabs-nav .mega-tab-btn').removeClass('active');
+    $wrapper.find('.mega-tabs-content > .mega-content').removeClass('active');
 
-    const tabId = this.getAttribute('data-tab');
+    $(this).addClass('active');
+    $('#' + tabId).addClass('active');
+  }
+  // If it's a sub-tab (inside content)
+  else {
+    $(this).parent().find('.mega-tab-btn').removeClass('active');
+    $(this).closest('.mega-content').find('.mega-content').removeClass('active');
 
-    document.querySelectorAll('.mega-tab-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-
-    document.querySelectorAll('.mega-content').forEach(content => {
-      content.classList.remove('active');
-    });
-
-    this.classList.add('active');
-    document.getElementById(tabId).classList.add('active');
-
-  });
-
+    $(this).addClass('active');
+    $('#' + tabId).addClass('active');
+  }
 });
 // ========================mega-tab-btn ends here ===================
