@@ -255,51 +255,57 @@ $(".navbar-toggler").click(function () {
   $(".navbar-collapse").slideToggle(300);
 });
 
-// ======================== Magnetic Parallax & Hyper-Realism ===================
-const $container = $(".floating-cards-container");
-const $wrappers = $(".floating-card-wrapper");
-const $cards = $(".floating-card");
+  // ======================== Hanging-Wire Spring Physics ===================
+  const $container = $(".floating-cards-container");
+  const $wrappers = $(".floating-card-wrapper");
+  
+  let mouseX = 0, mouseY = 0;
+  let followX = 0, followY = 0;
+  const spring = 0.03;
 
-let lastMouseX = 0;
-let lastMouseY = 0;
-
-$(document).on("mousemove", function (e) {
-  if ($container.length === 0) return;
-
-  // Environmental Light Update
-  const containerOffset = $container.offset();
-  const relX = ((e.pageX - containerOffset.left) / $container.width()) * 100;
-  const relY = ((e.pageY - containerOffset.top) / $container.height()) * 100;
-  $container.css({ "--mouse-x": `${relX}%`, "--mouse-y": `${relY}%` });
-
-  // Parallax Calculation
-  const x = (e.clientX - window.innerWidth / 2) / 50;
-  const y = (e.clientY - window.innerHeight / 2) / 50;
-
-  // Calculate mouse speed for Motion Blur
-  const speed = Math.sqrt(Math.pow(e.clientX - lastMouseX, 2) + Math.pow(e.clientY - lastMouseY, 2));
-  const blurAmount = Math.min(speed / 10, 5); // Max 5px blur
-
-  $wrappers.each(function (index) {
-    const depth = (index + 1) * 0.25;
-    $(this).css({
-      "--parallax-x": `${x * depth}px`,
-      "--parallax-y": `${y * depth}px`
-    });
-
-    // Apply motion blur to the card inside
-    $(this).find(".floating-card").css("--motion-blur", blurAmount);
+  $(".biz-home-banner").on("mousemove", function (e) {
+    // Relative to center
+    mouseX = (e.clientX - window.innerWidth / 2);
+    mouseY = (e.clientY - window.innerHeight / 2);
   });
 
-  lastMouseX = e.clientX;
-  lastMouseY = e.clientY;
+  $(".biz-home-banner").on("mouseleave", function () {
+    // Gracefully return to center
+    mouseX = 0;
+    mouseY = 0;
+  });
 
-  // Reset blur after a short delay
-  clearTimeout(window.blurTimeout);
-  window.blurTimeout = setTimeout(() => {
-    $cards.css("--motion-blur", 0);
-  }, 100);
-});
+  function animate() {
+    followX += (mouseX - followX) * spring;
+    followY += (mouseY - followY) * spring;
+
+    $wrappers.each(function(index) {
+      const depth = (index + 1) * 0.04;
+      const x = followX * depth;
+      const y = followY * depth;
+      
+      // Calculate a "Pendulum Tilt" based on mouse velocity
+      const tiltX = (followY - mouseY) * 0.01;
+      const tiltY = (mouseX - followX) * 0.01;
+
+      $(this).css({
+        "transform": `translate3d(${x}px, ${y}px, 0) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
+      });
+      
+      // Dynamic Aura Update
+      const containerOffset = $container.offset();
+      if (containerOffset) {
+        const relX = ((mouseX + window.innerWidth/2 - containerOffset.left) / $container.width()) * 100;
+        const relY = ((mouseY + window.innerHeight/2 - containerOffset.top) / $container.height()) * 100;
+        $container.css({ "--mouse-x": `${relX}%`, "--mouse-y": `${relY}%` });
+      }
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  if ($container.length) animate();
+
 
 
 

@@ -408,12 +408,6 @@ header.sticky .navbar-bg-clr {
   min-height: 700px;
 }
 
-.banner-content {
-  max-width: 100%;
-  text-align: center;
-  /* margin: auto; */
-  padding-top: 114px;
-}
 
 .banner-content {
   display: flex;
@@ -447,12 +441,12 @@ header.sticky .navbar-bg-clr {
 
 .floating-card-wrapper {
   position: absolute;
-  transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99);
-  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+  /* transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99); */ /* Removed to prevent jitter with JS animation */
   z-index: 1;
-  transform-origin: center -200px;
-  /* Pivot point above the card */
+  transform-origin: center -500px; 
+  will-change: transform;
 }
+
 
 /* The Hanging Wire */
 .floating-card-wrapper::before {
@@ -604,41 +598,23 @@ header.sticky .navbar-bg-clr {
 }
 
 
-/* card positions */
-/* Optimized card positions to prevent overlap */
-/* Spatially distributed positions to cover the right area elegantly */
-/* Spatially distributed positions to cover the right area elegantly (on wrappers) */
-.floating-card-wrapper:nth-child(1) {
-  top: 2%;
-  right: 10%;
+.floating-card-wrapper:nth-child(1) { top: 5%; right: 2%; }
+.floating-card-wrapper:nth-child(2) { top: 12%; right: 45%; }
+.floating-card-wrapper:nth-child(3) { top: 38%; right: 8%; }
+.floating-card-wrapper:nth-child(4) { top: 45%; right: 52%; }
+.floating-card-wrapper:nth-child(5) { top: 72%; right: 4%; }
+.floating-card-wrapper:nth-child(6) { top: 78%; right: 48%; }
+
+@keyframes cardEntrance {
+  from { 
+    opacity: 0; 
+    transform: scale(0.5) translateY(100px) rotateX(-20deg); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0) rotateX(0); 
+  }
 }
-
-.floating-card-wrapper:nth-child(2) {
-  top: 15%;
-  right: 55%;
-}
-
-.floating-card-wrapper:nth-child(3) {
-  top: 42%;
-  right: 5%;
-}
-
-.floating-card-wrapper:nth-child(4) {
-  top: 58%;
-  right: 48%;
-}
-
-.floating-card-wrapper:nth-child(5) {
-  top: 82%;
-  right: 12%;
-}
-
-.floating-card-wrapper:nth-child(6) {
-  top: 92%;
-  right: 52%;
-}
-
-
 
 
 /* Unique Hanging "Pendulum Sway" Animations */
@@ -646,11 +622,11 @@ header.sticky .navbar-bg-clr {
 
   0%,
   100% {
-    transform: rotate(3deg) translateY(0);
+    transform: rotate(0.8deg) translateY(0);
   }
 
   50% {
-    transform: rotate(-3deg) translateY(-10px);
+    transform: rotate(-0.8deg) translateY(-3px);
   }
 }
 
@@ -658,11 +634,11 @@ header.sticky .navbar-bg-clr {
 
   0%,
   100% {
-    transform: rotate(-2deg) translateY(-5px);
+    transform: rotate(-0.5deg) translateY(-2px);
   }
 
   50% {
-    transform: rotate(2deg) translateY(5px);
+    transform: rotate(0.5deg) translateY(2px);
   }
 }
 
@@ -670,36 +646,36 @@ header.sticky .navbar-bg-clr {
 
   0%,
   100% {
-    transform: rotate(1.5deg) translateY(-15px);
+    transform: rotate(0.4deg) translateY(-3px);
   }
 
   50% {
-    transform: rotate(-1.5deg) translateY(0);
+    transform: rotate(-0.4deg) translateY(0);
   }
 }
 
 /* Combining Orbit with Sway for a 'Hanging in space' feel */
-.floating-card:nth-child(1) {
+.floating-card-wrapper:nth-child(1) .floating-card {
   animation: cardEntrance 1s 0.2s forwards, sway-1 8s 1.2s infinite ease-in-out;
 }
 
-.floating-card:nth-child(2) {
+.floating-card-wrapper:nth-child(2) .floating-card {
   animation: cardEntrance 1s 0.4s forwards, sway-2 10s 1.4s infinite ease-in-out;
 }
 
-.floating-card:nth-child(3) {
+.floating-card-wrapper:nth-child(3) .floating-card {
   animation: cardEntrance 1s 0.6s forwards, sway-3 9s 1.6s infinite ease-in-out;
 }
 
-.floating-card:nth-child(4) {
+.floating-card-wrapper:nth-child(4) .floating-card {
   animation: cardEntrance 1s 0.8s forwards, sway-1 7s 1.8s infinite ease-in-out reverse;
 }
 
-.floating-card:nth-child(5) {
+.floating-card-wrapper:nth-child(5) .floating-card {
   animation: cardEntrance 1s 1.0s forwards, sway-2 12s 2.0s infinite ease-in-out;
 }
 
-.floating-card:nth-child(6) {
+.floating-card-wrapper:nth-child(6) .floating-card {
   animation: cardEntrance 1s 1.2s forwards, sway-3 11s 2.2s infinite ease-in-out reverse;
 }
 
@@ -727,9 +703,9 @@ header.sticky .navbar-bg-clr {
 }
 
 .trusted-caro {
-  margin-top: 118px;
-  margin-bottom: 45px;
   width: 800px;
+  margin: 140px auto 45px auto;
+  text-align: center;
   overflow: hidden;
 }
 
