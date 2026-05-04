@@ -440,6 +440,7 @@ ul li {
 
 ::-webkit-scrollbar-thumb {
   background: var(--orange-color);
+  border-radius: 30px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -487,3 +488,153 @@ ul li {
 
 /* ======================================= css for pages =========================== */
 
+
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h6 {
+    font-size: 19px;
+  }
+
+  .nav-item {
+    padding: 0px 0px;
+  }
+
+  .nav-item:hover {
+    padding: 0px 0px;
+  }
+
+  .services-img {
+    width: 100%;
+  }
+
+  .circle-image-wrapper1,
+  .circle-image-wrapper2,
+  .circle-image-wrapper3 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  h2 {
+    font-size: 34px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
+
+  h6 {
+    font-size: 17px;
+  }
+
+  .nav-item {
+    padding: 0px 20px;
+  }
+
+  .nav-item:hover {
+    padding: 0px 20px;
+  }
+
+  .navbar-bg-clr {
+    background-color: var(--black-color);
+    border-radius: 33px;
+  }
+
+  .banner-content {
+    max-width: 82%;
+  }
+
+  .container-fluid {
+    padding: 1px 45px;
+  }
+
+  .circle-image-wrapper1,
+  .circle-image-wrapper2,
+  .circle-image-wrapper3 {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 50px;
+  }
+
+  .trusted-caro {
+    width: 535px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  h3 {
+    font-size: 23px;
+  }
+
+  p {
+    font-size: 17px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .banner-content {
+    max-width: 84%;
+    margin-top: 86px;
+  }
+
+  .sitecore-section {
+    margin-top: 54px;
+    margin-bottom: 20px;
+  }
+
+  .crm-section {
+    padding: 30px 6px;
+  }
+
+  .wrapper {
+    margin-top: 16px;
+  }
+
+  .wrapper-card {
+    top: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .banner-content {
+    max-width: 95%;
+    margin-top: 42px;
+  }
+
+  .about-banner-content {
+    max-width: 91%;
+  }
+
+  .trusted-caro {
+    margin-top: 57px;
+    width: 263px;
+  }
+
+  .container-fluid {
+    padding: 1px 44px;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  .container-fluid {
+    padding: 1px 25px;
+  }
+}

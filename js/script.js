@@ -189,58 +189,70 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ========================== for navbar start here===========================
-function test() {
-  var tabsNewAnim = $("#navbarSupportedContent");
-  var activeItemNewAnim = tabsNewAnim.find(".active");
-  var activeHeight = activeItemNewAnim.innerHeight();
-  var activeWidth = activeItemNewAnim.innerWidth();
-  var itemPos = activeItemNewAnim.position();
-
-  $(".hori-selector").css({
-    top: itemPos.top + "px",
-    left: itemPos.left + "px",
-    height: activeHeight + "px",
-    width: activeWidth + "px",
-  });
-}
-
 $(document).ready(function () {
-  setTimeout(function () {
-    test();
-  }, 100);
+  let $nav = $("#navbarSupportedContent");
 
-  // Add active class based on current page
-  var path = window.location.pathname.split("/").pop();
-  if (path === "") path = "index.html";
-  var target = $('#navbarSupportedContent ul li a[href="' + path + '"]');
-  target.parent().addClass("active");
+  // Function to set active state based on URL
+  function setActiveNavItem() {
+    let path = window.location.pathname.split("/").pop() || "index.html";
+    $nav.find(".nav-item").removeClass("active");
+    $nav.find(".nav-link").removeClass("show").attr("aria-expanded", "false");
 
-  // Update selector after assigning active class
-  setTimeout(function () {
-    test();
-  }, 100);
+    $nav.find(".nav-item a").each(function () {
+      let href = $(this).attr("href");
+      if (href === path || href === "./" + path) {
+        $(this).parent().addClass("active");
+        $(this).addClass("show").attr("aria-expanded", "true");
+      }
+    });
+  }
 
-  // Navigation click handler
-  $("#navbarSupportedContent").on("click", "li", function () {
-    $("#navbarSupportedContent ul li").removeClass("active");
+  // Set active on load
+  setActiveNavItem();
+
+  // On nav item click (immediate visual feedback)
+  $nav.on("click", ".nav-item", function (e) {
+    // If click is inside the dropdown-menu (e.g. mega tabs), don't reset navbar state
+    if ($(e.target).closest('.dropdown-menu').length) return;
+
+    $nav.find(".nav-item").removeClass("active");
+    $nav.find(".nav-link").removeClass("show").attr("aria-expanded", "false");
+    
     $(this).addClass("active");
-    test();
+    $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
   });
+
+
+
+
+  // Click outside → reset to actual current page
+  $(document).on("click", function (e) {
+    if (!$(e.target).closest(".navbar").length) {
+      setActiveNavItem();
+    }
+  });
+
+  // Sticky Header on Scroll
+  $(window).on("scroll", function () {
+    if ($(window).scrollTop() > 50) {
+      $("header").addClass("sticky");
+    } else {
+      $("header").removeClass("sticky");
+    }
+  });
+
 });
 
 // Recalculate on resize
-$(window).on("resize", function () {
-  setTimeout(function () {
-    test();
-  }, 500);
-});
+// $(window).on("resize", function () {
+//   setTimeout(function () {
+//     test();
+//   }, 500);
+// });
 
 // On toggler click (mobile view)
 $(".navbar-toggler").click(function () {
   $(".navbar-collapse").slideToggle(300);
-  setTimeout(function () {
-    test();
-  }, 300);
 });
 
 // ========================navbar ends here ===================
@@ -250,22 +262,23 @@ $(".navbar-toggler").click(function () {
 $(document).on('click', '.mega-tab-btn', function (e) {
   e.preventDefault();
   const tabId = $(this).data('tab');
-  const $wrapper = $(this).closest('.mega-tabs-wrapper');
-
-  // If it's a main tab (left side)
-  if ($(this).closest('.mega-tabs-nav').length) {
+  const $btn = $(this);
+  
+  if ($btn.closest('.mega-tabs-nav').length) {
+    // Main Side Tabs
+    const $wrapper = $btn.closest('.mega-tabs-wrapper');
     $wrapper.find('.mega-tabs-nav .mega-tab-btn').removeClass('active');
     $wrapper.find('.mega-tabs-content > .mega-content').removeClass('active');
-
-    $(this).addClass('active');
+    
+    $btn.addClass('active');
     $('#' + tabId).addClass('active');
-  }
-  // If it's a sub-tab (inside content)
-  else {
-    $(this).parent().find('.mega-tab-btn').removeClass('active');
-    $(this).closest('.mega-content').find('.mega-content').removeClass('active');
-
-    $(this).addClass('active');
+  } else {
+    // Nested Tabs
+    const $parentContent = $btn.closest('.mega-content');
+    $parentContent.find('> .mega-tab-btn').removeClass('active');
+    $parentContent.find('> .mega-tabs-content > .mega-content').removeClass('active');
+    
+    $btn.addClass('active');
     $('#' + tabId).addClass('active');
   }
 });
