@@ -304,7 +304,9 @@ header.sticky .navbar-bg-clr {
   transition: 0.3s;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
   background-color: var(--black-color);
   color: var(--orange-color);
   border-radius: 10px;
@@ -417,12 +419,11 @@ header.sticky .navbar-bg-clr {
 }
 
 .left-banner-content {
-  /* max-width: 60%; */
   text-align: left;
+  margin-top: 22px;
 }
 
 .right-banner-content {
-  /* max-width: 40%; */
   text-align: right;
 }
 
@@ -430,7 +431,7 @@ header.sticky .navbar-bg-clr {
   position: relative;
   width: 100%;
   height: 100%;
-  margin-top: 50px;
+  margin-top: 22px;
   /* Environmental Light Aura */
   background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
       rgba(255, 123, 0, 0.05) 0%,
@@ -441,9 +442,10 @@ header.sticky .navbar-bg-clr {
 
 .floating-card-wrapper {
   position: absolute;
-  /* transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99); */ /* Removed to prevent jitter with JS animation */
+  /* transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99); */
+  /* Removed to prevent jitter with JS animation */
   z-index: 1;
-  transform-origin: center -500px; 
+  transform-origin: center -500px;
   will-change: transform;
 }
 
@@ -598,21 +600,45 @@ header.sticky .navbar-bg-clr {
 }
 
 
-.floating-card-wrapper:nth-child(1) { top: 5%; right: 2%; }
-.floating-card-wrapper:nth-child(2) { top: 12%; right: 45%; }
-.floating-card-wrapper:nth-child(3) { top: 38%; right: 8%; }
-.floating-card-wrapper:nth-child(4) { top: 45%; right: 52%; }
-.floating-card-wrapper:nth-child(5) { top: 72%; right: 4%; }
-.floating-card-wrapper:nth-child(6) { top: 78%; right: 48%; }
+.floating-card-wrapper:nth-child(1) {
+  top: 5%;
+  right: 2%;
+}
+
+.floating-card-wrapper:nth-child(2) {
+  top: 12%;
+  right: 45%;
+}
+
+.floating-card-wrapper:nth-child(3) {
+  top: 38%;
+  right: 8%;
+}
+
+.floating-card-wrapper:nth-child(4) {
+  top: 45%;
+  right: 52%;
+}
+
+.floating-card-wrapper:nth-child(5) {
+  top: 72%;
+  right: 4%;
+}
+
+.floating-card-wrapper:nth-child(6) {
+  top: 78%;
+  right: 48%;
+}
 
 @keyframes cardEntrance {
-  from { 
-    opacity: 0; 
-    transform: scale(0.5) translateY(100px) rotateX(-20deg); 
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(100px) rotateX(-20deg);
   }
-  to { 
-    opacity: 1; 
-    transform: scale(1) translateY(0) rotateX(0); 
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateX(0);
   }
 }
 
