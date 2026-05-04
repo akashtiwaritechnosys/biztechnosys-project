@@ -145,12 +145,13 @@ header.sticky .navbar-bg-clr {
 .mega-tab-btn {
   border: none;
   background: transparent;
-  color: #94a3b8;
+  color: var(--gray-color-3);
   padding: 14px 18px;
   text-align: left;
   border-radius: 14px;
   transition: 0.3s ease;
   font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -160,12 +161,12 @@ header.sticky .navbar-bg-clr {
 
 .mega-tab-btn:hover {
   background: rgba(255, 255, 255, 0.04);
-  color: white;
+  color: var(--white-color);
 }
 
 .mega-tab-btn.active {
   background: linear-gradient(135deg, var(--orange-color), var(--orange-color-2));
-  color: white;
+  color: var(--black-color);
 }
 
 .mega-tab-btn i {
@@ -177,7 +178,7 @@ header.sticky .navbar-bg-clr {
 .mega-tab-btn.active i {
   opacity: 1;
   transform: translateX(4px);
-  color: white;
+  color: var(--white-color);
 }
 
 /* Right Side */
@@ -229,13 +230,13 @@ header.sticky .navbar-bg-clr {
 }
 
 .mega-content h4 {
-  color: white;
+  color: var(--white-color);
   font-size: 28px;
   margin-bottom: 15px;
 }
 
 .mega-content p {
-  color: #94a3b8;
+  color: var(--gray-color-3);
   line-height: 1.8;
   margin-bottom: 25px;
 }
@@ -246,13 +247,13 @@ header.sticky .navbar-bg-clr {
   border-radius: 12px;
   text-decoration: none;
   background: linear-gradient(135deg, var(--orange-color), #ff7b00);
-  color: white;
+  color: var(--white-color);
   transition: 0.3s ease;
 }
 
 .mega-btn:hover {
   transform: translateY(-2px);
-  color: white;
+  color: var(--white-color);
 }
 
 /* Nested Mega-tabs */
@@ -299,7 +300,7 @@ header.sticky .navbar-bg-clr {
 }
 
 .dropdown-item {
-  color: #94a3b8;
+  color: var(--gray-color-3);
   padding: 12px 18px;
   transition: 0.3s;
 }
@@ -342,8 +343,6 @@ header.sticky .navbar-bg-clr {
   display: block;
 }
 
-
-/* -------------- */
 .hori-selector {
   position: absolute;
   z-index: 0;
@@ -539,9 +538,9 @@ header.sticky .navbar-bg-clr {
   right: 15px;
   width: 8px;
   height: 8px;
-  background: #10b981;
+  background: #e68608;
   border-radius: 50%;
-  box-shadow: 0 0 10px #10b981;
+  box-shadow: 0 0 10px #e68608;
   animation: pulse-status 2s infinite;
 }
 
@@ -549,19 +548,19 @@ header.sticky .navbar-bg-clr {
   0% {
     transform: scale(1);
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 0 0 rgba(230, 134, 8, 0.7);
   }
 
   70% {
     transform: scale(1.2);
     opacity: 0.5;
-    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 10px rgba(230, 134, 8, 0);
   }
 
   100% {
     transform: scale(1);
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(230, 134, 8, 0);
   }
 }
 
@@ -585,7 +584,7 @@ header.sticky .navbar-bg-clr {
   margin: 0;
   font-size: 26px;
   font-weight: 700;
-  color: white;
+  color: var(--white-color);
   letter-spacing: -0.5px;
 }
 
@@ -593,7 +592,7 @@ header.sticky .navbar-bg-clr {
 .floating-card p {
   margin: 0;
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--gray-color-2);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -705,11 +704,6 @@ header.sticky .navbar-bg-clr {
   animation: cardEntrance 1s 1.2s forwards, sway-3 11s 2.2s infinite ease-in-out reverse;
 }
 
-
-
-
-
-
 /* for image overlay  */
 .img-overlay {
   position: relative;
@@ -805,7 +799,7 @@ header.sticky .navbar-bg-clr {
 
 .tag {
   background-color: #F79533CC;
-  color: #fff;
+  color: var(--white-color);
   border-radius: 9px;
   border: 0.5px solid var(--white-color);
   padding: 5px;

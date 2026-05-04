@@ -195,8 +195,9 @@ $(document).ready(function () {
   // Function to set active state based on URL
   function setActiveNavItem() {
     let path = window.location.pathname.split("/").pop() || "index.html";
-    $nav.find(".nav-item").removeClass("active");
-    $nav.find(".nav-link").removeClass("show").attr("aria-expanded", "false");
+    $nav.find(".nav-item").removeClass("active show");
+    $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
+    $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
 
     $nav.find(".nav-item a").each(function () {
       let href = $(this).attr("href");
@@ -215,11 +216,24 @@ $(document).ready(function () {
     // If click is inside the dropdown-menu (e.g. mega tabs), don't reset navbar state
     if ($(e.target).closest('.dropdown-menu').length) return;
 
-    $nav.find(".nav-item").removeClass("active");
-    $nav.find(".nav-link").removeClass("show").attr("aria-expanded", "false");
+    // 1. Remove active state from all items
+    $nav.find(".nav-item").removeClass("active show");
+    
+    // 2. Clear show state and aria-expanded from all links
+    $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
+    
+    // 3. Force-close all dropdown menus (fixes issue where Bootstrap show class persists on containers)
+    $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
 
+    // 4. Set current item as active
     $(this).addClass("active");
-    $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
+    
+    // 5. If it's a dropdown, ensure the current one opens correctly
+    if ($(this).hasClass('dropdown')) {
+      $(this).addClass("show");
+      $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
+      $(this).find("> .dropdown-menu").addClass("show");
+    }
   });
 
 
