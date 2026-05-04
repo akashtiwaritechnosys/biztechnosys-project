@@ -217,7 +217,7 @@ $(document).ready(function () {
 
     $nav.find(".nav-item").removeClass("active");
     $nav.find(".nav-link").removeClass("show").attr("aria-expanded", "false");
-    
+
     $(this).addClass("active");
     $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
   });
@@ -255,7 +255,53 @@ $(".navbar-toggler").click(function () {
   $(".navbar-collapse").slideToggle(300);
 });
 
-// ========================navbar ends here ===================
+// ======================== Magnetic Parallax & Hyper-Realism ===================
+const $container = $(".floating-cards-container");
+const $wrappers = $(".floating-card-wrapper");
+const $cards = $(".floating-card");
+
+let lastMouseX = 0;
+let lastMouseY = 0;
+
+$(document).on("mousemove", function (e) {
+  if ($container.length === 0) return;
+
+  // Environmental Light Update
+  const containerOffset = $container.offset();
+  const relX = ((e.pageX - containerOffset.left) / $container.width()) * 100;
+  const relY = ((e.pageY - containerOffset.top) / $container.height()) * 100;
+  $container.css({ "--mouse-x": `${relX}%`, "--mouse-y": `${relY}%` });
+
+  // Parallax Calculation
+  const x = (e.clientX - window.innerWidth / 2) / 50;
+  const y = (e.clientY - window.innerHeight / 2) / 50;
+
+  // Calculate mouse speed for Motion Blur
+  const speed = Math.sqrt(Math.pow(e.clientX - lastMouseX, 2) + Math.pow(e.clientY - lastMouseY, 2));
+  const blurAmount = Math.min(speed / 10, 5); // Max 5px blur
+
+  $wrappers.each(function (index) {
+    const depth = (index + 1) * 0.25;
+    $(this).css({
+      "--parallax-x": `${x * depth}px`,
+      "--parallax-y": `${y * depth}px`
+    });
+
+    // Apply motion blur to the card inside
+    $(this).find(".floating-card").css("--motion-blur", blurAmount);
+  });
+
+  lastMouseX = e.clientX;
+  lastMouseY = e.clientY;
+
+  // Reset blur after a short delay
+  clearTimeout(window.blurTimeout);
+  window.blurTimeout = setTimeout(() => {
+    $cards.css("--motion-blur", 0);
+  }, 100);
+});
+
+
 
 
 // ========================mega-tab-btn starts here ===================
@@ -263,13 +309,13 @@ $(document).on('click', '.mega-tab-btn', function (e) {
   e.preventDefault();
   const tabId = $(this).data('tab');
   const $btn = $(this);
-  
+
   if ($btn.closest('.mega-tabs-nav').length) {
     // Main Side Tabs
     const $wrapper = $btn.closest('.mega-tabs-wrapper');
     $wrapper.find('.mega-tabs-nav .mega-tab-btn').removeClass('active');
     $wrapper.find('.mega-tabs-content > .mega-content').removeClass('active');
-    
+
     $btn.addClass('active');
     $('#' + tabId).addClass('active');
   } else {
@@ -277,7 +323,7 @@ $(document).on('click', '.mega-tab-btn', function (e) {
     const $parentContent = $btn.closest('.mega-content');
     $parentContent.find('> .mega-tab-btn').removeClass('active');
     $parentContent.find('> .mega-tabs-content > .mega-content').removeClass('active');
-    
+
     $btn.addClass('active');
     $('#' + tabId).addClass('active');
   }

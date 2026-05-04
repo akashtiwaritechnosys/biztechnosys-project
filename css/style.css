@@ -31,8 +31,8 @@ header.sticky .navbar-bg-clr {
   border: none;
 }
 
-#navbarSupportedContent .active > a:not(:only-child):after,
-#navbarSupportedContent .show > a:not(:only-child):after {
+#navbarSupportedContent .active>a:not(:only-child):after,
+#navbarSupportedContent .show>a:not(:only-child):after {
   transform: rotate(180deg);
 }
 
@@ -136,6 +136,7 @@ header.sticky .navbar-bg-clr {
   overflow-y: auto;
 
 }
+
 .mega-tabs-nav::-webkit-scrollbar {
   width: 0px;
 }
@@ -408,11 +409,304 @@ header.sticky .navbar-bg-clr {
 }
 
 .banner-content {
-  max-width: 65%;
+  max-width: 100%;
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
   padding-top: 114px;
 }
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 114px;
+}
+
+.left-banner-content {
+  /* max-width: 60%; */
+  text-align: left;
+}
+
+.right-banner-content {
+  /* max-width: 40%; */
+  text-align: right;
+}
+
+.floating-cards-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  /* Environmental Light Aura */
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 123, 0, 0.05) 0%,
+      transparent 50%);
+  transition: background 0.1s ease;
+}
+
+
+.floating-card-wrapper {
+  position: absolute;
+  transition: transform 0.2s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+  transform: translate(var(--parallax-x, 0), var(--parallax-y, 0));
+  z-index: 1;
+  transform-origin: center -200px;
+  /* Pivot point above the card */
+}
+
+/* The Hanging Wire */
+.floating-card-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -1000px;
+  /* Extend way up to the top */
+  left: 50%;
+  width: 1.5px;
+  height: 1000px;
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 123, 0, 0.2));
+  z-index: -1;
+  box-shadow: 0 0 5px rgba(255, 123, 0, 0.1);
+}
+
+/* The Connection Point (Ring) */
+.floating-card-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--orange-color);
+  border-radius: 50%;
+  background: var(--black-color-5);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+}
+
+.floating-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  padding: 20px 32px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  /* Inner Refraction Glow */
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  min-width: 260px;
+  z-index: 1;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  overflow: hidden;
+  /* Motion Blur Trail Variable */
+  filter: drop-shadow(0 0 calc(var(--motion-blur, 0) * 2px) rgba(255, 123, 0, 0.2));
+}
+
+
+/* Holographic Shimmer Effect */
+.floating-card::before {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 55%);
+  /* transition: all 0.8s ease-in-out; */
+  pointer-events: none;
+  transform: rotate(45deg);
+}
+
+/* .floating-card:hover::before {
+  left: 150%;
+  top: 150%;
+} */
+
+/* Pulsing Status Dot */
+.floating-card::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-status 2s infinite;
+}
+
+@keyframes pulse-status {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+
+  70% {
+    transform: scale(1.2);
+    opacity: 0.5;
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.floating-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  /* transform: translateY(-20px) rotateX(15deg) rotateY(-15deg) scale(1.1) !important; */
+  border-color: var(--orange-color);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 123, 0, 0.4);
+  z-index: 100;
+}
+
+
+.floating-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.floating-card h4 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+
+.floating-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* card positions */
+/* Optimized card positions to prevent overlap */
+/* Spatially distributed positions to cover the right area elegantly */
+/* Spatially distributed positions to cover the right area elegantly (on wrappers) */
+.floating-card-wrapper:nth-child(1) {
+  top: 2%;
+  right: 10%;
+}
+
+.floating-card-wrapper:nth-child(2) {
+  top: 15%;
+  right: 55%;
+}
+
+.floating-card-wrapper:nth-child(3) {
+  top: 42%;
+  right: 5%;
+}
+
+.floating-card-wrapper:nth-child(4) {
+  top: 58%;
+  right: 48%;
+}
+
+.floating-card-wrapper:nth-child(5) {
+  top: 82%;
+  right: 12%;
+}
+
+.floating-card-wrapper:nth-child(6) {
+  top: 92%;
+  right: 52%;
+}
+
+
+
+
+/* Unique Hanging "Pendulum Sway" Animations */
+@keyframes sway-1 {
+
+  0%,
+  100% {
+    transform: rotate(3deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-3deg) translateY(-10px);
+  }
+}
+
+@keyframes sway-2 {
+
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(-5px);
+  }
+
+  50% {
+    transform: rotate(2deg) translateY(5px);
+  }
+}
+
+@keyframes sway-3 {
+
+  0%,
+  100% {
+    transform: rotate(1.5deg) translateY(-15px);
+  }
+
+  50% {
+    transform: rotate(-1.5deg) translateY(0);
+  }
+}
+
+/* Combining Orbit with Sway for a 'Hanging in space' feel */
+.floating-card:nth-child(1) {
+  animation: cardEntrance 1s 0.2s forwards, sway-1 8s 1.2s infinite ease-in-out;
+}
+
+.floating-card:nth-child(2) {
+  animation: cardEntrance 1s 0.4s forwards, sway-2 10s 1.4s infinite ease-in-out;
+}
+
+.floating-card:nth-child(3) {
+  animation: cardEntrance 1s 0.6s forwards, sway-3 9s 1.6s infinite ease-in-out;
+}
+
+.floating-card:nth-child(4) {
+  animation: cardEntrance 1s 0.8s forwards, sway-1 7s 1.8s infinite ease-in-out reverse;
+}
+
+.floating-card:nth-child(5) {
+  animation: cardEntrance 1s 1.0s forwards, sway-2 12s 2.0s infinite ease-in-out;
+}
+
+.floating-card:nth-child(6) {
+  animation: cardEntrance 1s 1.2s forwards, sway-3 11s 2.2s infinite ease-in-out reverse;
+}
+
+
+
+
+
 
 /* for image overlay  */
 .img-overlay {
@@ -1631,18 +1925,21 @@ ul li {
 }
 
 .sub-dropdown-grid .dropdown-item:hover {
-  background: var(--black-color) ;
+  background: var(--black-color);
   color: var(--orange-color) !important;
 }
+
 .dropdown-submenu .sub-nested-dropdown {
   background-color: var(--black-color-2);
   padding: 15px;
   border: 1px solid var(--white-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 .dropdown-submenu .sub-nested-dropdown li {
   margin-bottom: 10px;
 }
+
 /* Responsive & Mobile Alignment Fixes */
 
 @media (min-width: 992px) {
@@ -1655,10 +1952,10 @@ ul li {
     min-width: 250px;
     background-color: var(--black-color-2);
     border: 1px solid rgba(235, 235, 235, 0.336);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 12px;
     z-index: 1001;
-    transform: none ;
+    transform: none;
   }
 
   .dropdown-submenu>.sub-nested-dropdown {
@@ -1714,6 +2011,7 @@ ul li {
     display: block !important;
   }
 }
+
 @media (max-width: 991px) {
   .navbar-bg-clr {
     border-radius: 20px !important;
