@@ -1868,7 +1868,7 @@ ul li {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(247, 149, 51, 0.9);
+  background: var(--orange-color);
   color: var(--black-color);
   padding: 6px 16px;
   border-radius: 50px;
@@ -1903,27 +1903,6 @@ ul li {
   line-height: 1.6;
   margin-bottom: 25px;
   opacity: 0.8;
-}
-
-.impl-v2-btn {
-  margin-top: auto;
-  text-decoration: none;
-  color: var(--orange-color);
-  font-weight: 600;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: gap 0.3s ease;
-}
-
-.impl-v2-btn:hover {
-  color: var(--white-color);
-  gap: 15px;
-}
-
-.impl-v2-btn i {
-  font-size: 16px;
 }
 
 .web-and-app {

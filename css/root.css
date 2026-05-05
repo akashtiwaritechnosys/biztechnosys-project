@@ -328,12 +328,15 @@ a.secondary-button {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  display: flex;
   align-items: center;
-  display: inline-block;
+  display: inline-flex;
+  gap: 10px;
+  width: fit-content;
+  transition: gap 0.3s ease;
 
   &:hover {
-    text-decoration: underline;
+    color: var(--white-color);
+    gap: 15px;
   }
 }
 
