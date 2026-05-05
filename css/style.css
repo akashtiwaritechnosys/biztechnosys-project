@@ -727,6 +727,7 @@ header.sticky .navbar-bg-clr {
   margin: 140px auto 45px auto;
   text-align: center;
   overflow: hidden;
+  padding-bottom: 40px;
 }
 
 .trusted-customers .item {
@@ -1827,6 +1828,104 @@ ul li {
 
 /* about sitecore ends here  */
 
+/* Implementation Card Format 2 Styles */
+.impl-card-v2 {
+  background: var(--black-color-3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.impl-card-v2:hover {
+  transform: translateY(-10px);
+  border-color: var(--orange-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(247, 149, 51, 0.1);
+}
+
+.impl-v2-img {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.impl-v2-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.impl-card-v2:hover .impl-v2-img img {
+  transform: scale(1.1);
+}
+
+.impl-v2-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(247, 149, 51, 0.9);
+  color: var(--black-color);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+}
+
+.impl-v2-body {
+  padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.impl-v2-body h4 {
+  color: var(--white-color);
+  font-size: 22px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.impl-card-v2:hover .impl-v2-body h4 {
+  color: var(--orange-color);
+}
+
+.impl-v2-body p {
+  color: var(--gray-color-3);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+.impl-v2-btn {
+  margin-top: auto;
+  text-decoration: none;
+  color: var(--orange-color);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: gap 0.3s ease;
+}
+
+.impl-v2-btn:hover {
+  color: var(--white-color);
+  gap: 15px;
+}
+
+.impl-v2-btn i {
+  font-size: 16px;
+}
+
 .web-and-app {
   width: 465px;
 }
@@ -2022,10 +2121,10 @@ ul li {
 
   /* Fix fixed-width elements causing overflow */
   .trusted-caro {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
     padding: 0 15px;
-    margin-top: 50px !important;
+    margin-top: 50px;
   }
 
   .circle-image-wrapper1,

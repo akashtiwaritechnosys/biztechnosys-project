@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo Biztech</title>
+  <title>Sitecore Biztech - Demo 1</title>
   <!-- font awesome link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -21,227 +21,144 @@
   <!-- css file link  -->
   <link rel="stylesheet" href="./css/style.css" />
   <style>
-    /* Multi-level Dropdown Core Styles */
-    .dropdown-submenu {
+    /* Custom Half Circle Slider Styles for Demo1 */
+    .half-circle-slider-section {
+      padding: 100px 0;
+      overflow: hidden;
+      background: var(--black-color-2);
       position: relative;
     }
 
-    /* Top-level dropdown arrows */
-    .navbar-nav .nav-item.dropdown > .nav-link.dropdown-toggle::after {
-      content: "\f107" !important;
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      vertical-align: middle;
-      margin-left: 8px;
-      border: none !important;
-      transition: transform 0.3s;
-    }
-
-    .navbar-nav .nav-item.dropdown:hover > .nav-link.dropdown-toggle::after {
-      transform: rotate(180deg);
-    }
-
-    /* Nested dropdown items */
-    .dropdown-submenu > .dropdown-item {
-      display: flex !important;
-      justify-content: space-between;
+    .arc-slider-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
       align-items: center;
-      padding: 10px 20px;
+    }
+
+    .arc-track {
+      position: absolute;
+      width: 1200px;
+      height: 1200px;
+      border-radius: 50%;
+      border: 2px dashed rgba(234, 131, 27, 0.2);
+      bottom: -940px;
+      display: flex;
+      justify-content: center;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: rotate(0deg);
+    }
+
+    .arc-item {
+      position: absolute;
+      width: 400px;
+      height: 500px;
+      top: -250px;
+      transform-origin: center 850px;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0.3;
+      filter: blur(4px) grayscale(100%);
+      pointer-events: none;
+    }
+
+    .arc-item.active {
+      opacity: 1;
+      filter: blur(0) grayscale(0%);
+      transform: scale(1.1);
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    .arc-card {
+      background: var(--black-color-3);
+      border-radius: 30px;
+      padding: 40px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .arc-circle-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(var(--orange-color) 0% 100%, transparent 100%);
+      margin-bottom: 30px;
       position: relative;
     }
 
-    .dropdown-submenu > .dropdown-item::after {
-      content: "\f105" !important;
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      font-size: 11px;
-      margin-left: 15px;
-      border: none !important;
-      transition: transform 0.3s;
+    .arc-circle-img::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      background: var(--black-color-3);
+      border-radius: 50%;
+      z-index: 1;
     }
 
-    /* Nested Dropdown Menu Positioning (Desktop) */
-    @media (min-width: 992px) {
-      .dropdown-submenu > .dropdown-menu {
-        top: 0 !important;
-        left: 100% !important;
-        margin-top: -5px !important;
-        margin-left: 0 !important;
-        display: none !important;
-        min-width: 220px;
-        background-color: #141414 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 15px 0 35px rgba(0, 0, 0, 0.6) !important;
-        border-radius: 12px !important;
-        z-index: 1001;
-        transform: none !important;
-      }
-
-      .dropdown-submenu:hover > .dropdown-menu {
-        display: block !important;
-        animation: subMenuIn 0.25s ease-out;
-      }
-
-      /* Mega Dropdown Desktop Positioning */
-      .mega-dropdown-menu {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 100vw !important;
-        max-width: 1400px !important;
-        padding: 0 70px !important;
-        background: transparent !important;
-        border: none !important;
-        top: 100% !important;
-      }
-
-      .mega-tabs-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-        overflow: visible !important;
-        background-color: var(--black-color-2);
-        border-radius: 24px;
-        border: 1px solid rgba(255,255,255,0.06);
-        display: flex;
-      }
-
-      .navbar-nav .dropdown:hover > .dropdown-menu {
-        display: block !important;
-      }
+    .arc-circle-img img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
-    @keyframes subMenuIn {
-      from { opacity: 0; transform: translateX(10px); }
-      to { opacity: 1; transform: translateX(0); }
+    .arc-content h3 {
+      color: var(--white-color);
+      font-size: 24px;
+      margin-bottom: 15px;
     }
 
-    /* Support for sub-dropdown-grid within mega-content */
-    .mega-content .sub-dropdown-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      position: static !important;
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      width: 100% !important;
-      padding: 0 !important;
-      margin-top: 1.5rem !important;
-      opacity: 1 !important;
-      visibility: visible !important;
+    .arc-content p {
+      color: var(--gray-color-3);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
 
-    .sub-dropdown-grid .dropdown-item {
-      padding: 12px 18px !important;
-      background: rgba(255, 255, 255, 0.03) !important;
-      border: 1px solid rgba(255, 255, 255, 0.06) !important;
-      border-radius: 10px !important;
-      color: #94a3b8 !important;
-      white-space: normal !important;
+    .arc-nav {
+      position: absolute;
+      /* bottom: 50px; */
+      /* left: 50%; */
+      top: -37%;
+      right: 0%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 20;
     }
 
-    .sub-dropdown-grid .dropdown-item:hover {
-      background: rgba(255, 255, 255, 0.08) !important;
-      color: var(--orange-color) !important;
+    .arc-nav-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--orange-color);
+      border: none;
+      color: var(--black-color);
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* Responsive & Mobile Alignment Fixes */
-    @media (max-width: 991px) {
-      .navbar-bg-clr {
-        border-radius: 20px !important;
-        width: 100% !important;
-        margin: 0 !important;
-      }
-
-      .container-fluid {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-      }
-
-      /* Fix fixed-width elements causing overflow */
-      .trusted-caro {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 15px;
-        margin-top: 50px !important;
-      }
-
-      .circle-image-wrapper1, .circle-image-wrapper2, .circle-image-wrapper3 {
-        width: 280px !important;
-        height: 280px !important;
-        margin: 0 auto !important;
-      }
-
-      /* Mobile Navigation Expand Fix */
-      .navbar-collapse {
-        background-color: var(--black-color-5);
-        border-radius: 15px;
-        margin-top: 15px;
-        padding: 15px !important;
-        max-height: 80vh;
-        overflow-y: auto;
-      }
-
-      .mega-dropdown-menu {
-        width: 100% !important;
-        position: static !important;
-        transform: none !important;
-        background-color: transparent !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: none;
-      }
-
-      .dropdown.show .mega-dropdown-menu {
-        display: block !important;
-      }
-
-      .mega-tabs-wrapper {
-        flex-direction: column;
-        width: 100% !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-      }
-
-      .mega-tabs-nav {
-        width: 100% !important;
-        border-right: none !important;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .mega-tabs-content {
-        width: 100% !important;
-        padding: 20px 0 !important;
-      }
-
-      .sub-dropdown-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .dropdown-submenu > .dropdown-menu {
-        position: static !important;
-        left: 0 !important;
-        width: 100% !important;
-        margin-left: 15px !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-        display: none !important;
-      }
-
-      .dropdown-submenu.show > .dropdown-menu {
-        display: block !important;
-      }
-    }
-    ul.sub-nested-dropdown{
-        background-color: #141414 !important;
-        padding: 15px;
-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
-    ul.sub-nested-dropdown li{
-        margin-bottom: 10px;
+    .arc-nav-btn:hover {
+      transform: scale(1.1);
+      background: var(--white-color);
     }
   </style>
 </head>
@@ -261,10 +178,6 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-              <div class="hori-selector">
-                <div class="left"></div>
-                <div class="right"></div>
-              </div>
               <li class="nav-item dropdown mega-tab-dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="sitecoreDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
@@ -273,195 +186,30 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
                 <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="sitecoreDropdown">
                   <div class="mega-tabs-wrapper">
-
                     <!-- Left Tabs -->
                     <div class="mega-tabs-nav">
                       <button class="mega-tab-btn active" data-tab="tab1">
                         <span>Sitecore DXP</span>
                         <i class="fa-solid fa-arrow-right"></i>
                       </button>
-
                       <button class="mega-tab-btn" data-tab="tab2">
                         <span>Sitecore CDP</span>
                         <i class="fa-solid fa-arrow-right"></i>
                       </button>
-
-                      <button class="mega-tab-btn" data-tab="tab3">
-                        <span>Sitecore DAM</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                      </button>
-
-                      <button class="mega-tab-btn" data-tab="tab4">
-                        <span>Sitecore Project</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                      </button>
-                      <button class="mega-tab-btn" data-tab="tab5">
-                        <span>Sitecore Support</span>
-                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
-
                     <!-- Right Content -->
                     <div class="mega-tabs-content">
-
                       <div class="mega-content active" id="tab1">
                         <h4>Sitecore DXP</h4>
-                        <p>
-                          Build scalable, fast, and responsive websites using modern frameworks and technologies.
-                        </p>
-                        <ul class="dropdown-menu sub-dropdown-grid" aria-labelledby="solutionsDropdown">
-                          <li><a class="dropdown-item" href="#">Migration to Sitecore</a></li>
-                          <li><a class="dropdown-item" href="#">Sitecore Upgrade</a></li>
-                          <!-- <li><a class="dropdown-item" href="#">Sitecore Implementation</a></li> -->
-
-                          <li class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Sitecore Implementation</a>
-                            <ul class="dropdown-menu sub-nested-dropdown">
-                              <li><a class="dropdown-item" href="#">ERP Integration</a></li>
-                              <li><a class="dropdown-item" href="#">Cloud Infrastructure</a></li>
-                              <li><a class="dropdown-item" href="#">Data Analytics</a></li>
-                            </ul>
-                          </li>
-
-                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
-                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
-                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
-
-                          <li class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">Enterprise Solutions</a>
-                            <ul class="dropdown-menu sub-nested-dropdown">
-                              <li><a class="dropdown-item" href="#">ERP Integration</a></li>
-                              <li><a class="dropdown-item" href="#">Cloud Infrastructure</a></li>
-                              <li><a class="dropdown-item" href="#">Data Analytics</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-
-
+                        <p>Build scalable digital experiences.</p>
                       </div>
-
-                      <div class="mega-content" id="tab2">
-                        <span class="mega-badge">Enterprise CMS</span>
-                        <h4>Sitecore Solutions</h4>
-                        <p>
-                          Enterprise-grade Sitecore implementation, migration, and optimization services.
-                        </p>
-                        <a href="#" class="mega-btn">Explore Service</a>
-                      </div>
-
-                      <div class="mega-content" id="tab3">
-                        <span class="mega-badge">Design</span>
-                        <h4>Creative UI/UX Design</h4>
-                        <p>
-                          Create engaging digital experiences with clean and conversion-focused interfaces.
-                        </p>
-                        <a href="#" class="mega-btn">Explore Service</a>
-                      </div>
-
-                      <div class="mega-content" id="tab4">
-                        <span class="mega-badge">Cloud</span>
-                        <h4>Cloud Infrastructure</h4>
-                        <p>
-                          Deploy secure and scalable cloud solutions for enterprise applications.
-                        </p>
-                        <a href="#" class="mega-btn">Explore Service</a>
-                      </div>
-
-                      <div class="mega-content" id="tab5">
-                        <span class="mega-badge">Support</span>
-                        <h4>Website Maintenance</h4>
-                        <p>
-                          Continuous monitoring, updates, and support for your digital platforms.
-                        </p>
-                        <a href="#" class="mega-btn">Explore Service</a>
-                      </div>
-
                     </div>
                   </div>
                 </div>
               </li>
-
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./about-us.html">About Us</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="solutionsDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Solutions
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="solutionsDropdown">
-                  <li><a class="dropdown-item" href="#">CRM Solutions</a></li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item" href="#">Enterprise Solutions</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">ERP Integration</a></li>
-                      <li><a class="dropdown-item" href="#">Cloud Infrastructure</a></li>
-                      <li><a class="dropdown-item" href="#">Data Analytics</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="dropdown-item" href="#">Digital Marketing</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="servicesMenuDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Services
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="servicesMenuDropdown">
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item" href="#">Web Development</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Frontend Development</a></li>
-                      <li><a class="dropdown-item" href="#">Backend Development</a></li>
-                      <li><a class="dropdown-item" href="#">Full Stack</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item" href="#">Mobile Apps</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">iOS Development</a></li>
-                      <li><a class="dropdown-item" href="#">Android Development</a></li>
-                      <li><a class="dropdown-item" href="#">React Native</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="dropdown-item" href="#">UI/UX Design</a></li>
-                  <li><a class="dropdown-item" href="#">SEO Optimization</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Projects
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
-                  <li><a class="dropdown-item" href="#">E-Commerce</a></li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item" href="#">Healthcare</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Patient Portal</a></li>
-                      <li><a class="dropdown-item" href="#">Clinic Management</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="dropdown-item" href="#">Finance</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Resources
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
-                  <li><a class="dropdown-item" href="./blog.html">Blogs</a></li>
-                  <li><a class="dropdown-item" href="./career.html">Careers</a></li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item" href="#">Case Studies</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Retail Case Study</a></li>
-                      <li><a class="dropdown-item" href="#">Tech Case Study</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="./about-us.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Technology</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
             </ul>
             <a href="./contact.html" class="third-button px-4 py-2">Contact Us</a>
           </div>
@@ -469,570 +217,159 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       </nav>
     </header>
 
-    <div class="">
-      <div class="banner-content d-flex flex-column justify-content-center align-items-center">
-        <div>
-          <h1 class="white-color lh-base">
-            Custom IT Solutions Designed for Your Business Needs
-          </h1>
-          <p class="white-color my-3 my-md-2 text-[var(--white-color-2)] lh-base">
-            CRM-Doctor's platform combines CRM and IT solutions, equipping
-            teams with the tools for smarter customer support.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="primary-button">
-              <img class="icon" src="./images/star.svg" alt="star" />
-              Request A Free Quote
-            </a>
-          </div>
-        </div>
-
-        <div class="trusted-caro">
-          <p class="montserrat-semibold white-color">
-            Trusted by 500+ Happy Customers Around the Globe
-          </p>
-          <div class="owl-carousel trusted-customers owl-theme mt-4">
-            <div class="item">
-              <img src="./images/gusto.svg" alt="Gusto" />
-            </div>
-            <div class="item">
-              <img src="./images/crowdstreet.svg" alt="CrowdStreet" />
-            </div>
-            <div class="item"><img src="./images/pipe.svg" alt="Pipe" /></div>
-            <div class="item">
-              <img src="./images/digits.svg" alt="Digits" />
-            </div>
-            <div class="item"><img src="./images/ramp.svg" alt="Ramp" /></div>
-            <div class="item">
-              <img src="./images/check.svg" alt="Check" />
-            </div>
-          </div>
-        </div>
+    <div class="banner-content d-flex flex-column justify-content-center align-items-center">
+      <h1 class="white-color lh-base text-center">
+        Custom IT Solutions Designed for Your Business Needs
+      </h1>
+      <p class="white-color my-3 text-center opacity-75">
+        Innovative platforms combining CRM and IT solutions for modern teams.
+      </p>
+      <div class="mt-4">
+        <a href="#" class="primary-button">
+          <img class="icon" src="./images/star.svg" alt="star" />
+          Explore Demo
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- our services -->
-  <section class="container-fluid my-3 my-md-5">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="mt-2 mt-md-5">
-          <h2 class="white-color">Our Services</h2>
-          <p class="white-color mt-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="row mt-4 our-services row-gap-3 align-items-stretch">
-        <div class="col-md-7 d-flex">
-          <div class="our-services-card w-100 d-flex flex-column justify-content-between align-items-center">
-            <div class="img-overlayy">
-              <img src="./images/web-and-app.png" class="services-img overlay-img web-and-app" alt="web-and-app" />
-            </div>
-
-            <div class="text-start mt-4">
-              <p class="orange-color mb-1">Build for Performance</p>
-              <h5 class="white-color">Web & App Development</h5>
-              <p class="white-color">
-                Custom-built websites and applications designed for
-                performance, scalability, and user experience.
-              </p>
-              <a href="#" class="secondary-button secondary-button-icon">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5 ps-1 d-flex">
-          <div class="our-services-card w-100 d-flex flex-column justify-content-between align-items-center">
-            <img src="./images/ui-ux-design.png" class="card-img-top w-100" alt="UI/UX Design" />
-            <!-- <div class="img-overlay">
-                <img
-                src="./images/ui-ux-design.svg"
-                class="card-img-top w-100 overlay-img"
-                alt="UI/UX Design"
-              />
-              </div> -->
-            <div class="text-start mt-4">
-              <p class="orange-color mb-1">Design with Purpose</p>
-              <h5 class="white-color">UI/UX Design</h5>
-              <p class="white-color">
-                Transform ideas into intuitive and engaging digital
-                experiences that captivate users.
-              </p>
-              <a href="#" class="secondary-button secondary-button-icon">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mt-3 our-services row-gap-3 align-items-stretch">
-        <div class="col-md-5 d-flex pe-1">
-          <div class="our-services-card w-100 d-flex flex-column justify-content-between align-items-center">
-            <!-- <img
-                src="./images/digital-growth.svg"
-                class="services img"
-                alt="..."
-              /> -->
-            <div class="img-overlay">
-              <img src="./images/digital-growth.svg" class="services-img overlay-img" alt="digital growth" />
-            </div>
-            <div class="text-start mt-4">
-              <p class="orange-color mb-1">Grow Smarter</p>
-              <h5 class="white-color">Digital Growth & Marketing</h5>
-              <p class="white-color">
-                Drive traffic, generate leads, and grow your brand with
-                data-driven digital strategies.
-              </p>
-              <a href="#" class="secondary-button secondary-button-icon">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-7 d-flex">
-          <div class="our-services-card w-100 d-flex flex-column justify-content-between align-items-center">
-            <img src="./images/crm-business-solutions.svg" class="card-img-top w-100" alt="web-and-app" />
-            <!-- <div class="img-overlay">
-                <img
-                src="./images/crm-business-solutions.svg"
-                class="card-img-top w-100 overlay-img"
-                alt="crm business solutions"
-              /> -->
-            <div class="text-start mt-4">
-              <p class="orange-color mb-1">Grow Smarter</p>
-              <h5 class="white-color">CRM & Business Solutions</h5>
-              <p class="white-color">
-                Optimize workflows, automate processes, and enhance customer
-                relationships with tailored CRM solutions.
-              </p>
-              <a href="#" class="secondary-button secondary-button-icon">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- for sitecore section  -->
-  <section class="container-fluid sitecore-section">
-    <div class="row">
-      <div class="col-md-7 col-lg-6 order-2 order-md-1">
-        <div class="mt-5">
-          <h2 class="white-color">Sitecore Enterprise</h2>
-          <p class="white-color my-3">
-            Sitecore is a Top Enterprise CMS Solution Provider in Gartner's
-            Magic Quadrants for Web Content Management (WCM) and Digital
-            Experience Platforms (DXP) that, when coupled with Azure, AWS,
-            Salesforce Marketing Cloud, provides an unbeatable combination for
-            your digital strategy.
-          </p>
-          <a href="#" class="primary-button my-3 primary-button-icon">
-            Sort with Sitecore Solution
-          </a>
-        </div>
-      </div>
-      <div class="col-md-5 col-lg-6 order-1 order-md-2">
-        <img src="./images/sitecore.png" class="w-100" alt="sitecore" />
-      </div>
+  <!-- Half Circle Slider Section -->
+  <section class="half-circle-slider-section">
+    <div class="container text-center mb-5">
+      <h2 class="white-color">Explore Our Premier Brands</h2>
+      <p class="gray-color-3">Discover how we transform businesses through our specialized tools.</p>
     </div>
 
-    <div class="row">
-      <div class="col-md-5 col-lg-6">
-        <img src="./images/drupal.png" class="w-100" alt="sitecore" />
-      </div>
-      <div class="col-md-7 col-lg-6">
-        <div class="mt-5">
-          <h2 class="white-color">Drupal Solutions</h2>
-          <p class="white-color my-3">
-            Drupal is a powerful open-source CMS trusted by global enterprises
-            for its flexibility, scalability, and robust security. Whether
-            you're building complex websites, portals, or integrated digital
-            experiences, Drupal offers the tools to grow and innovate
-            seamlessly.
-          </p>
-          <a href="#" class="primary-button my-3 primary-button-icon">
-            Sort with Drupal Solutions
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- for our brands section  -->
-  <section class="container-fluid my-3 my-md-5">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="mt-4 mt-md-5">
-          <h2 class="white-color">Our Brands</h2>
-          <p class="white-color">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="wrapper">
-      <div class="row crm-section wrapper-card">
-        <div class="col-md-5 d-none d-md-block">
-          <div class="circle-image-wrapper circle-image-wrapper1">
-            <div class="crl-img-wrp">
-              <img src="./images/crm-doctor-man.png" alt="User Image" />
+    <div class="arc-slider-container">
+      <div class="arc-track" id="arcTrack">
+        <!-- Brand 1 -->
+        <div class="arc-item active" style="transform: rotate(0deg)">
+          <div class="arc-card">
+            <div class="arc-circle-img">
+              <img src="./images/crm-doctor-man.png" alt="CRM Doctor" />
+            </div>
+            <div class="arc-content">
+              <h3>CRM Doctor</h3>
+              <p>Smart CRM solutions integrating automation and seamless analytics.</p>
+              <a href="#" class="secondary-button secondary-button-icon">Explore Now</a>
             </div>
           </div>
         </div>
 
-        <div class="col-md-7">
-          <div class="content-area">
-            <div class="crm-logo">
-              <img src="./images/crm-doctor-logo.svg" alt="CRM Logo" />
+        <!-- Brand 2 -->
+        <div class="arc-item" style="transform: rotate(30deg)">
+          <div class="arc-card">
+            <div class="arc-circle-img">
+              <img src="./images/try-man.png" alt="Tech Refurb" />
             </div>
-            <p class="white-color my-4 mt-5">
-              CRM-Doctor empowers businesses with smart CRM solutions,
-              integrating automation, analytics, and seamless tools to enhance
-              engagement, boost sales, and streamline workflows.
-            </p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-gap-4">
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/website-icon.svg" alt="website" />
-                  </div>
-                  <div class="paragraph">Website</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/services-icon.svg" alt="services" />
-                  </div>
-                  <div class="paragraph">Services</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/inventory-icon.svg" alt="inventory" />
-                  </div>
-                  <div class="paragraph">Inventory</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
+            <div class="arc-content">
+              <h3>Tech Refurb Yard</h3>
+              <p>Specialized refurbishing and repair services for modern hardware.</p>
+              <a href="#" class="secondary-button secondary-button-icon">Explore Now</a>
             </div>
+          </div>
+        </div>
 
-            <a href="#" class="primary-button my-5 primary-button-icon">
-              Explore Now
-            </a>
+        <!-- Brand 3 -->
+        <div class="arc-item" style="transform: rotate(60deg)">
+          <div class="arc-card">
+            <div class="arc-circle-img">
+              <img src="./images/it-tools-man.png" alt="IT Tools" />
+            </div>
+            <div class="arc-content">
+              <h3>IT Tools</h3>
+              <p>Streamlined workflows and enterprise tools for digital growth.</p>
+              <a href="#" class="secondary-button secondary-button-icon">Explore Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand 4 (Duplicate for loop) -->
+        <div class="arc-item" style="transform: rotate(-30deg)">
+          <div class="arc-card">
+            <div class="arc-circle-img">
+              <img src="./images/crm-doctor-man.png" alt="CRM Doctor" />
+            </div>
+            <div class="arc-content">
+              <h3>Enterprise Solutions</h3>
+              <p>Scalable IT infrastructure for large-scale operations.</p>
+              <a href="#" class="secondary-button secondary-button-icon">Explore Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand 5 (Duplicate for loop) -->
+        <div class="arc-item" style="transform: rotate(-60deg)">
+          <div class="arc-card">
+            <div class="arc-circle-img">
+              <img src="./images/try-man.png" alt="Tech Refurb" />
+            </div>
+            <div class="arc-content">
+              <h3>Modern Platforms</h3>
+              <p>Building the future of digital interaction with Sitecore.</p>
+              <a href="#" class="secondary-button secondary-button-icon">Explore Now</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="row crm-section wrapper-card">
-        <div class="col-md-5 d-none d-md-block">
-          <div class="circle-image-wrapper circle-image-wrapper2">
-            <div class="crl-img-wrp">
-              <img src="./images/try-man.png" alt="User Image" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-7">
-          <div class="content-area">
-            <div class="crm-logo">
-              <img src="./images/try-logo.svg" alt="CRM Logo" />
-            </div>
-            <p class="white-color my-4 mt-5">
-              Tech Refurb Yard specializes in refurbishing, repairing, and
-              reselling laptops and desktops while also offering upgrades,
-              buyback options, and eco-friendly solutions.
-            </p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-gap-4">
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/website-icon.svg" alt="website" />
-                  </div>
-                  <div class="paragraph">Website</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/services-icon.svg" alt="services" />
-                  </div>
-                  <div class="paragraph">Services</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/inventory-icon.svg" alt="inventory" />
-                  </div>
-                  <div class="paragraph">Inventory</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
-            </div>
-
-            <a href="#" class="primary-button my-5 primary-button-icon">
-              Explore Now
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="row crm-section wrapper-card">
-        <div class="col-md-5 d-none d-md-block">
-          <div class="circle-image-wrapper circle-image-wrapper3">
-            <div class="crl-img-wrp">
-              <img src="./images/it-tools-man.png" alt="User Image" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-7">
-          <div class="content-area">
-            <div class="crm-logo">
-              <h2 class="white-color it-tools">IT Tools</h2>
-            </div>
-            <p class="white-color my-4">
-              CRM-Doctor empowers businesses with smart CRM solutions,
-              integrating automation, analytics, and seamless tools to enhance
-              engagement, boost sales, and streamline workflows.
-            </p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-gap-4">
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/website-icon.svg" alt="website" />
-                  </div>
-                  <div class="paragraph">Website</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/services-icon.svg" alt="services" />
-                  </div>
-                  <div class="paragraph">Services</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/inventory-icon.svg" alt="inventory" />
-                  </div>
-                  <div class="paragraph">Inventory</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex white-color gap-3 align-items-center">
-                  <div class="tag">
-                    <img src="./images/finance-icon.svg" alt="finance" />
-                  </div>
-                  <div class="paragraph">Finance</div>
-                </div>
-              </div>
-            </div>
-
-            <a href="#" class="primary-button my-5 primary-button-icon">
-              Explore Now
-            </a>
-          </div>
-        </div>
+      <div class="arc-nav">
+        <button class="arc-nav-btn" onclick="rotateArc('prev')">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button class="arc-nav-btn" onclick="rotateArc('next')">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
     </div>
-  </section>
-
-  <!-- for get in touch section  -->
-  <section class="container-fluid text-center my-3 my-md-5">
-    <h3 class="white-color mt-md-5">
-      Let's Get in Touch & Transform Your Business with Smarter Solutions!
-    </h3>
-    <p class="white-color">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore.
-    </p>
-    <a href="#" class="primary-button my-3 primary-button-icon">
-      Contact Us
-    </a>
   </section>
 
   <footer class="footer">
-    <div class="container-fluid">
-      <div class="row align-items-center pb-4">
-        <div class="col-md-6">
-          <img src="./images/biztech-logo.svg" alt="biztechnosys" />
-        </div>
-        <div class="col-md-6 text-end">
-          <div class="d-flex justify-content-end align-items-center">
-            <div>
-              <p class="white-color me-2 mb-0">Follow Us On Social Media</p>
-            </div>
-            <div class="d-flex column-gap-3">
-              <div>
-                <a href="#" class="tag">
-                  <i class="fa-brands fa-instagram"></i>
-                </a>
-              </div>
-              <div>
-                <a href="#" class="tag">
-                  <i class="fa-brands fa-x-twitter"></i>
-                </a>
-              </div>
-              <div>
-                <a href="#" class="tag">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="line"></div>
-      <div class="row">
-        <div class="col-12 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
-          <p class="footer-title">Services</p>
-          <ul style="list-style: none" class="p-0 footer-link">
-            <li><a href="#">Upgrade & Migration</a></li>
-            <li><a href="#">Integration Consulting</a></li>
-            <li><a href="#">Marketing Automation</a></li>
-            <li><a href="#">Design & Development</a></li>
-            <li><a href="#">Deployment Consulting</a></li>
-            <li><a href="#">Customization Consulting</a></li>
-            <li><a href="#">Branding & SEO</a></li>
-            <li><a href="#">Consulting</a></li>
-          </ul>
-        </div>
-        <div class="col-12 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
-          <p class="footer-title">Solutions</p>
-          <ul style="list-style: none" class="p-0 footer-link">
-            <li><a href="#">Online Education</a></li>
-            <li><a href="#">Online Healthcare</a></li>
-            <li><a href="#">B2B Marketplace</a></li>
-            <li><a href="#">Government Portals</a></li>
-            <li><a href="#">Government Portals</a></li>
-            <li><a href="#">Tour & Travel Portals</a></li>
-            <li><a href="#">Enterprise Technology</a></li>
-          </ul>
-        </div>
-        <div class="col-4 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
-          <p class="footer-title">About Us</p>
-          <ul style="list-style: none" class="p-0 footer-link">
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Achievements</a></li>
-            <li><a href="#">Awards</a></li>
-            <li><a href="#">Branding</a></li>
-          </ul>
-        </div>
-        <div class="col-4 text-cente text-md-star col-md-3 mt-4 mt-lg-0 col-lg-2">
-          <p class="footer-title">Careers</p>
-          <ul style="list-style: none" class="p-0 footer-link">
-            <li><a href="./career.html">Job Openings</a></li>
-            <li><a href="#">Benefits & Perks</a></li>
-          </ul>
-        </div>
-        <div class="col-4 text-cente text-md-star col-md-3 mt-4 mt-lg-0 col-lg-1">
-          <p class="footer-title">Blogs</p>
-          <ul style="list-style: none" class="p-0 footer-link">
-            <li><a href="./blog.html">Our Blogs</a></li>
-          </ul>
-        </div>
-        <div class="col-md-5 mt-4 mt-lg-0 col-lg-3">
-          <div class="">
-            <a href="#" class="get-in-touch footer-link">
-              <img src="./images/address-icon.svg" class="tag" alt="address" />
-              <span>3rd Floor, Above Med Plus, Hansha Plaza, 24th Main Rd, 26
-                Phase, J.P. Nagar, Bengaluru, Karnataka - 560078</span>
-            </a>
-            <a href="#" class="get-in-touch footer-link">
-              <img src="./images/mail-icon.svg" class="tag" alt="mail" />
-              <span>info@biztechnosys.com</span>
-            </a>
-            <a href="#" class="get-in-touch footer-link">
-              <img src="./images/telephone-icon.svg" class="tag" alt="telephone" />
-              <span>+91 8035827097</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="line mt-5"></div>
-      <div class="footer-bottom text-center mt-4 d-md-flex justify-content-between">
-        <div>
-          <p>@2025 Biztechnosys. All Rights Reserved.</p>
-        </div>
-        <div>
-          <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          |
-          <a href="#" class="footer-bottom-link">Terms & Conditions</a>
-          |
-          <a href="#" class="footer-bottom-link">Cookie Policy</a>
-        </div>
-      </div>
-      <div>
-        <img class="w-100" src="./images/footer-text.png" alt="footer-text" />
-      </div>
+    <!-- Simple Footer for Demo -->
+    <div class="container-fluid text-center">
+      <img src="./images/biztech-logo.svg" alt="biztechnosys" />
+      <p class="white-color mt-3">@2025 Biztechnosys. All Rights Reserved.</p>
     </div>
   </footer>
 
   <!-- bootstrap 5 -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-    crossorigin="anonymous"></script>
-  <!-- Include jQuery (required by Owl Carousel) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Include Owl Carousel JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="./js/script.js"></script>
+  <script>
+    let currentRotation = 0;
+    const step = 30; // degrees
+    const track = document.getElementById('arcTrack');
+    const items = document.querySelectorAll('.arc-item');
+    let activeIndex = 0;
+
+    function rotateArc(direction) {
+      if (direction === 'next') {
+        currentRotation -= step;
+        activeIndex = (activeIndex + 1) % items.length;
+      } else {
+        currentRotation += step;
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+      }
+
+      track.style.transform = `rotate(${currentRotation}deg)`;
+
+      // Update active state
+      items.forEach((item, index) => {
+        // Calculate the current relative angle
+        const itemRotation = parseFloat(item.style.transform.replace('rotate(', '').replace('deg)', ''));
+        const relativeRotation = (itemRotation + currentRotation) % 360;
+
+        if (Math.abs(relativeRotation) < 5 || Math.abs(relativeRotation) > 355) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Auto rotate every 5 seconds
+    setInterval(() => rotateArc('next'), 5000);
+  </script>
 </body>
 
 </html>
