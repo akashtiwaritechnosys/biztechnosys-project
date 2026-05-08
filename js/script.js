@@ -4,44 +4,29 @@ $(document).ready(function () {
 
     $(".trusted-customers").owlCarousel({
       loop: true,
-      margin: 20,
+      margin: 30,
       nav: false,
-      autoplay: true,
       dots: false,
-      autoplayTimeout: 1000,
-      // animateOut: "slideOutDown",
-      // animateIn: "flipInX",
-      mouseDrag: false,
-      pullDrag: false,
-      touchDrag: false,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: false,
+      smartSpeed: 3000,
       slideTransition: 'linear',
-      autoplaySpeed: 3000,
-      // smartSpeed: 3000,
       responsive: {
         0: {
           items: 2,
         },
-        600: {
-          items: 2,
+        576: {
+          items: 3,
         },
         768: {
           items: 4,
         },
-        992: {
-          items: 4,
-        },
-        1000: {
+        1200: {
           items: 6,
         },
       },
-
     });
-    jQuery('.trusted-customers').trigger('play.owl.autoplay', [3000]);
-
-    function setSpeed() {
-      jQuery('.trusted-customers').trigger('play.owl.autoplay', [3000]);
-    }
-    setTimeout(setSpeed, 1000);
 
 
     // our teams in about us page
@@ -90,7 +75,7 @@ $(document).ready(function () {
       },
     });
 
-    // clients-testimonials in about us page
+    // related-blog in blog details page
     $(".related-blog-owl-carousel").owlCarousel({
       loop: false,
       margin: 20,
@@ -216,23 +201,30 @@ $(document).ready(function () {
     // If click is inside the dropdown-menu (e.g. mega tabs), don't reset navbar state
     if ($(e.target).closest('.dropdown-menu').length) return;
 
-    // 1. Remove active state from all items
-    $nav.find(".nav-item").removeClass("active show");
+    // Desktop only state management to avoid conflict with mobile toggle logic
+    if (window.innerWidth >= 992) {
+      // 1. Remove active state from all items
+      $nav.find(".nav-item").removeClass("active show");
 
-    // 2. Clear show state and aria-expanded from all links
-    $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
+      // 2. Clear show state and aria-expanded from all links
+      $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
 
-    // 3. Force-close all dropdown menus (fixes issue where Bootstrap show class persists on containers)
-    $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
+      // 3. Force-close all dropdown menus
+      $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
 
-    // 4. Set current item as active
-    $(this).addClass("active");
+      // 4. Set current item as active
+      $(this).addClass("active");
 
-    // 5. If it's a dropdown, ensure the current one opens correctly
-    if ($(this).hasClass('dropdown')) {
-      $(this).addClass("show");
-      $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
-      $(this).find("> .dropdown-menu").addClass("show");
+      // 5. If it's a dropdown, ensure the current one opens correctly
+      if ($(this).hasClass('dropdown')) {
+        $(this).addClass("show");
+        $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
+        $(this).find("> .dropdown-menu").addClass("show");
+      }
+    } else {
+      // On mobile, just handle the 'active' highlight without forcing 'show'
+      $nav.find(".nav-item").removeClass("active");
+      $(this).addClass("active");
     }
   });
 
@@ -265,8 +257,78 @@ $(document).ready(function () {
 // });
 
 // On toggler click (mobile view)
-$(".navbar-toggler").click(function () {
-  $(".navbar-collapse").slideToggle(300);
+$(".navbar-toggler").click(function (e) {
+  e.stopPropagation();
+  const $collapse = $(".navbar-collapse");
+  const isExpanding = !$collapse.is(":visible");
+
+  // Close all open dropdowns before opening/closing the main menu
+  if (isExpanding) {
+    $(".nav-item.dropdown").removeClass("show").find(".dropdown-menu").hide();
+  }
+
+  $collapse.stop(true, true).slideToggle(300, function () {
+    const isVisible = $(this).is(":visible");
+    $(".navbar-toggler").attr("aria-expanded", isVisible);
+  });
+});
+
+// Handle Mobile Dropdowns (Click to Toggle)
+function handleMobileDropdowns() {
+  if (window.innerWidth < 992) {
+    // Unbind first to prevent double events
+    $(".nav-item.dropdown > .nav-link").off("click").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const $parent = $(this).parent();
+      const $menu = $(this).next(".dropdown-menu");
+
+      // Close other dropdowns at the same level
+      $parent.siblings(".dropdown").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
+
+      // Toggle current dropdown
+      $parent.toggleClass("show");
+      $menu.stop(true, true).slideToggle(300);
+    });
+
+    // Submenu handling for mobile
+    $(".dropdown-submenu > .dropdown-item").off("click").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const $menu = $(this).next(".dropdown-menu");
+      const $parent = $(this).parent();
+
+      // Close siblings submenus
+      $parent.siblings(".dropdown-submenu").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
+
+      $parent.toggleClass("show");
+      $menu.stop(true, true).slideToggle(300);
+    });
+  } else {
+    // Cleanup for desktop
+    $(".nav-item.dropdown > .nav-link").off("click");
+    $(".dropdown-submenu > .dropdown-item").off("click");
+    $(".navbar-collapse").show().css("display", ""); // Reset inline display
+  }
+}
+
+// Initialize and handle resize
+handleMobileDropdowns();
+$(window).on("resize", function () {
+  handleMobileDropdowns();
+});
+
+// Click outside to close mobile menu
+$(document).on("click", function (e) {
+  if (window.innerWidth < 992) {
+    if (!$(e.target).closest(".navbar").length) {
+      $(".navbar-collapse").stop(true, true).slideUp(300);
+      $(".navbar-toggler").attr("aria-expanded", "false");
+      $(".nav-item.dropdown").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
+    }
+  }
 });
 
 // ======================== Hanging-Wire Spring Physics ===================
