@@ -174,161 +174,165 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ========================== for navbar start here===========================
+// ========================== NAVBAR ==========================
 $(document).ready(function () {
-  let $nav = $("#navbarSupportedContent");
+  const $navbarCollapse = $(".navbar-collapse");
+  const $navbarToggler = $(".navbar-toggler");
+  const $header = $("header");
 
-  // Function to set active state based on URL
+  // --- Active nav item based on URL ---
   function setActiveNavItem() {
-    let path = window.location.pathname.split("/").pop() || "index.html";
-    $nav.find(".nav-item").removeClass("active show");
-    $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
-    $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
-
-    $nav.find(".nav-item a").each(function () {
-      let href = $(this).attr("href");
+    const path = window.location.pathname.split("/").pop() || "index.html";
+    $(".nav-item, .nav-link").removeClass("active");
+    $(".nav-item a").each(function () {
+      const href = $(this).attr("href");
       if (href === path || href === "./" + path) {
-        $(this).parent().addClass("active");
-        $(this).addClass("show").attr("aria-expanded", "true");
+        $(this).addClass("active").closest(".nav-item").addClass("active");
       }
     });
   }
-
-  // Set active on load
   setActiveNavItem();
 
-  // On nav item click (immediate visual feedback)
-  $nav.on("click", ".nav-item", function (e) {
-    // If click is inside the dropdown-menu (e.g. mega tabs), don't reset navbar state
-    if ($(e.target).closest('.dropdown-menu').length) return;
+  function isMobile() {
+    return window.innerWidth < 992;
+  }
 
-    // Desktop only state management to avoid conflict with mobile toggle logic
-    if (window.innerWidth >= 992) {
-      // 1. Remove active state from all items
-      $nav.find(".nav-item").removeClass("active show");
+  // --- Close all top-level dropdowns ---
+  function closeAllDropdowns($except) {
+    $(".nav-item.dropdown").not($except || $()).each(function () {
+      const $menu = $(this).children(".dropdown-menu");
+      $(this).removeClass("show");
+      if (isMobile()) {
+        $menu.stop(true, true).slideUp(250);
+      } else {
+        $menu.removeClass("show");
+      }
+      // Also close nested submenus inside
+      $(this).find(".dropdown-submenu").removeClass("show")
+             .find(".dropdown-menu").stop(true, true).hide();
+    });
+  }
 
-      // 2. Clear show state and aria-expanded from all links
-      $nav.find(".nav-link").removeClass("show active").attr("aria-expanded", "false");
+  // --- Top-level dropdown toggle ---
+  $(document).on("click", ".nav-item.dropdown > .nav-link", function (e) {
+    e.preventDefault();
+    e.stopPropagation(); // prevent document click from firing immediately
 
-      // 3. Force-close all dropdown menus
-      $nav.find(".dropdown-menu, .mega-dropdown-menu").removeClass("show");
+    const $parent = $(this).closest(".nav-item.dropdown");
+    const $menu = $parent.children(".dropdown-menu");
+    const isOpen = $parent.hasClass("show");
 
-      // 4. Set current item as active
-      $(this).addClass("active");
+    // Close all others first
+    closeAllDropdowns($parent);
 
-      // 5. If it's a dropdown, ensure the current one opens correctly
-      if ($(this).hasClass('dropdown')) {
-        $(this).addClass("show");
-        $(this).find("> .nav-link").addClass("show").attr("aria-expanded", "true");
-        $(this).find("> .dropdown-menu").addClass("show");
+    if (isOpen) {
+      // Close this one
+      $parent.removeClass("show");
+      if (isMobile()) {
+        $menu.stop(true, true).slideUp(250);
+      } else {
+        $menu.removeClass("show");
       }
     } else {
-      // On mobile, just handle the 'active' highlight without forcing 'show'
-      $nav.find(".nav-item").removeClass("active");
-      $(this).addClass("active");
+      // Open this one
+      $parent.addClass("show");
+      if (isMobile()) {
+        $menu.stop(true, true).slideDown(250);
+      } else {
+        $menu.addClass("show");
+      }
     }
   });
 
+  // --- Submenu toggle (mobile + desktop) ---
+  $(document).on("click", ".dropdown-submenu > .dropdown-item", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
+    const $parent = $(this).closest(".dropdown-submenu");
+    const $menu = $parent.children(".dropdown-menu");
+    const isOpen = $parent.hasClass("show");
 
+    // Close sibling submenus at the same level
+    $parent.siblings(".dropdown-submenu").each(function () {
+      $(this).removeClass("show").children(".dropdown-menu").stop(true, true).slideUp(200);
+    });
 
-  // Click outside → reset to actual current page
-  $(document).on("click", function (e) {
-    if (!$(e.target).closest(".navbar").length) {
-      setActiveNavItem();
-    }
-  });
-
-  // Sticky Header on Scroll
-  $(window).on("scroll", function () {
-    if ($(window).scrollTop() > 50) {
-      $("header").addClass("sticky");
+    if (isOpen) {
+      $parent.removeClass("show");
+      $menu.stop(true, true).slideUp(200);
     } else {
-      $("header").removeClass("sticky");
+      $parent.addClass("show");
+      $menu.stop(true, true).slideDown(200);
     }
   });
 
-});
+  // --- Mobile toggler (hamburger) ---
+  $navbarToggler.on("click", function (e) {
+    e.stopPropagation();
+    const isOpen = $navbarCollapse.is(":visible");
 
-// Recalculate on resize
-// $(window).on("resize", function () {
-//   setTimeout(function () {
-//     test();
-//   }, 500);
-// });
-
-// On toggler click (mobile view)
-$(".navbar-toggler").click(function (e) {
-  e.stopPropagation();
-  const $collapse = $(".navbar-collapse");
-  const isExpanding = !$collapse.is(":visible");
-
-  // Close all open dropdowns before opening/closing the main menu
-  if (isExpanding) {
-    $(".nav-item.dropdown").removeClass("show").find(".dropdown-menu").hide();
-  }
-
-  $collapse.stop(true, true).slideToggle(300, function () {
-    const isVisible = $(this).is(":visible");
-    $(".navbar-toggler").attr("aria-expanded", isVisible);
-  });
-});
-
-// Handle Mobile Dropdowns (Click to Toggle)
-function handleMobileDropdowns() {
-  if (window.innerWidth < 992) {
-    // Unbind first to prevent double events
-    $(".nav-item.dropdown > .nav-link").off("click").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $parent = $(this).parent();
-      const $menu = $(this).next(".dropdown-menu");
-
-      // Close other dropdowns at the same level
-      $parent.siblings(".dropdown").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
-
-      // Toggle current dropdown
-      $parent.toggleClass("show");
-      $menu.stop(true, true).slideToggle(300);
-    });
-
-    // Submenu handling for mobile
-    $(".dropdown-submenu > .dropdown-item").off("click").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $menu = $(this).next(".dropdown-menu");
-      const $parent = $(this).parent();
-
-      // Close siblings submenus
-      $parent.siblings(".dropdown-submenu").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
-
-      $parent.toggleClass("show");
-      $menu.stop(true, true).slideToggle(300);
-    });
-  } else {
-    // Cleanup for desktop
-    $(".nav-item.dropdown > .nav-link").off("click");
-    $(".dropdown-submenu > .dropdown-item").off("click");
-    $(".navbar-collapse").show().css("display", ""); // Reset inline display
-  }
-}
-
-// Initialize and handle resize
-handleMobileDropdowns();
-$(window).on("resize", function () {
-  handleMobileDropdowns();
-});
-
-// Click outside to close mobile menu
-$(document).on("click", function (e) {
-  if (window.innerWidth < 992) {
-    if (!$(e.target).closest(".navbar").length) {
-      $(".navbar-collapse").stop(true, true).slideUp(300);
-      $(".navbar-toggler").attr("aria-expanded", "false");
-      $(".nav-item.dropdown").removeClass("show").find(".dropdown-menu").stop(true, true).slideUp(300);
+    if (isOpen) {
+      // Close menu and reset all dropdowns
+      closeAllDropdowns();
+      $navbarCollapse.stop(true, true).slideUp(300, function () {
+        $navbarToggler.attr("aria-expanded", "false");
+      });
+    } else {
+      $navbarCollapse.stop(true, true).slideDown(300, function () {
+        $navbarToggler.attr("aria-expanded", "true");
+      });
     }
-  }
+  });
+
+  // --- Close mobile menu when a non-toggle nav-link or leaf dropdown-item is clicked ---
+  $(document).on(
+    "click",
+    ".nav-link:not(.dropdown-toggle), .dropdown-item:not([data-submenu])",
+    function () {
+      if (isMobile() && !$(this).closest(".dropdown-submenu").length) {
+        closeAllDropdowns();
+        $navbarCollapse.stop(true, true).slideUp(300);
+        $navbarToggler.attr("aria-expanded", "false");
+      }
+    }
+  );
+
+  // --- Click outside: close dropdowns (and mobile menu) ---
+  $(document).on("click", function (e) {
+    const $target = $(e.target);
+
+    // Ignore clicks inside the navbar entirely
+    if ($target.closest(".navbar").length) return;
+
+    closeAllDropdowns();
+
+    if (isMobile() && $navbarCollapse.is(":visible")) {
+      $navbarCollapse.stop(true, true).slideUp(300);
+      $navbarToggler.attr("aria-expanded", "false");
+    }
+  });
+
+  // --- Sticky header ---
+  $(window).on("scroll", function () {
+    $header.toggleClass("sticky", $(window).scrollTop() > 50);
+  });
+
+  // --- Resize: reset to correct display state ---
+  $(window).on("resize", function () {
+    if (!isMobile()) {
+      // Desktop: ensure collapse is visible, clear inline styles left by slideToggle
+      $navbarCollapse.stop(true, true).show().css("display", "");
+      // Reset all dropdown inline styles (slideDown/slideUp leaves them)
+      $(".dropdown-menu").css("display", "").removeClass("show");
+      $(".nav-item.dropdown, .dropdown-submenu").removeClass("show");
+    } else {
+      // Mobile: hide the collapse if it was forced open by a resize from desktop
+      if (!$navbarToggler.is('[aria-expanded="true"]')) {
+        $navbarCollapse.hide();
+      }
+    }
+  });
 });
 
 // ======================== Hanging-Wire Spring Physics ===================

@@ -426,12 +426,16 @@ body {
   border: none;
 }
 
-/* Hover Open for all dropdowns */
-.nav-item.dropdown:hover>.dropdown-menu {
+
+/* Hover & Show Support */
+.nav-item.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown.show > .dropdown-menu {
   display: block;
+  animation: fadeMega 0.3s ease;
 }
 
-.mega-tab-dropdown:hover .dropdown-menu {
+.mega-tab-dropdown:hover .dropdown-menu,
+.mega-tab-dropdown.show .dropdown-menu {
   display: block;
 }
 
