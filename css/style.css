@@ -2492,3 +2492,765 @@ ul li {
     text-align: center;
   }
 }
+
+/* ======================================= Case Studies Styles =========================== */
+
+/* Hero Banner */
+.biz-cs-banner {
+  background-image: url('../images/sitecore-banner-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 150px 0 100px 0;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.biz-cs-banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, var(--black-color-2), transparent);
+  pointer-events: none;
+}
+
+/* Control Bar (Search & Filter) */
+.cs-controls-wrapper {
+  background: rgba(25, 25, 25, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 30px;
+  margin-top: -120px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cs-search-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.cs-search-box i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--orange-color);
+  font-size: 18px;
+}
+
+.cs-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 14px 24px 14px 50px;
+  color: var(--white-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.cs-search-input:focus {
+  outline: none;
+  border-color: var(--orange-color);
+  box-shadow: 0 0 15px rgba(247, 149, 51, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Filter Toggles */
+.cs-filter-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 12px;
+  color: var(--gray-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.cs-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cs-filter-btn {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gray-color-2);
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cs-filter-btn:hover {
+  border-color: var(--orange-color);
+  color: var(--orange-color);
+  transform: translateY(-1px);
+}
+
+.cs-filter-btn.active {
+  background: linear-gradient(29deg, #b4702be7, #EA831B, #b4702be7);
+  border-color: transparent;
+  color: var(--black-color-2);
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(234, 131, 27, 0.3);
+}
+
+/* Tech Filter Toggles */
+.cs-tech-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cs-tech-btn {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--gray-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cs-tech-btn:hover {
+  border-color: var(--white-color);
+  color: var(--white-color);
+}
+
+.cs-tech-btn.active {
+  background: rgba(247, 149, 51, 0.15);
+  border-color: var(--orange-color);
+  color: var(--orange-color);
+  box-shadow: 0 0 10px rgba(247, 149, 51, 0.1);
+}
+
+/* Case Study Grid transition */
+.cs-grid-item {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cs-grid-item.filtered-out {
+  display: none !important;
+}
+
+/* Card metrics */
+.cs-card-metrics-row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.cs-card-metric {
+  text-align: center;
+  flex: 1;
+}
+
+.cs-card-metric:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cs-card-metric-val {
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--orange-color);
+  display: block;
+}
+
+.cs-card-metric-lbl {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  color: var(--gray-color);
+  display: block;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+/* No Results State */
+.cs-no-results {
+  text-align: center;
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.cs-no-results i {
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Details Page styles */
+.cs-details-hero {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 160px 0 120px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-details-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(247, 149, 51, 0.18), transparent 60%),
+              linear-gradient(to bottom, rgba(20, 20, 20, 0.7), var(--black-color-2));
+  z-index: 1;
+}
+
+.cs-details-hero .container-fluid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Stats dashboard */
+.cs-stats-dashboard {
+  margin-top: 40px;
+}
+
+.cs-stat-card {
+  background: rgba(37, 37, 37, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cs-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--orange-color);
+}
+
+.cs-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(247, 149, 51, 0.3);
+  box-shadow: 0 15px 30px rgba(247, 149, 51, 0.15);
+}
+
+.cs-stat-val {
+  font-family: "Orbitron", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--orange-color);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.cs-stat-lbl {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--gray-color-2);
+  line-height: 1.4;
+}
+
+/* Details Sections */
+.cs-content-block {
+  margin-bottom: 50px;
+}
+
+.cs-content-block h3 {
+  font-size: 28px;
+  color: var(--white-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cs-content-block h3 i {
+  color: var(--orange-color);
+  font-size: 22px;
+}
+
+.cs-content-block p {
+  color: var(--gray-color-2);
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* Sidebar Styling */
+.cs-sidebar {
+  position: sticky;
+  top: 110px;
+  background: var(--black-color-3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+}
+
+.cs-sidebar-title {
+  font-size: 18px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.cs-meta-item {
+  margin-bottom: 20px;
+}
+
+.cs-meta-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 11px;
+  color: var(--gray-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.cs-meta-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  color: var(--white-color);
+  font-weight: 500;
+}
+
+.cs-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.cs-meta-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gray-color-2);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Testimonial block */
+.cs-testimonial-wrapper {
+  margin-top: 40px;
+}
+
+.cs-testimonial-box {
+  background: linear-gradient(135deg, rgba(37, 37, 37, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 35px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-testimonial-box::after {
+  content: "\f10d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 25px;
+  bottom: 10px;
+  font-size: 100px;
+  color: rgba(247, 149, 51, 0.04);
+  pointer-events: none;
+}
+
+.cs-testi-quote {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--gray-color-2);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-testi-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cs-testi-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--orange-color);
+  object-fit: cover;
+}
+
+.cs-testi-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white-color);
+  margin: 0;
+}
+
+.cs-testi-role {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: var(--orange-color);
+  margin: 2px 0 0 0;
+}
+
+/* CTA Banner */
+.cs-cta-section {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(37, 37, 37, 0.7)), url('../images/client-testimon-bg.png');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  padding: 60px 40px;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.cs-cta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom left, rgba(247, 149, 51, 0.1), transparent 50%);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .cs-controls-wrapper {
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: -30px;
+  }
+  .cs-filter-group, .cs-tech-group {
+    justify-content: center;
+  }
+  .cs-stat-card {
+    padding: 16px;
+  }
+  .cs-stat-val {
+    font-size: 28px;
+  }
+  .cs-testimonial-box {
+    padding: 25px;
+  }
+  .cs-cta-section {
+    padding: 40px 20px;
+  }
+}
+
+/* Custom Dropdown Filter Styles */
+.cs-dropdown-btn {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--white-color) !important;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 20px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.cs-dropdown-btn::after {
+  display: none !important; /* Hide bootstrap default arrow */
+}
+
+.cs-dropdown-btn:hover, .cs-dropdown-btn:focus, .show > .cs-dropdown-btn {
+  border-color: var(--orange-color) !important;
+  box-shadow: 0 0 12px rgba(247, 149, 51, 0.2) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.cs-dropdown-menu {
+  background: var(--black-color-3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  margin-top: 6px !important;
+}
+
+.cs-dropdown-menu .dropdown-item {
+  color: var(--gray-color-2) !important;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.cs-dropdown-menu .dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--orange-color) !important;
+}
+
+.cs-dropdown-menu .dropdown-item.active {
+  background: linear-gradient(29deg, #b4702be7, #EA831B, #b4702be7) !important;
+  color: var(--black-color-2) !important;
+  font-weight: 600;
+}
+
+/* Premium Case Study Card Design */
+.cs-premium-card {
+  background: linear-gradient(135deg, rgba(37, 37, 37, 0.45) 0%, rgba(20, 20, 20, 0.7) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Spotlight glow aura */
+.cs-premium-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle 250px at var(--mouse-x) var(--mouse-y),
+      rgba(247, 149, 51, 0.18) 0%,
+      transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cs-premium-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(247, 149, 51, 0.35);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.cs-premium-card:hover::before {
+  opacity: 1;
+}
+
+/* Image section */
+.cs-card-img-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+}
+
+.cs-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: saturate(0.85) brightness(0.85);
+}
+
+.cs-premium-card:hover .cs-card-img {
+  transform: scale(1.08);
+  filter: saturate(1.1) brightness(1.05);
+}
+
+.cs-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.9) 0%, rgba(20, 20, 20, 0) 50%);
+  z-index: 1;
+}
+
+.cs-card-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white-color);
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.cs-premium-card:hover .cs-card-badge {
+  background: var(--orange-color);
+  color: var(--black-color);
+  border-color: transparent;
+  box-shadow: 0 5px 12px rgba(247, 149, 51, 0.3);
+}
+
+/* Content block */
+.cs-card-content {
+  padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-card-client {
+  font-family: "Orbitron", sans-serif;
+  color: var(--orange-color);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cs-card-title {
+  color: var(--white-color);
+  font-size: 22px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.cs-premium-card:hover .cs-card-title {
+  color: var(--white-color);
+}
+
+.cs-card-desc {
+  color: var(--gray-color-2);
+  font-size: 14.5px;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 25px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Metrics Dashboard Inside Card */
+.cs-metrics-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.cs-metric-box {
+  text-align: center;
+  position: relative;
+}
+
+.cs-metric-box:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cs-metric-number {
+  font-family: "Orbitron", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--orange-color);
+  display: block;
+}
+
+.cs-metric-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  color: var(--gray-color);
+  display: block;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Footer Link with Arrow */
+.cs-card-footer {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding-top: 16px;
+}
+
+.cs-card-link {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.cs-arrow-icon {
+  font-size: 16px;
+  color: var(--orange-color);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), color 0.3s ease;
+}
+
+.cs-premium-card:hover .cs-card-link {
+  color: var(--orange-color);
+}
+
+.cs-premium-card:hover .cs-arrow-icon {
+  transform: translateX(6px);
+  color: var(--white-color);
+}
+
+

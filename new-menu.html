@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biztechnosys — New Navigation</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --white: #ffffff;
+            --text: #1a1a2e;
+            --text-muted: #5a5a72;
+            --text-light: #8a8aa0;
+            --border: #e4e4f0;
+            --accent: #0f3460;
+            --teal: #0d9e75;
+            --purple: #5c35d6;
+            --bg-light: #f7f8fc;
+            --bg-teal: #eaf7f3;
+            --bg-purple: #f0edfb;
+            --nav-h: 72px;
+            --shadow: 0 12px 48px rgba(0, 0, 0, 0.10);
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #eceff6;
+            min-height: 200vh;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            gap: 0;
+        }
+
+        /* LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+            margin-right: 32px;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.4px;
+        }
+
+        .logo-text span {
+            color: var(--teal);
+        }
+
+        /* NAV ITEMS */
+        .nav-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            flex: 1;
+            gap: 1px;
+        }
+
+        .nav-items>li {
+            position: relative;
+        }
+
+        .nav-items>li>a,
+        .nav-items>li>button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color .15s, background .15s;
+        }
+
+        .nav-items>li>a:hover,
+        .nav-items>li>button:hover,
+        .nav-items>li.open>button {
+            color: var(--text);
+            background: var(--bg-light);
+        }
+
+        .nav-items>li.hi>button {
+            color: var(--purple);
+            background: var(--bg-purple);
+        }
+
+        .nav-items>li.hi>button:hover,
+        .nav-items>li.hi.open>button {
+            background: #e4dff8;
+            color: #4025a8;
+        }
+
+        .nav-items>li.lab-li>button {
+            color: var(--teal);
+            background: var(--bg-teal);
+        }
+
+        .nav-items>li.lab-li>button:hover,
+        .nav-items>li.lab-li.open>button {
+            background: #d5f0e8;
+            color: #0a7a5a;
+        }
+
+        .chev {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform .2s;
+        }
+
+        .open .chev {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        /* CTA */
+        .nav-cta {
+            margin-left: auto;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-gold {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: #7a5500;
+            background: #fff8e0;
+            border: 1px solid #e8c84a;
+            border-radius: 20px;
+            padding: 4px 11px;
+            white-space: nowrap;
+        }
+
+        .gold-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d4a017;
+        }
+
+        .btn-demo {
+            padding: 8px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            background: none;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: border-color .15s, background .15s;
+        }
+
+        .btn-demo:hover {
+            border-color: #b8b8d0;
+            background: var(--bg-light);
+        }
+
+        .btn-primary {
+            padding: 9px 18px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background .15s;
+        }
+
+        .btn-primary:hover {
+            background: #0a2850;
+        }
+
+        /* MEGA MENU */
+        .mega-menu {
+            position: fixed;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 999;
+        }
+
+        .mega-menu.on {
+            display: block;
+        }
+
+        .mega-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 28px 40px 32px;
+            display: flex;
+            gap: 0;
+        }
+
+        /* TABS */
+        .mega-tabs {
+            width: 230px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--border);
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: none;
+            background: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: left;
+            transition: color .15s, background .15s;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text);
+            background: var(--bg-light);
+        }
+
+        .tab-btn.on {
+            color: var(--text);
+            background: var(--bg-light);
+            font-weight: 600;
+        }
+
+        .t-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .t-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* PANELS */
+        .mega-content {
+            flex: 1;
+            padding-left: 32px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.on {
+            display: block;
+        }
+
+        .p-head {
+            margin-bottom: 18px;
+        }
+
+        .p-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .p-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px 20px;
+        }
+
+        .lk {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 400;
+            transition: background .12s, color .12s;
+        }
+
+        .lk:hover {
+            background: var(--bg-light);
+            color: var(--accent);
+        }
+
+        .ld {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #d0d0e4;
+            flex-shrink: 0;
+            transition: background .12s;
+        }
+
+        .lk:hover .ld {
+            background: var(--teal);
+        }
+
+        .lk.fp {
+            background: var(--bg-purple);
+            border: 1px solid #dddaf8;
+            color: var(--purple);
+            font-weight: 500;
+        }
+
+        .lk.fp .ld {
+            background: var(--purple);
+        }
+
+        .lk.fp:hover {
+            background: #e4dff8;
+        }
+
+        .lk.ft {
+            background: var(--bg-teal);
+            border: 1px solid #b8e4d8;
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        .lk.ft .ld {
+            background: var(--teal);
+        }
+
+        .lk.ft:hover {
+            background: #d5f0e8;
+        }
+
+        /* SIMPLE DROPDOWN */
+        .simple-dd {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: -6px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 8px;
+            min-width: 210px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .simple-dd.on {
+            display: block;
+        }
+
+        .simple-dd a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text);
+            text-decoration: none;
+            transition: background .12s, color .12s;
+            white-space: nowrap;
+        }
+
+        .simple-dd a:hover {
+            background: var(--bg-light);
+            color: var(--accent);
+        }
+
+        .dd-sec {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            padding: 10px 12px 4px;
+        }
+
+        .dd-line {
+            height: 1px;
+            background: var(--border);
+            margin: 6px 0;
+        }
+
+        /* LAB CARDS */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .lab-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            text-decoration: none;
+            transition: border-color .15s, background .15s;
+            cursor: pointer;
+        }
+
+        .lab-card:hover {
+            border-color: #a0dac8;
+            background: var(--bg-teal);
+        }
+
+        .lc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .lc-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .lc-desc {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* OVERLAY */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            top: var(--nav-h);
+            background: rgba(10, 10, 20, .16);
+            z-index: 998;
+            display: none;
+        }
+
+        .overlay.on {
+            display: block;
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: var(--nav-h);
+            padding: 110px 40px;
+            text-align: center;
+            background: linear-gradient(155deg, #f0edfb 0%, #eaf7f3 55%, #f7f8fc 100%);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--bg-purple);
+            color: var(--purple);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -1.5px;
+            line-height: 1.13;
+            max-width: 700px;
+            margin: 0 auto 18px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--teal);
+        }
+
+        .hero p {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+
+
+
+        /* =========================================================
+   FLOATING AI LAB ORB + RIGHT TO LEFT PANEL
+   ========================================================= */
+
+        .ai-lab-orb {
+            position: fixed;
+            right: 34px;
+            bottom: 180px;
+
+            width: 72px;
+            height: 72px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, #0f3460, #1a4a79);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 1200;
+
+            border: 3px solid rgba(255, 255, 255, .16);
+
+            box-shadow:
+                0 18px 40px rgba(15, 52, 96, .30),
+                0 0 0 8px rgba(15, 52, 96, .05);
+
+            transition: all .22s ease;
+        }
+
+        .ai-lab-orb:hover {
+            transform: scale(1.06);
+        }
+
+        .ai-lab-orb svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        /* PANEL */
+
+        .ai-lab-panel {
+            position: fixed;
+
+            /* IMPORTANT */
+            right: 120px;
+
+            bottom: 84px;
+
+            width: 720px;
+            max-width: calc(100vw - 180px);
+
+            background: var(--white);
+
+            border-radius: 28px;
+
+            border: 1px solid rgba(0, 0, 0, .05);
+
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, .12),
+                0 8px 24px rgba(0, 0, 0, .08);
+
+            padding: 22px;
+
+            z-index: 1150;
+
+            opacity: 0;
+            visibility: hidden;
+
+            /* RIGHT TO LEFT OPEN EFFECT */
+            transform-origin: right center;
+
+            transform:
+                translateX(18px) scale(.96);
+
+            transition:
+                opacity .22s ease,
+                transform .22s ease,
+                visibility .22s;
+
+            pointer-events: none;
+        }
+
+        .ai-lab-panel.open {
+            opacity: 1;
+            visibility: visible;
+
+            transform:
+                translateX(0) scale(1);
+
+            pointer-events: auto;
+        }
+
+        /* CONNECTOR */
+
+        .ai-lab-panel::after {
+            content: '';
+
+            position: absolute;
+
+            right: -14px;
+            bottom: 118px;
+
+            width: 28px;
+            height: 28px;
+
+            background: #fff;
+
+            transform: rotate(45deg);
+
+            border-top: 1px solid rgba(0, 0, 0, .05);
+            border-right: 1px solid rgba(0, 0, 0, .05);
+        }
+
+        /* HEADER */
+
+        .ai-panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+
+            padding-bottom: 14px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ai-panel-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--teal);
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-panel-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .ai-panel-close {
+            border: none;
+            background: none;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            color: var(--text-light);
+        }
+
+        /* MOBILE */
+
+        @media (max-width:768px) {
+
+            .ai-lab-panel {
+                right: 16px;
+                left: 16px;
+
+                width: auto;
+                max-width: none;
+
+                bottom: 90px;
+            }
+
+            .ai-lab-panel::after {
+                display: none;
+            }
+
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-lab-orb {
+                right: 18px;
+                bottom: 20px;
+
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-mark">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L3 7v10l9 5 9-5V7L12 2z" fill="white" opacity=".9" />
+                    <path d="M12 8l-5 3v6l5 3 5-3v-6l-5-3z" fill="#0f3460" />
+                </svg>
+            </div>
+            <span class="logo-text">Biztech<span>nosys</span></span>
+        </a>
+
+        <ul class="nav-items">
+            <li class="hi" data-m="ai">
+                <button onclick="toggle('ai',this.closest('li'))">✦ AI + Sitecore <span class="chev"></span></button>
+            </li>
+            <li data-m="sol">
+                <button onclick="toggle('sol',this.closest('li'))">Solutions <span class="chev"></span></button>
+            </li>
+            <!-- <li class="lab-li" data-m="lab">
+      <button onclick="toggle('lab',this.closest('li'))">⚗ AI Lab <span class="chev"></span></button>
+    </li> -->
+            <!-- <li data-m="ind">
+      <button onclick="toggle('ind',this.closest('li'))">Industries <span class="chev"></span></button>
+      <div class="simple-dd" id="dd-ind">
+        <div class="dd-sec">Enterprise Verticals</div>
+        <a href="#">⚕&nbsp; Pharma &amp; Life Science</a>
+        <a href="#">🏦&nbsp; Financial Services</a>
+        <a href="#">🛍&nbsp; Retail &amp; Commerce</a>
+        <a href="#">🏭&nbsp; Manufacturing</a>
+        <a href="#">🚗&nbsp; Automobile</a>
+      </div>
+    </li> -->
+            <!-- <li data-m="cs">
+      <button onclick="toggle('cs',this.closest('li'))">Case Studies <span class="chev"></span></button>
+      <div class="simple-dd" id="dd-cs">
+        <div class="dd-sec">By Category</div>
+        <a href="#">AI Transformation</a>
+        <a href="#">Sitecore Migration</a>
+        <a href="#">XM Cloud Projects</a>
+        <a href="#">Enterprise Integrations</a>
+        <a href="#">Personalization Success</a>
+      </div>
+    </li> -->
+            <li data-m="ins">
+                <button onclick="toggle('ins',this.closest('li'))">
+                    Insights <span class="chev"></span>
+                </button>
+
+                <div class="simple-dd" id="dd-ins">
+
+                    <div class="dd-sec">Insights & Thought Leadership</div>
+
+                    <a href="#">AI + Sitecore</a>
+                    <a href="#">XM Cloud</a>
+                    <a href="#">DXP Strategy</a>
+                    <a href="#">Personalization</a>
+                    <a href="#">Composable Architecture</a>
+
+                    <div class="dd-line"></div>
+
+                    <div class="dd-sec">Case Studies</div>
+                    <a href="#" class="lk fp"><span class="ld"></span>Case Studies</a>
+                    <!-- <a href="#">AI Transformation</a>
+    <a href="#">Sitecore Migration</a>
+    <a href="#">XM Cloud Projects</a>
+    <a href="#">Enterprise Integrations</a>
+    <a href="#">Personalization Success</a> -->
+
+                </div>
+            </li>
+            <li data-m="par">
+                <button onclick="toggle('par',this.closest('li'))">Partners <span class="chev"></span></button>
+                <div class="simple-dd" id="dd-par">
+                    <div class="dd-sec">Trust &amp; Credentials</div>
+                    <a href="#">🥇&nbsp; Sitecore Gold Partner</a>
+                    <a href="#">Certifications</a>
+                    <a href="#">Technology Ecosystem</a>
+                    <a href="#">Delivery Model</a>
+                    <a href="#">Global Presence</a>
+                    <div class="dd-line"></div>
+                    <div class="dd-sec">Company</div>
+                    <a href="#">About Us</a>
+                    <a href="#">Leadership</a>
+                    <a href="#">Careers</a>
+                </div>
+            </li>
+        </ul>
+
+        <div class="nav-cta">
+            <!-- <div class="badge-gold"><div class="gold-dot"></div> Sitecore Gold Partner</div> -->
+            <button class="btn-primary">Live Demo →</button>
+            <!-- <button class="btn-primary">Book Assessment  →</button> -->
+        </div>
+    </nav>
+
+    <!-- MEGA: AI + SITECORE -->
+    <div class="mega-menu" id="m-ai">
+        <div class="mega-inner">
+            <div class="mega-tabs" id="tabs-ai">
+                <button class="tab-btn on" onclick="stab('ai','age',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" />
+                        </svg></div>Agentic DXP
+                </button>
+                <button class="tab-btn" onclick="stab('ai','con',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                            <path d="M14 2v6h6M16 13H8M16 17H8" />
+                        </svg></div>AI Content Operations
+                </button>
+                <button class="tab-btn" onclick="stab('ai','xmc',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                        </svg></div>Sitecore XM Cloud + AI
+                </button>
+                <button class="tab-btn" onclick="stab('ai','per',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg></div>AI Personalization
+                </button>
+                <button class="tab-btn" onclick="stab('ai','sea',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="M21 21l-4.35-4.35" />
+                        </svg></div>AI Search &amp; Recommendations
+                </button>
+                <button class="tab-btn" onclick="stab('ai','wfl',this)">
+                    <div class="t-icon" style="background:#f0edfb"><svg viewBox="0 0 24 24" fill="none" stroke="#5c35d6"
+                            stroke-width="2">
+                            <polyline points="16 3 21 3 21 8" />
+                            <line x1="4" y1="20" x2="21" y2="3" />
+                            <polyline points="21 16 21 21 16 21" />
+                            <line x1="15" y1="15" x2="21" y2="21" />
+                        </svg></div>AI Workflow Automation
+                </button>
+            </div>
+            <div class="mega-content">
+                <div class="tab-panel on" id="p-ai-age">
+                    <div class="p-head">
+                        <div class="p-title">Agentic Sitecore DXP Implementation</div>
+                        <div class="p-desc">Deploy autonomous AI agents inside your Sitecore ecosystem for
+                            self-optimizing digital experiences at enterprise scale.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>Agentic DXP Implementation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Migration to Sitecore in 8 weeks</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Upgrade in 6 weeks</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Implementation in 12 weeks</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Cloud Managed Services</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Health Check</a>
+                        <a href="#" class="lk"><span class="ld"></span>Composable DXPs</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Accelerator</a>
+                        <a href="#" class="lk"><span class="ld"></span>Design Support</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-ai-con">
+                    <div class="p-head">
+                        <div class="p-title">AI Content Operations</div>
+                        <div class="p-desc">Automate and scale your entire content lifecycle with AI — creation,
+                            localization, governance, and publishing.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>AI Content Generator</a>
+                        <a href="#" class="lk"><span class="ld"></span>Multilingual &amp; Localization AI</a>
+                        <a href="#" class="lk"><span class="ld"></span>AI SEO Assistant</a>
+                        <a href="#" class="lk"><span class="ld"></span>Campaign Content Automation</a>
+                        <a href="#" class="lk"><span class="ld"></span>AI Governance Workflows</a>
+                        <a href="#" class="lk"><span class="ld"></span>Content Lifecycle Management</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-ai-xmc">
+                    <div class="p-head">
+                        <div class="p-title">Sitecore XM Cloud + AI</div>
+                        <div class="p-desc">Cloud-native CMS with embedded AI for faster, smarter, scalable digital
+                            experience delivery.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>XM Cloud Migration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Headless Architecture Build</a>
+                        <a href="#" class="lk"><span class="ld"></span>AI-Powered Publishing</a>
+                        <a href="#" class="lk"><span class="ld"></span>XM Cloud AI Toolkit</a>
+                        <a href="#" class="lk"><span class="ld"></span>Multi-Site XM Cloud</a>
+                        <a href="#" class="lk"><span class="ld"></span>Legacy to XM Cloud</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-ai-per">
+                    <div class="p-head">
+                        <div class="p-title">AI Personalization</div>
+                        <div class="p-desc">Deliver 1:1 personalized experiences at scale with Sitecore CDP and
+                            AI-driven audience intelligence.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>Real-Time Personalization</a>
+                        <a href="#" class="lk"><span class="ld"></span>Audience Segmentation AI</a>
+                        <a href="#" class="lk"><span class="ld"></span>Customer Journey Orchestration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore CDP Integration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Identity Resolution</a>
+                        <a href="#" class="lk"><span class="ld"></span>Omnichannel Data Activation</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-ai-sea">
+                    <div class="p-head">
+                        <div class="p-title">AI Search &amp; Recommendations</div>
+                        <div class="p-desc">Intelligent site search and content recommendation engines that continuously
+                            learn from user behaviour.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>AI Smart Search</a>
+                        <a href="#" class="lk"><span class="ld"></span>Semantic Search</a>
+                        <a href="#" class="lk"><span class="ld"></span>Content Recommendations</a>
+                        <a href="#" class="lk"><span class="ld"></span>Product Recommendations</a>
+                        <a href="#" class="lk"><span class="ld"></span>Knowledge Base Search</a>
+                        <a href="#" class="lk"><span class="ld"></span>Search Analytics</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-ai-wfl">
+                    <div class="p-head">
+                        <div class="p-title">AI Workflow Automation</div>
+                        <div class="p-desc">Eliminate manual bottlenecks in content approval, publishing, and campaign
+                            orchestration with autonomous AI.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk fp"><span class="ld"></span>Approval Workflow AI</a>
+                        <a href="#" class="lk"><span class="ld"></span>Automated Publishing</a>
+                        <a href="#" class="lk"><span class="ld"></span>Campaign Orchestration</a>
+                        <a href="#" class="lk"><span class="ld"></span>DAM Workflow Automation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Pharma Compliance Automation</a>
+                        <a href="#" class="lk"><span class="ld"></span>MLR Review Automation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MEGA: SOLUTIONS -->
+    <div class="mega-menu" id="m-sol">
+        <div class="mega-inner">
+            <div class="mega-tabs" id="tabs-sol">
+                <button class="tab-btn on" onclick="stab('sol','mod',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <polyline points="23 4 23 10 17 10" />
+                            <polyline points="1 20 1 14 7 14" />
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                        </svg></div>Sitecore Modernization
+                </button>
+                <button class="tab-btn" onclick="stab('sol','xmm',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                        </svg></div>XM Cloud Migration
+                </button>
+                <button class="tab-btn" onclick="stab('sol','com',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="6" height="6" rx="1" />
+                            <rect x="9" y="3" width="6" height="6" rx="1" />
+                            <rect x="16" y="3" width="6" height="6" rx="1" />
+                            <rect x="2" y="12" width="6" height="6" rx="1" />
+                            <rect x="16" y="12" width="6" height="6" rx="1" />
+                        </svg></div>Composable DXP
+                </button>
+                <button class="tab-btn" onclick="stab('sol','cdp',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                        </svg></div>Sitecore CDP
+                </button>
+                <button class="tab-btn" onclick="stab('sol','dam',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg></div>Sitecore DAM
+                </button>
+                <button class="tab-btn" onclick="stab('sol','mng',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg></div>Managed DXP Services
+                </button>
+                <button class="tab-btn" onclick="stab('sol','int',this)">
+                    <div class="t-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75"
+                            stroke-width="2">
+                            <circle cx="18" cy="5" r="3" />
+                            <circle cx="6" cy="12" r="3" />
+                            <circle cx="18" cy="19" r="3" />
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                        </svg></div>Enterprise Integrations
+                </button>
+            </div>
+            <div class="mega-content">
+                <div class="tab-panel on" id="p-sol-mod">
+                    <div class="p-head">
+                        <div class="p-title">Sitecore Modernization</div>
+                        <div class="p-desc">Modernize legacy Sitecore platforms into high-performance, future-ready
+                            composable architectures — fast.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>Legacy to Headless Transformation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Upgrade in 6 weeks</a>
+                        <a href="#" class="lk"><span class="ld"></span>Multi-Tenant Modernization</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Health Check</a>
+                        <a href="#" class="lk"><span class="ld"></span>Performance Optimization</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Upgrade Accelerator (90 days)</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-xmm">
+                    <div class="p-head">
+                        <div class="p-title">XM Cloud Migration</div>
+                        <div class="p-desc">Fast-track your migration to Sitecore XM Cloud with our battle-tested
+                            accelerator frameworks.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>Migration to XM Cloud in 8 weeks</a>
+                        <a href="#" class="lk"><span class="ld"></span>Sitecore Cloud Managed Services</a>
+                        <a href="#" class="lk"><span class="ld"></span>Headless Architecture Build</a>
+                        <a href="#" class="lk"><span class="ld"></span>Content Migration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Multi-Site XM Cloud</a>
+                        <a href="#" class="lk"><span class="ld"></span>Post-Migration Support</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-com">
+                    <div class="p-head">
+                        <div class="p-title">Composable DXP</div>
+                        <div class="p-desc">Architect a composable digital experience platform using best-of-breed
+                            technologies and APIs.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>Composable Architecture Design</a>
+                        <a href="#" class="lk"><span class="ld"></span>Headless CMS Strategy</a>
+                        <a href="#" class="lk"><span class="ld"></span>API-First Integration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Microservices Architecture</a>
+                        <a href="#" class="lk"><span class="ld"></span>Omnichannel Delivery</a>
+                        <a href="#" class="lk"><span class="ld"></span>Platform Build</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-cdp">
+                    <div class="p-head">
+                        <div class="p-title">Sitecore CDP</div>
+                        <div class="p-desc">Unify customer data from all touchpoints to deliver personalized, real-time
+                            experiences at scale.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>CDP Implementation &amp; Consulting</a>
+                        <a href="#" class="lk"><span class="ld"></span>Customer Data Integration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Audience Segmentation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Real-Time Personalization</a>
+                        <a href="#" class="lk"><span class="ld"></span>Identity Resolution</a>
+                        <a href="#" class="lk"><span class="ld"></span>Data Analytics &amp; Insights</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-dam">
+                    <div class="p-head">
+                        <div class="p-title">Sitecore DAM &amp; Content Hub</div>
+                        <div class="p-desc">Streamline digital asset management for seamless brand governance and global
+                            content workflows.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>DAM Implementation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Asset Organization &amp; Metadata</a>
+                        <a href="#" class="lk"><span class="ld"></span>Brand Asset Governance</a>
+                        <a href="#" class="lk"><span class="ld"></span>Workflow &amp; Approval Automation</a>
+                        <a href="#" class="lk"><span class="ld"></span>Asset Distribution &amp; Delivery</a>
+                        <a href="#" class="lk"><span class="ld"></span>DAM Migration &amp; Optimization</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-mng">
+                    <div class="p-head">
+                        <div class="p-title">Managed DXP Services</div>
+                        <div class="p-desc">24/7 monitoring, support, and proactive optimization for your
+                            Sitecore-powered digital ecosystem.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>24/7 Sitecore Monitoring</a>
+                        <a href="#" class="lk"><span class="ld"></span>Performance Optimization</a>
+                        <a href="#" class="lk"><span class="ld"></span>Security Management</a>
+                        <a href="#" class="lk"><span class="ld"></span>Patch &amp; Upgrade Management</a>
+                        <a href="#" class="lk"><span class="ld"></span>Technical Support &amp; Troubleshooting</a>
+                        <a href="#" class="lk"><span class="ld"></span>Cost Optimization Services</a>
+                    </div>
+                </div>
+                <div class="tab-panel" id="p-sol-int">
+                    <div class="p-head">
+                        <div class="p-title">Enterprise Integrations</div>
+                        <div class="p-desc">Seamlessly connect Sitecore with your enterprise ecosystem — CRM, ERP,
+                            marketing automation and beyond.</div>
+                    </div>
+                    <div class="links-grid">
+                        <a href="#" class="lk ft"><span class="ld"></span>Salesforce + Sitecore</a>
+                        <a href="#" class="lk"><span class="ld"></span>SAP Integration</a>
+                        <a href="#" class="lk"><span class="ld"></span>Marketing Automation</a>
+                        <a href="#" class="lk"><span class="ld"></span>ERP Connectors</a>
+                        <a href="#" class="lk"><span class="ld"></span>Custom API Development</a>
+                        <a href="#" class="lk"><span class="ld"></span>Third-Party CMS Migration</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MEGA: AI LAB -->
+    <div class="mega-menu" id="m-lab">
+        <div class="mega-inner" style="flex-direction:column;gap:18px;">
+            <div>
+                <div style="font-size:13.5px;font-weight:600;color:var(--teal);margin-bottom:4px;">⚗ AI Innovation
+                    Showcase</div>
+                <div style="font-size:13px;color:var(--text-muted);">Live demos, accelerators &amp; AI tools — built for
+                    enterprise DXP teams. Try before you implement.</div>
+            </div>
+            <div class="lab-grid">
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">AI Experience Assistant</div>
+                        <div class="lc-desc">Enterprise chatbot — ask anything about Sitecore, DXP strategy, or AI
+                            implementation</div>
+                    </div>
+                </a>
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                            <path d="M14 2v6h6" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">AI Content Generator Demo</div>
+                        <div class="lc-desc">Generate page copy, SEO metadata &amp; campaign variants inside Sitecore —
+                            live</div>
+                    </div>
+                </a>
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="M21 21l-4.35-4.35" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">AI Smart Search Demo</div>
+                        <div class="lc-desc">Semantic search with real-time recommendations on enterprise content — see
+                            it live</div>
+                    </div>
+                </a>
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">AI Personalization Demo</div>
+                        <div class="lc-desc">Audience segmentation and dynamic content recommendations powered by
+                            Sitecore CDP</div>
+                    </div>
+                </a>
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <path
+                                d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">Life Science Accelerator</div>
+                        <div class="lc-desc">Pre-built Sitecore components for Pharma compliance, MLR workflows &amp;
+                            HCP portals</div>
+                    </div>
+                </a>
+                <a href="#" class="lab-card">
+                    <div class="lc-icon" style="background:#eaf7f3"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                            <polyline points="16 3 21 3 21 8" />
+                            <line x1="4" y1="20" x2="21" y2="3" />
+                            <polyline points="21 16 21 21 16 21" />
+                            <line x1="15" y1="15" x2="21" y2="21" />
+                        </svg></div>
+                    <div>
+                        <div class="lc-title">XM Cloud AI Toolkit</div>
+                        <div class="lc-desc">Developer accelerator for AI-powered XM Cloud builds — cut delivery time by
+                            40%</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+    <!-- FLOATING AI LAB -->
+
+    <div class="ai-lab-orb" id="aiLabOrb">
+        <svg viewBox="0 0 24 24" fill="none">
+
+            <!-- outer AI bot -->
+            <rect x="5" y="7" width="14" height="10" rx="5" stroke="white" stroke-width="1.8" />
+
+            <!-- top antenna -->
+            <path d="M12 4V7" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+
+            <circle cx="12" cy="3" r="1.2" fill="white" />
+
+            <!-- eyes -->
+            <circle cx="9.5" cy="12" r="1.2" fill="white" />
+            <circle cx="14.5" cy="12" r="1.2" fill="white" />
+
+            <!-- smile -->
+            <path d="M9 14.8C9.8 15.6 10.8 16 12 16C13.2 16 14.2 15.6 15 14.8" stroke="white" stroke-width="1.5"
+                stroke-linecap="round" />
+
+        </svg>
+    </div>
+
+    <div class="ai-lab-panel" id="aiLabPanel">
+
+        <div class="ai-panel-head">
+            <div>
+                <div class="ai-panel-title">⚗ AI Innovation Lab</div>
+                <div class="ai-panel-sub">
+                    Live enterprise AI demos, accelerators & Sitecore copilots
+                </div>
+            </div>
+
+            <button class="ai-panel-close" id="closeLabPanel">×</button>
+        </div>
+
+        <div class="lab-grid">
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">AI Experience Assistant</div>
+                    <div class="lc-desc">Ask anything about Sitecore + AI implementation</div>
+                </div>
+            </a>
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">AI Content Generator</div>
+                    <div class="lc-desc">Generate SEO copy and campaign variants</div>
+                </div>
+            </a>
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">AI Smart Search</div>
+                    <div class="lc-desc">Semantic search + recommendations</div>
+                </div>
+            </a>
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">AI Personalization</div>
+                    <div class="lc-desc">Audience segmentation powered by CDP</div>
+                </div>
+            </a>
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">Life Science Accelerator</div>
+                    <div class="lc-desc">MLR workflows & Pharma compliance</div>
+                </div>
+            </a>
+
+            <a href="#" class="lab-card">
+                <div class="lc-icon" style="background:#eaf7f3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0d9e75" stroke-width="2" width="18" height="18">
+                        <polyline points="16 3 21 3 21 8" />
+                        <line x1="4" y1="20" x2="21" y2="3" />
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="lc-title">XM Cloud AI Toolkit</div>
+                    <div class="lc-desc">Accelerators for faster XM Cloud delivery</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-tag">✦ Sitecore Gold Partner</div>
+        <h1>Enterprise AI + DXP <em>Transformation</em></h1>
+        <p>Hover the navigation above to explore the new menu structure — fully interactive with mega menus and
+            dropdowns.</p>
+
+
+        <p style="margin-top:24px;font-size:14px;color:rgb(71, 71, 247); font-weight:500;" onclick="document.getElementById('m-sol').classList.toggle('on')">
+            Below is button for other nav menu version so click it to see the difference. (This is just for demo
+            purposes, in real implementation you would have only one nav style live at a time.)
+        </p>
+        <div>
+            <a href="./" class="btn">
+
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const MEGA = ['ai', 'sol', 'lab'];
+        const SIMPLE = ['ind', 'cs', 'ins', 'par'];
+        function closeAll() {
+            MEGA.forEach(id => { const m = document.getElementById('m-' + id); if (m) m.classList.remove('on') });
+            SIMPLE.forEach(id => { const d = document.getElementById('dd-' + id); if (d) d.classList.remove('on') });
+            document.querySelectorAll('.nav-items>li').forEach(li => li.classList.remove('open'));
+            document.getElementById('overlay').classList.remove('on');
+        }
+        function toggle(id, li) {
+            const wasOpen = li.classList.contains('open');
+            closeAll();
+            if (!wasOpen) {
+                li.classList.add('open');
+                document.getElementById('overlay').classList.add('on');
+                if (MEGA.includes(id)) document.getElementById('m-' + id).classList.add('on');
+                if (SIMPLE.includes(id)) document.getElementById('dd-' + id).classList.add('on');
+            }
+        }
+        function stab(menu, tab, btn) {
+            document.querySelectorAll('#tabs-' + menu + ' .tab-btn').forEach(b => b.classList.remove('on'));
+            document.querySelectorAll('[id^="p-' + menu + '-"]').forEach(p => p.classList.remove('on'));
+            btn.classList.add('on');
+            const p = document.getElementById('p-' + menu + '-' + tab);
+            if (p) p.classList.add('on');
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll() });
+
+
+
+
+
+
+
+        // ===============MEGA MENU: AI LAB PANEL TOGGLE=================
+        /* =========================================================
+         FLOATING AI LAB
+         ========================================================= */
+
+        const orb = document.getElementById('aiLabOrb');
+        const panel = document.getElementById('aiLabPanel');
+        const closePanelBtn = document.getElementById('closeLabPanel');
+
+        let labTimer;
+
+        function openLabPanel() {
+            panel.classList.add('open');
+        }
+
+        function closeLabPanel() {
+            panel.classList.remove('open');
+        }
+
+        orb.addEventListener('mouseenter', () => {
+            clearTimeout(labTimer);
+            openLabPanel();
+        });
+
+        orb.addEventListener('mouseleave', () => {
+            labTimer = setTimeout(() => {
+                if (!panel.matches(':hover')) {
+                    closeLabPanel();
+                }
+            }, 120);
+        });
+
+        panel.addEventListener('mouseenter', () => {
+            clearTimeout(labTimer);
+        });
+
+        panel.addEventListener('mouseleave', () => {
+            labTimer = setTimeout(() => {
+                closeLabPanel();
+            }, 120);
+        });
+
+        orb.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            if (panel.classList.contains('open')) {
+                closeLabPanel();
+            } else {
+                openLabPanel();
+            }
+        });
+
+        closePanelBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLabPanel();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (
+                !panel.contains(e.target) &&
+                !orb.contains(e.target)
+            ) {
+                closeLabPanel();
+            }
+        });
+    </script>
+</body>
+
+</html>
