@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insights & Thought Leadership — Biztechnosys</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <!-- Project Stylesheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/root.css" />
+
+    <style>
+        body {
+            background-color: var(--black-color-2);
+            color: var(--white-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* HEADER NAV DARK INTEGRATION */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        nav.navbar {
+            padding: 10px 0;
+        }
+
+        .navbar-brand img {
+            height: 38px;
+        }
+
+        .nav-link {
+            color: var(--gray-color-3) !important;
+            font-weight: 500;
+            font-size: 14.5px;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--orange-color) !important;
+        }
+
+        /* HERO SECTION */
+        .page-hero {
+            padding: 140px 0 60px 0;
+            background: radial-gradient(circle at top right, rgba(234, 131, 27, 0.08) 0%, transparent 60%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: rgba(234, 131, 27, 0.12);
+            color: var(--orange-color);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        /* CATEGORIES FILTER BAR */
+        .filter-section {
+            padding: 40px 0 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            padding: 8px 20px;
+            color: var(--gray-color-3);
+            font-size: 13.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--orange-color);
+            color: var(--black-color-2);
+            border-color: var(--orange-color);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(234, 131, 27, 0.25);
+        }
+
+        /* INSIGHTS GRID */
+        .insights-section {
+            padding: 50px 0 100px 0;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .insight-card {
+            background: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .insight-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(234, 131, 27, 0.12);
+        }
+
+        .card-img-box {
+            height: 180px;
+            background: linear-gradient(135deg, #252525 0%, #151515 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--orange-color);
+            position: relative;
+        }
+
+        .card-category-label {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--orange-color);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .card-body-box {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: var(--gray-color);
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white-color);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--gray-color-3);
+            line-height: 1.55;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .read-more-btn {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--orange-color);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+
+        .insight-card:hover .read-more-btn {
+            gap: 10px;
+        }
+
+        /* DYNAMIC STATIC FULL ARTICLE VIEW */
+        .article-view-container {
+            display: none;
+        }
+
+        .back-to-list-btn {
+            background: transparent;
+            border: none;
+            color: var(--gray-color);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+
+        .back-to-list-btn:hover {
+            color: var(--orange-color);
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+        }
+
+        .article-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-top: 12px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13.5px;
+            color: var(--gray-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+        }
+
+        .article-content {
+            font-size: 16px;
+            color: var(--gray-color-3);
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 24px;
+        }
+
+        .article-content h3 {
+            font-size: 22px;
+            color: var(--white-color);
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        .article-quote {
+            border-left: 4px solid var(--orange-color);
+            background: rgba(234, 131, 27, 0.05);
+            padding: 20px 30px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-size: 17px;
+            color: var(--white-color);
+        }
+
+        /* NEWSLETTER BOX */
+        .newsletter-panel {
+            background: linear-gradient(135deg, rgba(234, 131, 27, 0.15) 0%, rgba(20, 20, 20, 0.9) 100%);
+            border: 1.5px solid rgba(234, 131, 27, 0.25);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .newsletter-panel h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-panel p {
+            font-size: 14px;
+            color: var(--gray-color-3);
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="py-3 px-3 px-md-4 px-lg-5">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-0">
+                <a class="navbar-brand fw-bold" href="./index.html">
+                    <img src="./images/biztech-logo.svg" alt="Biztechnosys" />
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars toggle-btn" style="color: var(--white-color); font-size: 20px;"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./ai-sitecore.html">✦ AI + Sitecore</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./solutions.html">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./insights.html">Insights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./about-us.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./career.html">Careers</a>
+                        </li>
+                    </ul>
+                    <a href="./contact.html" class="third-button px-4 py-2">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <span class="category-badge">Thought Leadership</span>
+                    <h1 class="white-color mt-2">Insights Hub</h1>
+                    <p class="gray-color-3 col-lg-8 mx-auto mt-3">
+                        Deep dive assessments, strategies, technical tutorials, and executive guidelines on next-generation composable web architectures and Sitecore solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterCategory('all')">All Insights</button>
+                <button class="filter-btn" onclick="filterCategory('ai-sitecore')">AI + Sitecore</button>
+                <button class="filter-btn" onclick="filterCategory('xm-cloud')">XM Cloud</button>
+                <button class="filter-btn" onclick="filterCategory('dxp-strategy')">DXP Strategy</button>
+                <button class="filter-btn" onclick="filterCategory('personalization')">Personalization</button>
+                <button class="filter-btn" onclick="filterCategory('composable')">Composable Architecture</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHTS GRID & DETAILS -->
+    <section class="insights-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    
+                    <!-- Main Grid Box -->
+                    <div class="insights-grid" id="main-insights-grid">
+                        
+                        <!-- Card 1 -->
+                        <div class="insight-card" data-cat="ai-sitecore" onclick="showArticle('ai-sitecore-future')">
+                            <div class="card-img-box">
+                                <i class="fa-solid fa-brain"></i>
+                                <span class="card-category-label">AI + Sitecore</span>
+                            </div>
+                            <div class="card-body-box">
+                                <div class="card-meta"><span>May 26, 2026</span> &bull; <span>5 Min Read</span></div>
+                                <h4 class="card-title">The Future of Agentic Sitecore DXP Platforms</h4>
+                                <p class="card-excerpt">Learn how autonomous AI agents inside Sitecore are replacing static layouts to deliver real-time user experiences automatically.</p>
+                                <span class="read-more-btn">Read Article →</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="insight-card" data-cat="xm-cloud" onclick="showArticle('xm-cloud-speed')">
+                            <div class="card-img-box">
+                                <i class="fa-solid fa-cloud-bolt"></i>
+                                <span class="card-category-label">XM Cloud</span>
+                            </div>
+                            <div class="card-body-box">
+                                <div class="card-meta"><span>May 18, 2026</span> &bull; <span>4 Min Read</span></div>
+                                <h4 class="card-title">Optimizing Next.js Speeds on Sitecore XM Cloud</h4>
+                                <p class="card-excerpt">A deep-dive on code structures, edge rendering strategies, and Vercel hosting rules to hit perfect Lighthouse performance metrics.</p>
+                                <span class="read-more-btn">Read Article →</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="insight-card" data-cat="dxp-strategy" onclick="showArticle('dxp-value')">
+                            <div class="card-img-box">
+                                <i class="fa-solid fa-chess-knight"></i>
+                                <span class="card-category-label">DXP Strategy</span>
+                            </div>
+                            <div class="card-body-box">
+                                <div class="card-meta"><span>April 29, 2026</span> &bull; <span>6 Min Read</span></div>
+                                <h4 class="card-title">Re-architecting Enterprise CMS to Modern DXPs</h4>
+                                <p class="card-excerpt">Executive guidelines outlining risks, cost mapping models, and implementation frameworks for enterprise migrations.</p>
+                                <span class="read-more-btn">Read Article →</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Static Article 1: Future of Agentic Sitecore -->
+                    <div class="article-view-container" id="art-ai-sitecore-future">
+                        <button class="back-to-list-btn" onclick="showGrid()"><i class="fa-solid fa-arrow-left"></i> Back to Insights List</button>
+                        <article class="article-wrapper">
+                            <div class="article-header">
+                                <span class="category-badge">AI + Sitecore</span>
+                                <h2 class="article-title text-white">The Future of Agentic Sitecore DXP Platforms</h2>
+                                <div class="article-meta-info">
+                                    <span>Published: May 26, 2026</span> &bull; 
+                                    <span>Author: Biztechnosys Research Team</span> &bull; 
+                                    <span>Read Time: 5 Min Read</span>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <p>Digital Experience Platforms (DXP) have evolved significantly over the last decade. We are now entering the era of the <strong>Agentic DXP</strong>, where static layout grids and manually configured segmentations are replaced by autonomous AI models operating inside your CMS.</p>
+                                
+                                <h3>The Shift to Autonomous Execution</h3>
+                                <p>Traditional personalization models rely on marketing teams creating a complex matrix of conditional statements (e.g. <i>"If user visits pharmaceutical pages twice, then display pharma hero banner"</i>). This manual method is impossible to scale across hundreds of content blocks and localized channels.</p>
+                                
+                                <div class="article-quote">
+                                    "Autonomous AI agents operating inside Sitecore layout containers remove the need for static rule matrix setups, optimizing user journeys automatically."
+                                </div>
+
+                                <h3>How It Works Statically</h3>
+                                <p>AI agents analyze clickstreams, search patterns, and customer metadata points securely. When a patterns match, the agent modifies layout properties in Vercel or XM Cloud edges, matching client requirements in real-time. This increases conversions by up to 40%.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Static Article 2: XM Cloud Speeds -->
+                    <div class="article-view-container" id="art-xm-cloud-speed">
+                        <button class="back-to-list-btn" onclick="showGrid()"><i class="fa-solid fa-arrow-left"></i> Back to Insights List</button>
+                        <article class="article-wrapper">
+                            <div class="article-header">
+                                <span class="category-badge">XM Cloud</span>
+                                <h2 class="article-title text-white">Optimizing Next.js Speeds on Sitecore XM Cloud</h2>
+                                <div class="article-meta-info">
+                                    <span>Published: May 18, 2026</span> &bull; 
+                                    <span>Author: Front-End Architecture Team</span> &bull; 
+                                    <span>Read Time: 4 Min Read</span>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <p>Headless setups are inherently fast, but complex enterprise layout templates and poor image rendering pipelines can degrade user performance scores on core web metrics.</p>
+                                <h3>Incremental Static Regeneration (ISR)</h3>
+                                <p>By using ISR in Next.js builds linked to Sitecore Layout API endpoints, your platform caches pages globally across CDN locations while validating layouts asynchronously in the background. This ensures pages load instantly (under 1 second) while keeping content fresh.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Static Article 3: Re-architecting CMS -->
+                    <div class="article-view-container" id="art-dxp-value">
+                        <button class="back-to-list-btn" onclick="showGrid()"><i class="fa-solid fa-arrow-left"></i> Back to Insights List</button>
+                        <article class="article-wrapper">
+                            <div class="article-header">
+                                <span class="category-badge">DXP Strategy</span>
+                                <h2 class="article-title text-white">Re-architecting Enterprise CMS to Modern DXPs</h2>
+                                <div class="article-meta-info">
+                                    <span>Published: April 29, 2026</span> &bull; 
+                                    <span>Author: Chief Strategy Officer</span> &bull; 
+                                    <span>Read Time: 6 Min Read</span>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <p>Transitioning from monolithic systems to modular, composable, API-first structures requires structured governance guidelines and cost-modeling strategies to ensure high ROI outcomes.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- NEWSLETTER FORM -->
+                    <div class="newsletter-panel text-center text-md-start">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h4>Stay Informed on DXP Technologies</h4>
+                                <p class="mb-lg-0">Subscribe to our newsletter to receive the latest assessments, upgrade strategies, and architectural tutorials from our leads.</p>
+                            </div>
+                            <div class="col-lg-4 mt-3 mt-lg-0">
+                                <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                                    <input type="email" class="form-control" placeholder="Enter email" style="background:#262626; border:1px solid rgba(255,255,255,0.1); color:white;" required />
+                                    <button class="third-button text-nowrap px-4 py-2" type="submit">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer py-5">
+        <div class="container-fluid">
+            <div class="row align-items-center pb-4">
+                <div class="col-md-6 text-center text-md-start">
+                    <img src="./images/biztech-logo.svg" alt="biztechnosys" />
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <p class="white-color mb-0">Follow Us On Social Media</p>
+                </div>
+            </div>
+            <div class="line my-4" style="height: 1px; background: rgba(255,255,255,0.08);"></div>
+            <div class="row footer-bottom text-center mt-3 d-md-flex justify-content-between">
+                <p class="mb-0">@2025 Biztechnosys. All Rights Reserved.</p>
+                <div class="mt-2 mt-md-0">
+                    <a href="#" class="footer-bottom-link text-decoration-none" style="color: var(--gray-color);">Privacy Policy</a> |
+                    <a href="#" class="footer-bottom-link text-decoration-none" style="color: var(--gray-color);">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <!-- Interactive script -->
+    <script>
+        function filterCategory(catId) {
+            // Remove active filter class
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Add active to current button
+            const activeBtn = Array.from(document.querySelectorAll('.filter-btn')).find(btn => btn.getAttribute('onclick').includes(catId));
+            if (activeBtn) activeBtn.addClass('active');
+
+            // Hide article view if it was open
+            showGrid();
+
+            // Filter cards
+            document.querySelectorAll('.insight-card').forEach(card => {
+                if (catId === 'all' || card.getAttribute('data-cat') === catId) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            window.history.pushState(null, '', '#category-' + catId);
+        }
+
+        function showArticle(artId) {
+            // Hide main grid
+            document.getElementById('main-insights-grid').style.display = 'none';
+            // Hide all articles
+            document.querySelectorAll('.article-view-container').forEach(el => el.style.display = 'none');
+
+            // Show selected article
+            const article = document.getElementById('art-' + artId);
+            if (article) article.style.display = 'block';
+
+            window.history.pushState(null, '', `#read-${artId}`);
+            window.scrollTo({ top: document.querySelector('.filter-section').offsetTop - 60, behavior: 'smooth' });
+        }
+
+        function showGrid() {
+            // Hide all articles
+            document.querySelectorAll('.article-view-container').forEach(el => el.style.display = 'none');
+            // Show main grid
+            document.getElementById('main-insights-grid').style.display = 'grid';
+            
+            // Reset hash to active category if present
+            const activeBtn = document.querySelector('.filter-btn.active');
+            let catId = 'all';
+            if (activeBtn) {
+                const clickAttr = activeBtn.getAttribute('onclick');
+                catId = clickAttr.replace('filterCategory(\'', '').replace('\')', '');
+            }
+            window.history.pushState(null, '', '#category-' + catId);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                if (hash.includes('#read-')) {
+                    const artId = hash.replace('#read-', '');
+                    showArticle(artId);
+                } else if (hash.includes('#category-')) {
+                    const catId = hash.replace('#category-', '');
+                    filterCategory(catId);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
