@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Biztechnosys | Unified Experience Ecosystem – DXP, Marketing Automation & CRM</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="lib/animate/animate.min.css" />
+
+  <!-- Main Website CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <style>
+    /* Specific overrides and custom classes for ecosystem page components */
+    .ecosystem-flow-container {
+      background: rgba(37, 37, 37, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 32px;
+      padding: 2.5rem;
+      position: relative;
+    }
+    
+    .stack-builder-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--gray-color-3);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .stack-builder-btn.active {
+      background: linear-gradient(135deg, var(--orange-color), var(--orange-color-2));
+      color: var(--black-color);
+      border-color: transparent;
+      box-shadow: 0 5px 15px rgba(247, 149, 51, 0.3);
+    }
+    
+    .diagram-layer {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .diagram-block {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      transition: all 0.4s ease;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    /* Dynamic states for interactive stack builder */
+    .stack-active {
+      border-color: var(--orange-color) !important;
+      background: rgba(247, 149, 51, 0.1) !important;
+      color: var(--white-color) !important;
+      box-shadow: 0 0 15px rgba(247, 149, 51, 0.2);
+    }
+    
+    .stack-dimmed {
+      opacity: 0.3;
+    }
+    
+    .table-responsive {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .table-dark-custom {
+      background: var(--black-color-3) !important;
+      margin-bottom: 0;
+    }
+    
+    .table-dark-custom th {
+      background: var(--black-color-5);
+      color: var(--white-color);
+      font-family: 'Orbitron', sans-serif;
+      padding: 18px 24px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .table-dark-custom td {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gray-color-3);
+    }
+    
+    .table-dark-custom tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .glow-dot-connector {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--orange-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--orange-color);
+    }
+    
+    /* Ecosystem Visual Hub Diagram */
+    .ecosystem-visual-hub {
+      position: relative;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+    
+    .hub-center {
+      width: 140px;
+      height: 140px;
+      z-index: 5;
+    }
+    
+    .hub-core {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--orange-color) 0%, var(--orange-color-2) 100%);
+      box-shadow: 0 0 40px rgba(247, 149, 51, 0.6);
+      color: var(--black-color) !important;
+      border: 3px solid var(--white-color);
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+    
+    .hub-core i {
+      color: var(--black-color) !important;
+    }
+    
+    .hub-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      color: var(--black-color) !important;
+    }
+    
+    .hub-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      color: var(--black-color) !important;
+    }
+    
+    .satellite-node {
+      width: 110px;
+      height: 110px;
+      z-index: 4;
+      cursor: pointer;
+    }
+    
+    .sat-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      color: var(--white-color);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px;
+      letter-spacing: 0.5px;
+    }
+    
+    .sat-inner i {
+      font-size: 1.8rem;
+      color: var(--orange-color);
+      margin-bottom: 8px;
+      transition: transform 0.3s ease;
+    }
+    
+    .satellite-node:hover .sat-inner {
+      background: rgba(247, 149, 51, 0.15);
+      border-color: var(--orange-color);
+      box-shadow: 0 0 25px rgba(247, 149, 51, 0.5);
+      transform: scale(1.1);
+    }
+    
+    .satellite-node:hover .sat-inner i {
+      transform: scale(1.2);
+      color: var(--white-color);
+    }
+    
+    /* Animation for glowing line flow */
+    .flow-line {
+      animation: dashFlow 2s linear infinite;
+    }
+    
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 30px rgba(247, 149, 51, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 50px rgba(247, 149, 51, 0.85);
+      }
+    }
+    
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); transform-origin: 250px 250px; }
+      to { transform: rotate(360deg); transform-origin: 250px 250px; }
+    }
+    
+    .ecosystem-info-box {
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      opacity: 0.95;
+    }
+    
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .ecosystem-visual-hub {
+        transform: scale(0.8);
+        transform-origin: center center;
+      }
+      .right-banner-content svg {
+        transform: scale(0.8);
+        transform-origin: center center;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- FIXED NAVBAR HEADER -->
+    <header class="py-4 px-3 px-md-2 px-lg-3 px-xl-5">
+      <nav class="navbar navbar-expand-lg navbar-bg-clr">
+        <div class="container-fluid px-md-4 px-lg-2 px-xl-4">
+
+          <a class="navbar-brand fw-bold" href="./index.html">
+            <img src="./images/biztech-logo.svg" class="navbar-logo" alt="Biztechnosys" />
+          </a>
+
+          <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars toggle-btn"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+              <!-- AI EXPERIENCE PLATFORM -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="sitecoreDropdown" role="button" aria-expanded="false">
+
+                  AI + Sitecore
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="sitecoreDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="agentic-dxp">
+                        <span>Agentic DXP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-content">
+                        <span>AI Content Operations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-ai">
+                        <span>Sitecore XM Cloud + AI
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-personalization">
+                        <span>AI Personalization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-search">
+                        <span>AI Search & Recommendations
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="workflow-automation">
+                        <span>AI Workflow Automation</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="ai-lab">
+                        <span>AI Lab</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- AGENTIC DXP -->
+                      <div class="mega-content active" id="agentic-dxp">
+                        <h4>Agentic Sitecore DXP Implementation</h4>
+
+                        <p>
+                          Deploy autonomous AI agents inside your Sitecore ecosystem
+                          for self-optimizing digital experiences.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="./ai-sitecore.html">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+                      <div class="mega-content" id="ai-lab">
+
+                        <h4>AI Lab</h4>
+
+                        <p>
+                          Explore the latest AI innovations and applications.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Experience Assistant</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- SOLUTIONS -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="solutionDropdown" role="button" aria-expanded="false">
+
+                  Solution
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="solutionDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="sitecore-modernization">
+                        <span>Sitecore Modernization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-migration">
+                        <span>XM Cloud Migration</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="composable-dxp">
+                        <span>Composable DXP
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-cdp">
+                        <span>Sitecore CDP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-dam">
+                        <span>Sitecore DAM
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="managed-dxp-services">
+                        <span>Managed DXP Services</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="enterprise-integrations">
+                        <span>Enterprise Integrations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- SITECORE MODERNIZATION -->
+                      <div class="mega-content active" id="sitecore-modernization">
+                        <h4>Sitecore Modernization</h4>
+
+                        <p>
+                          Transform your Sitecore environment with the latest technologies and best practices.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+                          <li><a class="dropdown-item" href="#">Legacy to Headless Transformation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+              <!-- INSIGHTS -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+
+                  Insights
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+
+                  <li><a class="dropdown-item" href="#">AI + Sitecore</a></li>
+                  <li><a class="dropdown-item" href="#">XM Cloud</a></li>
+                  <li><a class="dropdown-item" href="#">DXP Strategy</a></li>
+                  <li><a class="dropdown-item" href="#">Personalization</a></li>
+                  <li><a class="dropdown-item" href="#">Composable Architecture</a></li>
+                  <li><a class="dropdown-item" href="./case-studies.html">Case Studies</a></li>
+                  <li><a class="dropdown-item" href="./Insights-ai-sitecore.html">Insights</a></li>
+
+
+
+                </ul>
+
+              </li>
+
+              <!-- COMPANY -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="companyDropdown" role="button" aria-expanded="false">
+
+                  Partner
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+
+                  <li><a class="dropdown-item" href="./sitecore-gold-partner.html">🥇 Sitecore Gold Partner</a></li>
+                  <li><a class="dropdown-item" href="./technology-ecosystem.html">Technology Ecosystem</a></li>
+                  <li><a class="dropdown-item" href="./sitecore-delivery-modal.html">Delivery Model</a></li>
+                  <hr>  
+                  <li><a class="dropdown-item" href="./about-us.html">About Us</a></li>
+                  <li><a class="dropdown-item" href="./career.html">Careers</a></li>
+                  <li><a class="dropdown-item" href="./blog.html">Blogs</a></li>
+                  <li><a class="dropdown-item" href="./contact.html">Contact Us</a></li>
+
+                </ul>
+
+              </li>
+
+              <!-- AI LAB -->
+
+
+            </ul>
+
+            <a href="./new-menu.html" class="fourth-button px-4 py-2" target="_blank">
+              New Menu
+            </a>
+            <a href="./contact.html" class="third-button px-4 py-2">
+              Live Demo
+            </a>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <!-- HERO SECTION -->
+  <section class="biz-home-banner pt-5 mt-5">
+    <div class="banner-content container-fluid py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 left-banner-content wow fadeInLeft" data-wow-delay="0.2s">
+          <div class="mega-badge d-inline-flex mb-3">
+            <i class="fas fa-cube me-2 text-primary"></i> TECHNOLOGY ECOSYSTEM 2.0
+          </div>
+          <h1 class="white-color lh-base">
+            Connect, compose & scale with <span class="orange-color">intelligent ecosystem</span>
+          </h1>
+          <p class="gray-color-3 my-4 lh-base">
+            Unified digital fabric across Sitecore, AI, Commerce, CDP & 150+ integrations. Achieve unparalleled agility, speed-to-market, and a seamless customer experience with our future-proof reference architecture.
+          </p>
+          <div class="mt-4 d-flex flex-wrap gap-3">
+            <a href="#" class="primary-button primary-button-icon">Talk To Our Expert</a>
+            <a href="#ecosystem-map" class="fourth-button px-4 py-2">Explore Ecosystem Map</a>
+          </div>
+          <div class="mt-5 d-flex flex-wrap gap-4">
+            <div>
+              <h3 class="orange-color mb-0 fw-bold">300+</h3>
+              <p class="white-color small mb-0">APIs & Connectors</p>
+            </div>
+            <div class="border-start border-secondary ps-4">
+              <h3 class="orange-color mb-0 fw-bold">80+</h3>
+              <p class="white-color small mb-0">Certified Partners</p>
+            </div>
+            <div class="border-start border-secondary ps-4">
+              <h3 class="orange-color mb-0 fw-bold">24/7</h3>
+              <p class="white-color small mb-0">Ecosystem Support</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Composable Engine Cluster (High-Tech Console Slot Design) -->
+        <div class="col-lg-5 col-xl-5 offset-lg-1 fade-up">
+          <div class="impl-card-v2 p-4 text-start d-flex flex-column justify-content-center h-100" style="border-color: rgba(255,255,255,0.06); background: linear-gradient(145deg, #18181f, #0f0f13);">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary pb-3">
+              <span class="text-white fw-bold font-orbitron small"><i class="fas fa-server orange-color me-2"></i>COMPOSABLE ENGINE CLUSTER</span>
+              <span class="badge bg-success bg-opacity-25 text-success border border-success small" style="font-size: 0.65rem;"><i class="fas fa-circle-nodes me-1 animate__animated animate__flash animate__infinite"></i> ONLINE</span>
+            </div>
+            
+            <div class="d-flex flex-column gap-3 w-100">
+              <!-- Slot 1 -->
+              <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="glow-dot-connector" style="background-color: #00ddff; box-shadow: 0 0 10px #00ddff;"></div>
+                  <div>
+                    <span class="text-white-50 small font-orbitron d-block" style="font-size: 0.7rem;">SLOT 01 // ORCHESTRATION</span>
+                    <span class="text-white fw-bold" style="font-size: 0.9rem;">Sitecore XM Cloud CMS</span>
+                  </div>
+                </div>
+                <i class="fab fa-sitecore orange-color fa-lg"></i>
+              </div>
+
+              <!-- Slot 2 -->
+              <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="glow-dot-connector" style="background-color: var(--orange-color); box-shadow: 0 0 10px var(--orange-color);"></div>
+                  <div>
+                    <span class="text-white-50 small font-orbitron d-block" style="font-size: 0.7rem;">SLOT 02 // DATA & CDP</span>
+                    <span class="text-white fw-bold" style="font-size: 0.9rem;">Real-time CDP Personalize</span>
+                  </div>
+                </div>
+                <i class="fas fa-database text-info fa-lg"></i>
+              </div>
+
+              <!-- Slot 3 -->
+              <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="glow-dot-connector" style="background-color: #a855f7; box-shadow: 0 0 10px #a855f7;"></div>
+                  <div>
+                    <span class="text-white-50 small font-orbitron d-block" style="font-size: 0.7rem;">SLOT 03 // AGENTIC AI</span>
+                    <span class="text-white fw-bold" style="font-size: 0.9rem;">Autonomous Copilot APIs</span>
+                  </div>
+                </div>
+                <i class="fas fa-robot text-warning fa-lg"></i>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-top border-secondary d-flex align-items-center justify-content-between text-white-50 small" style="font-size: 0.75rem;">
+              <span>CLUSTER SYNC: ACTIVE</span>
+              <span>PING: 14MS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM LAYERS -->
+  <section class="container-fluid py-5 my-5" id="ecosystem-layers">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Ecosystem Layers</div>
+      <h2 class="white-color fw-bold">Composable & Future-Proof Technology Stack</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        Break down the silos of monolithic software. Build on a modular architecture that adapts dynamically.
+      </p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <i class="fas fa-globe fa-2x orange-color"></i>
+              <span class="glow-dot-connector"></span>
+            </div>
+            <h5 class="white-color">Experience & Content</h5>
+            <p class="gray-color-3 small flex-grow-1 mt-2">
+              Deliver omnichannel experiences dynamically using Sitecore XM/XP, Content Hub, and headless composable CMS platforms.
+            </p>
+            <div class="mt-4 pt-3 border-top border-secondary">
+              <span class="text-white-50 small"><i class="fas fa-circle-check text-primary me-2"></i>12+ Certified Accelerators</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <i class="fas fa-shopping-cart fa-2x orange-color"></i>
+              <span class="glow-dot-connector"></span>
+            </div>
+            <h5 class="white-color">Commerce & Orders</h5>
+            <p class="gray-color-3 small flex-grow-1 mt-2">
+              Implement scalable, unified cart checkout flows using OrderCloud, Salesforce Commerce Cloud, and Shopify Plus.
+            </p>
+            <div class="mt-4 pt-3 border-top border-secondary">
+              <span class="text-white-50 small"><i class="fas fa-rocket text-primary me-2"></i>B2B & B2C Enterprise Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <i class="fas fa-brain fa-2x orange-color"></i>
+              <span class="glow-dot-connector"></span>
+            </div>
+            <h5 class="white-color">Data & AI Engine</h5>
+            <p class="gray-color-3 small flex-grow-1 mt-2">
+              Unify behavioral records into real-time segments using modern Customer Data Platforms (CDP) and predictive AI analytics.
+            </p>
+            <div class="mt-4 pt-3 border-top border-secondary">
+              <span class="text-white-50 small"><i class="fas fa-chart-line text-primary me-2"></i>Real-time 1:1 Personalization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="impl-card-v2">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <i class="fas fa-cloud-upload-alt fa-2x orange-color"></i>
+              <span class="glow-dot-connector"></span>
+            </div>
+            <h5 class="white-color">DevOps & Cloud</h5>
+            <p class="gray-color-3 small flex-grow-1 mt-2">
+              Accelerate global deployment with Kubernetes container orchestration, AWS/Azure hybrid edge delivery, and CI/CD pipelines.
+            </p>
+            <div class="mt-4 pt-3 border-top border-secondary">
+              <span class="text-white-50 small"><i class="fas fa-shield-haltered text-primary me-2"></i>99.99% Enterprise SLAs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM MATURITY ROADMAP -->
+  <section class="container-fluid py-5 my-5" id="ecosystem-roadmap">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Transformation Path</div>
+      <h2 class="white-color fw-bold">Ecosystem Maturity Roadmap</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        A structured, phase-by-phase journey to transition your digital footprint from a monolithic framework to a composable ecosystem.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Phase 1 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 p-4 h-100">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <span class="orange-color fw-bold font-orbitron display-6">01</span>
+              <span class="badge bg-dark border border-secondary px-3 py-2 text-white-50">PHASE 1</span>
+            </div>
+            <h5 class="white-color">Foundation & Headless CMS</h5>
+            <p class="gray-color-3 small mt-3 flex-grow-1">
+              De-risk your migration by decoupling frontend rendering from your content database. Establish XM Cloud and AI-driven search capabilities to boost baseline SEO score and page speed.
+            </p>
+            <ul class="list-unstyled mt-4 d-flex flex-column gap-2 small text-white-50">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Headless CMS deployment</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Content Search API integrations</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Edge delivery architecture build</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-4 h-100" style="border-color: rgba(247, 149, 51, 0.25);">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <span class="orange-color fw-bold font-orbitron display-6">02</span>
+              <span class="badge bg-dark border border-primary px-3 py-2 text-white-50">PHASE 2</span>
+            </div>
+            <h5 class="white-color">Customer Data & Analytics</h5>
+            <p class="gray-color-3 small mt-3 flex-grow-1">
+              Unify behavioral records across touchpoints. Integrate Customer Data Platform (CDP) schemas to compile a single customer profile view and launch dynamic segmentation rules.
+            </p>
+            <ul class="list-unstyled mt-4 d-flex flex-column gap-2 small text-white-50">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>CDP profile synchronization</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Real-time behavioral event hooks</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Identity resolution engine tracking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 p-4 h-100">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <span class="orange-color fw-bold font-orbitron display-6">03</span>
+              <span class="badge bg-dark border border-secondary px-3 py-2 text-white-50">PHASE 3</span>
+            </div>
+            <h5 class="white-color">Engagement & Commerce</h5>
+            <p class="gray-color-3 small mt-3 flex-grow-1">
+              Activate personalized workflows. Wire outbound marketing automation pipelines and headless transactional APIs (OrderCloud) to drive contextual checkout and drip scoring rules.
+            </p>
+            <ul class="list-unstyled mt-4 d-flex flex-column gap-2 small text-white-50">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>HubSpot / Salesforce integration</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Headless cart and checkout flows</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Predictive AI personalization loops</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE COMPOSABLE STACK BUILDER (NEW) -->
+  <section class="container-fluid py-5 my-5" id="ecosystem-map">
+    <div class="ecosystem-flow-container wow fadeInUp" data-wow-delay="0.2s">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+          <div class="mega-badge d-inline-flex mb-2">Interactive Tool</div>
+          <h3 class="white-color fw-bold">Composable Stack Visualizer</h3>
+          <p class="gray-color-3 mt-2">
+            Select a business model to see how composable architecture dynamically wires experience, data, and commerce platforms together.
+          </p>
+        </div>
+        <div class="col-lg-6 text-lg-end mt-4 mt-lg-0">
+          <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+            <button class="stack-builder-btn active" data-stack="commerce">Composable Commerce</button>
+            <button class="stack-builder-btn" data-stack="personalization">Intelligent Personalization</button>
+            <button class="stack-builder-btn" data-stack="content">Hybrid Content Hub</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagram Flow -->
+      <div class="row g-4">
+        <!-- Interaction Layer -->
+        <div class="col-md-3">
+          <div class="diagram-layer h-100 d-flex flex-column gap-3">
+            <h6 class="text-white text-center border-bottom border-secondary pb-2"><i class="fas fa-desktop me-2 text-primary"></i>1. Experience Frontends</h6>
+            <div class="diagram-block stack-active" id="block-web">Web Applications</div>
+            <div class="diagram-block stack-active" id="block-mobile">Mobile SDKs</div>
+            <div class="diagram-block stack-dimmed" id="block-iot">IoT Channels</div>
+          </div>
+        </div>
+        
+        <!-- Content Layer -->
+        <div class="col-md-3">
+          <div class="diagram-layer h-100 d-flex flex-column gap-3">
+            <h6 class="text-white text-center border-bottom border-secondary pb-2"><i class="fas fa-file-code me-2 text-primary"></i>2. Orchestration & CMS</h6>
+            <div class="diagram-block stack-active" id="block-xm">Sitecore XM Cloud</div>
+            <div class="diagram-block stack-dimmed" id="block-dam">Content Hub DAM</div>
+            <div class="diagram-block stack-dimmed" id="block-loc">Localization Engine</div>
+          </div>
+        </div>
+        
+        <!-- Commerce & Data Layer -->
+        <div class="col-md-3">
+          <div class="diagram-layer h-100 d-flex flex-column gap-3">
+            <h6 class="text-white text-center border-bottom border-secondary pb-2"><i class="fas fa-database me-2 text-primary"></i>3. Integration Engine</h6>
+            <div class="diagram-block stack-active" id="block-commerce">OrderCloud Engine</div>
+            <div class="diagram-block stack-dimmed" id="block-cdp">Sitecore CDP</div>
+            <div class="diagram-block stack-dimmed" id="block-ai">Predictive AI Hub</div>
+          </div>
+        </div>
+        
+        <!-- Backend Services -->
+        <div class="col-md-3">
+          <div class="diagram-layer h-100 d-flex flex-column gap-3">
+            <h6 class="text-white text-center border-bottom border-secondary pb-2"><i class="fas fa-server me-2 text-primary"></i>4. Backend & Core Data</h6>
+            <div class="diagram-block stack-active" id="block-erp">ERP (SAP/NetSuite)</div>
+            <div class="diagram-block stack-dimmed" id="block-crm">CRM Data Store</div>
+            <div class="diagram-block stack-active" id="block-search">Algolia AI Search</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCE ARCHITECTURE PATTERNS -->
+  <section class="container-fluid py-5 my-5" id="architecture-patterns">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Architectural Blueprint</div>
+      <h2 class="white-color fw-bold">Ecosystem Reference Patterns</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        We configure standardized, industry-specific martech blueprints that solve targeted business challenges out-of-the-box.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Pattern 1 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 p-4 h-100">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-dark text-white-50 px-2 py-1 small text-uppercase">RETAIL & COMMERCE</span>
+              <i class="fas fa-shopping-cart orange-color"></i>
+            </div>
+            <h5 class="white-color">The Composable Merchant</h5>
+            <p class="gray-color-3 small mt-2 flex-grow-1">
+              Engineered for transactional speed, infinite catalog scale, and unified omnichannel checkouts.
+            </p>
+            <div class="p-3 my-3 rounded-3" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);">
+              <span class="text-white small fw-bold d-block mb-2">Stack Alignment:</span>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge bg-dark border border-secondary text-white-50">XM Cloud</span>
+                <span class="badge bg-dark border border-secondary text-white-50">OrderCloud</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Algolia</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Vercel</span>
+              </div>
+            </div>
+            <span class="text-white-50 small mt-2"><i class="fas fa-circle-check orange-color me-2"></i>+50% Average Order Value</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern 2 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-4 h-100" style="border-color: rgba(247, 149, 51, 0.25);">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-dark text-white-50 px-2 py-1 small text-uppercase">HEALTHCARE & FINANCE</span>
+              <i class="fas fa-shield-alt orange-color"></i>
+            </div>
+            <h5 class="white-color">The Secure Portal</h5>
+            <p class="gray-color-3 small mt-2 flex-grow-1">
+              Built for HIPAA/SOC2 compliance, encrypted identity resolution, and contextual portal personalization.
+            </p>
+            <div class="p-3 my-3 rounded-3" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);">
+              <span class="text-white small fw-bold d-block mb-2">Stack Alignment:</span>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge bg-dark border border-secondary text-white-50">Sitecore XP</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Azure Cloud</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Sitecore CDP</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Salesforce</span>
+              </div>
+            </div>
+            <span class="text-white-50 small mt-2"><i class="fas fa-circle-check orange-color me-2"></i>100% HIPAA Data Sovereign</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern 3 -->
+      <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 p-4 h-100">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-dark text-white-50 px-2 py-1 small text-uppercase">MEDIA & GLOBAL SITE</span>
+              <i class="fas fa-globe orange-color"></i>
+            </div>
+            <h5 class="white-color">The Agile Publisher</h5>
+            <p class="gray-color-3 small mt-2 flex-grow-1">
+              Structured for multi-brand deployment, automated assets, and real-time localized localization operations.
+            </p>
+            <div class="p-3 my-3 rounded-3" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);">
+              <span class="text-white small fw-bold d-block mb-2">Stack Alignment:</span>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge bg-dark border border-secondary text-white-50">XM Cloud</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Content Hub DAM</span>
+                <span class="badge bg-dark border border-secondary text-white-50">L10n API</span>
+                <span class="badge bg-dark border border-secondary text-white-50">Vercel</span>
+              </div>
+            </div>
+            <span class="text-white-50 small mt-2"><i class="fas fa-circle-check orange-color me-2"></i>-75% Translation Overhead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGIC ALLIANCES + CERTIFICATIONS -->
+  <section class="container-fluid py-5 my-3">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+        <div class="mega-badge d-inline-flex mb-2"><i class="fas fa-handshake me-2"></i>Strategic Alliances</div>
+        <h2 class="white-color fw-bold text-uppercase">Trusted by 500+ global brands</h2>
+        <p class="gray-color-3 mt-3">
+          As a premier systems integrator, we build pre-configured enterprise wrappers and native integrations that guarantee interoperability across your martech landscape.
+        </p>
+        <div class="row mt-5 g-4">
+          <div class="col-6">
+            <div class="p-3 border-start border-primary border-3 bg-dark bg-opacity-25 rounded-3">
+              <h2 class="orange-color mb-0 fw-bold">98%</h2>
+              <p class="white-color small mb-0">Project Success Rate</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-3 border-start border-primary border-3 bg-dark bg-opacity-25 rounded-3">
+              <h2 class="orange-color mb-0 fw-bold">40%</h2>
+              <p class="white-color small mb-0">TCO Reduction</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="white-color mb-0"><i class="fas fa-award text-warning me-2"></i>Ecosystem Certifications</h5>
+              <i class="fas fa-certificate orange-color"></i>
+            </div>
+            <div class="d-flex flex-wrap gap-3">
+              <span class="p-2 rounded-3 text-white small" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-microsoft text-primary me-2"></i>Microsoft Gold</span>
+              <span class="p-2 rounded-3 text-white small" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);"><i class="fas fa-fire orange-color me-2"></i>Sitecore Silver Partner</span>
+              <span class="p-2 rounded-3 text-white small" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-salesforce text-info me-2"></i>Salesforce Cloud SI</span>
+              <span class="p-2 rounded-3 text-white small" style="background: var(--black-color-5); border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-aws text-warning me-2"></i>AWS Select SI</span>
+            </div>
+            <hr class="border-secondary my-4" />
+            <p class="small gray-color-3 mb-0">
+              Our engineering catalog includes certified deployment blueprints for Adobe, Acquia, Algolia, Vercel, Netlify, and Contentful.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY PARTNER GRID -->
+  <section class="container-fluid py-5 my-5">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Global Partner Network</div>
+      <h2 class="white-color fw-bold">Integrated with Leading Tech Pioneers</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        We maintain close product alliances with key composable, SaaS, and infrastructure giants to deliver reliable enterprise solutions.
+      </p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fab fa-sitecore fa-3x mb-3" style="color: #FF2E2E;"></i>
+            <h5 class="white-color">Sitecore</h5>
+            <span class="badge-orange small mt-2">Platinum Delivery</span>
+            <p class="gray-color-3 small mt-3">Advanced implementation of XM Cloud, CDP, and Content Hub.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fab fa-microsoft fa-3x mb-3" style="color: #00A4EF;"></i>
+            <h5 class="white-color">Microsoft</h5>
+            <span class="badge-orange small mt-2">Azure Cloud</span>
+            <p class="gray-color-3 small mt-3">Dynamics 365, Power Automate, and high-performance cloud hosting.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fab fa-salesforce fa-3x mb-3" style="color: #00A1E0;"></i>
+            <h5 class="white-color">Salesforce</h5>
+            <span class="badge-orange small mt-2">Marketing Cloud</span>
+            <p class="gray-color-3 small mt-3">Pre-built integrations for CRM sync, lead automation, and sales tracking.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fab fa-aws fa-3x mb-3" style="color: #FF9900;"></i>
+            <h5 class="white-color">AWS</h5>
+            <span class="badge-orange small mt-2">Advanced Partner</span>
+            <p class="gray-color-3 small mt-3">Serverless scaling, analytics warehouse engines, and database systems.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fab fa-adobe fa-3x mb-3" style="color: #FF0000;"></i>
+            <h5 class="white-color">Adobe</h5>
+            <span class="badge-orange small mt-2">Experience Cloud</span>
+            <p class="gray-color-3 small mt-3">Adobe Analytics, Workfront, and Asset Management pipelines.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-search fa-3x mb-3" style="color: #5468FF;"></i>
+            <h5 class="white-color">Algolia</h5>
+            <span class="badge-orange small mt-2">AI Search Engine</span>
+            <p class="gray-color-3 small mt-3">Smart semantic search APIs, content sorting, and recommendations.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.7s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-database fa-3x mb-3" style="color: #47A248;"></i>
+            <h5 class="white-color">MongoDB</h5>
+            <span class="badge-orange small mt-2">Atlas & Realm</span>
+            <p class="gray-color-3 small mt-3">Distributed database layouts, catalog stores, and mobile profiles.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.8s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-cloud fa-3x mb-3" style="color: #14B8A6;"></i>
+            <h5 class="white-color">Vercel & Netlify</h5>
+            <span class="badge-orange small mt-2">Edge Infrastructure</span>
+            <p class="gray-color-3 small mt-3">Headless static deployments and dynamic Edge Middleware execution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPOSABLE VS MONOLITH COMPARISON (NEW) -->
+  <section class="container-fluid py-5 my-5" id="composable-comparison">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Architectural Comparison</div>
+      <h2 class="white-color fw-bold">Why Transition to Composable Ecosystem?</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        See how a composed landscape solves the technical debt, vendor lock-in, and scalability issues of legacy monolithic solutions.
+      </p>
+    </div>
+    
+    <div class="table-responsive wow fadeInUp" data-wow-delay="0.2s">
+      <table class="table table-dark table-striped table-dark-custom">
+        <thead>
+          <tr>
+            <th scope="col">Feature Category</th>
+            <th scope="col" class="orange-color">Composable Ecosystem</th>
+            <th scope="col">Legacy Monolithic Stack</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold">Vendor Lock-In</td>
+            <td><strong>None.</strong> Replace any service (e.g. swap Search or Payment engines) without breaking core stack logic.</td>
+            <td><strong>High.</strong> Inflexible platform bindings lock databases, backend logic, and frontend rendering into one vendor ecosystem.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Launch Velocity</td>
+            <td><strong>Rapid.</strong> Parallel design pipelines & pre-built connectors reduce deployment cycles by up to 60%.</td>
+            <td><strong>Slow.</strong> Any update requires regression test validation, compilation steps, and redeploying the entire codebase.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Scalability</td>
+            <td><strong>Infinite.</strong> Leverage serverless CDNs to scale edge delivery independently of heavy backend systems.</td>
+            <td><strong>Complex.</strong> Requires scaling vertical servers or database instances to handle sudden peaks in frontend user traffic.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Omnichannel Flex</td>
+            <td><strong>Native API-First.</strong> Output data consistently to websites, smart devices, wearable screens, and mobile frameworks.</td>
+            <td><strong>Fragmented.</strong> Requires complex middleware layers or secondary API gateways to extract legacy formatted records.</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Development Agility</td>
+            <td><strong>High.</strong> Frontend engineering runs independently of complex backend configurations using clean JSON APIs.</td>
+            <td><strong>Inhibited.</strong> Design adjustments require deep backend knowledge of templates, proprietary loops, and platform patterns.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- INTEGRATION ACCELERATORS -->
+  <section class="container-fluid py-5 my-3">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-4" style="background: linear-gradient(135deg, #1e1e1e, #0f0f0f);">
+          <div class="impl-v2-body">
+            <i class="fas fa-cogs fa-2x orange-color mb-3"></i>
+            <h4 class="white-color fw-bold">Ecosystem Connectors</h4>
+            <p class="gray-color-3 small mt-2">
+              Accelerate time-to-market with our comprehensive connector catalog. Lower technical friction with proven integration models.
+            </p>
+            <ul class="list-unstyled mt-4 d-flex flex-column gap-2 small text-white-50">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Sitecore ↔ HubSpot CRM Bi-directional Sync</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>OrderCloud ↔ SAP / NetSuite ERP Connect</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>CDP ↔ Customer AI Personalization Engine</li>
+            </ul>
+            <a href="#" class="primary-button my-4 primary-button-icon">View Connector Catalog</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
+        <h3 class="white-color fw-bold">Connected Ecosystem Architecture in Action</h3>
+        <p class="gray-color-3 mt-3">
+          From headless commerce to unified data fabric, our reference architecture is modular, API-first, and cloud-native. Gain maximum agility without standard platform locking constraints.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <span class="integration-tag"><i class="fab fa-sitecore"></i> Sitecore Connect™</span>
+          <span class="integration-tag"><i class="fas fa-chart-simple"></i> Adobe Analytics</span>
+          <span class="integration-tag"><i class="fas fa-message"></i> Twilio Segment</span>
+          <span class="integration-tag"><i class="fab fa-google"></i> Google Analytics 4</span>
+          <span class="integration-tag"><i class="fas fa-robot"></i> AI Copilot Stack</span>
+        </div>
+        <div class="mt-5 p-4 rounded-4 position-relative" style="background: var(--black-color-5); border-left: 4px solid var(--orange-color);">
+          <i class="fas fa-quote-left fa-2x position-absolute opacity-10 text-white" style="top: 15px; left: 20px;"></i>
+          <p class="white-color small mb-0 ps-3">
+            "Transitioning to a modular, composed architecture has improved our product release velocity by 45% while reducing platform subscription overhead by 30%."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TRIAD -->
+  <section class="container-fluid py-5 my-5">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2"><i class="fas fa-infinity me-2"></i>The Core Triad</div>
+      <h2 class="white-color fw-bold">DXP · Marketing Automation · CRM</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        Three integrated engines operating in tandem to drive customer acquisition, personalization, and sales conversion.
+      </p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-laptop-code fa-3x orange-color mb-3"></i>
+            <h4 class="white-color">Digital DXP</h4>
+            <p class="gray-color-3 small mt-2">
+              Sitecore Headless CMS, content repositories, and personalization engines power front-end visitor portals.
+            </p>
+            <hr class="border-secondary w-100 my-3" />
+            <span class="text-white-50 small"><i class="fas fa-circle-check orange-color me-2"></i>Real-time user adaptation</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-envelope-open-text fa-3x orange-color mb-3"></i>
+            <h4 class="white-color">Marketing Automation</h4>
+            <p class="gray-color-3 small mt-2">
+              Triggered automated email journeys, drip nurture tracks, scoring engines, and targeted campaign triggers.
+            </p>
+            <hr class="border-secondary w-100 my-3" />
+            <span class="text-white-50 small"><i class="fas fa-circle-check orange-color me-2"></i>70.5% higher click opens</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-database fa-3x orange-color mb-3"></i>
+            <h4 class="white-color">Enterprise CRM</h4>
+            <p class="gray-color-3 small mt-2">
+              Salesforce, HubSpot, and Dynamics 365 gather contact history and behavior data to optimize closing funnels.
+            </p>
+            <hr class="border-secondary w-100 my-3" />
+            <span class="text-white-50 small"><i class="fas fa-circle-check orange-color me-2"></i>20% sales conversion lift</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-5">
+      <div class="col-12 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-4 text-center" style="background: linear-gradient(125deg, #1a1a22, #0e0e12);">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-link fa-2x orange-color mb-3"></i>
+            <h4 class="white-color">How the Core Triad Works in Harmony</h4>
+            <p class="gray-color-3 small max-width-700 mx-auto mt-2">
+              Visitor intent is captured on the DXP ➔ triggers a targeted automation track ➔ populates sales profiles in the CRM to ensure rapid conversion cycles.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+              <span class="integration-tag"><i class="fas fa-sync-alt"></i>Bi-directional Sync</span>
+              <span class="integration-tag"><i class="fas fa-chart-pie"></i>Unified Profile View</span>
+              <span class="integration-tag"><i class="fas fa-robot"></i>AI Next-best Action</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE BY ROLE -->
+  <section class="container-fluid py-5 my-5">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2"><i class="fas fa-users me-2"></i>Aligned for Success</div>
+      <h2 class="white-color fw-bold">Ecosystem Value for Every Stakeholder</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        Our integrations provide tailored functionalities that align with organizational objectives from marketing to sales.
+      </p>
+    </div>
+    
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <i class="fas fa-chart-line fa-2x orange-color"></i>
+              <h4 class="white-color mb-0">For the CMO</h4>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50 flex-grow-1">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Drive measurable platform ROI</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Accelerate digital transformation timelines</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Simplify platform infrastructure overheads</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Unify customer records across ecosystems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <i class="fas fa-bullhorn fa-2x orange-color"></i>
+              <h4 class="white-color mb-0">For the Marketer</h4>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50 flex-grow-1">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Launch targeted, behavior-driven campaigns</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Deliver real-time A/B test variations</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Action analytics insights immediately</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Construct drag-and-drop journey paths</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body">
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <i class="fas fa-handshake fa-2x orange-color"></i>
+              <h4 class="white-color mb-0">For Sales Teams</h4>
+            </div>
+            <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50 flex-grow-1">
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Gain comprehensive prospect history profiles</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Access real-time lead scoring indicators</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Identify intent flags and purchase markers</li>
+              <li><i class="fas fa-circle-check orange-color me-2"></i>Unify online profiles with CRM entries</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CTA Accent -->
+    <div class="row">
+      <div class="col-12 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 p-5 text-center" style="background: linear-gradient(135deg, #1e1e2a, #0a0a0f); border: 2px solid rgba(247,149,51,0.5);">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-rocket fa-3x orange-color mb-3"></i>
+            <h2 class="white-color fw-bold">Fast-Track Digital Transformation</h2>
+            <p class="gray-color-3 small max-width-700 mx-auto mt-2">
+              Orchestrate DXP, Marketing Automation, and CRM into a unified, high-performing marketing machine.
+            </p>
+            <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+              <a href="#" class="primary-button primary-button-icon">Accelerate Your Stack</a>
+              <a href="#" class="btn-outline-light-custom px-4 py-2 text-decoration-none">Book Technical Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETING CAMPAIGN FLOW -->
+  <section class="container-fluid py-5 my-3">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">Campaign Journey</div>
+      <h2 class="white-color fw-bold">Top of Funnel Integration Flow</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        See how lead generation and nurturing actions flow automatically across your composed tech nodes.
+      </p>
+    </div>
+    
+    <div class="row justify-content-center mb-5 g-3 wow fadeInUp">
+      <div class="col-md-5 col-lg-4">
+        <div class="p-3 bg-dark bg-opacity-50 text-white text-center rounded-4 border border-secondary small">
+          <i class="fas fa-chart-line orange-color me-2"></i> Goal 1: Maximize Sales Conversion
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4">
+        <div class="p-3 bg-dark bg-opacity-50 text-white text-center rounded-4 border border-secondary small">
+          <i class="fas fa-users orange-color me-2"></i> Goal 2: Intelligent Lead Nurturing
+        </div>
+      </div>
+    </div>
+    
+    <div class="row align-items-stretch g-4 mb-5 justify-content-center text-center wow fadeInUp" data-wow-delay="0.2s">
+      <div class="col-md-3">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-envelope-open-text fa-3x orange-color mb-3"></i>
+            <h5 class="white-color">1. Marketing Auto</h5>
+            <p class="gray-color-3 small mt-2">
+              Launches campaign outreach, tracks interaction metrics, and initiates drip email nurtures.
+            </p>
+            <div class="mt-3 d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge bg-dark border border-secondary">Nurture Mail</span>
+              <span class="badge bg-dark border border-secondary">Trigger Alert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+        <i class="fas fa-arrow-right fa-2x orange-color opacity-75 animate__animated animate__pulse animate__infinite"></i>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-globe fa-3x orange-color mb-3"></i>
+            <h5 class="white-color">2. CMS / DXP Node</h5>
+            <p class="gray-color-3 small mt-2">
+              Adapts landing page layout, displays dynamic content variations, and captures interaction footprints.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+        <i class="fas fa-arrow-right fa-2x orange-color opacity-75 animate__animated animate__pulse animate__infinite"></i>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="impl-card-v2 p-4">
+          <div class="impl-v2-body align-items-center">
+            <i class="fas fa-database fa-3x orange-color mb-3"></i>
+            <h5 class="white-color">3. Enterprise CRM</h5>
+            <p class="gray-color-3 small mt-2">
+              Logs lead analytics score, surfaces customer signals, and provides visibility to closing teams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE LEADERSHIP -->
+  <section class="container-fluid py-5 my-5">
+    <div class="text-center mb-5 wow fadeInUp">
+      <div class="mega-badge d-inline-flex mb-2">C-Suite Focus</div>
+      <h2 class="white-color fw-bold">Ecosystem Strategy is Business Survival</h2>
+      <p class="gray-color-3 max-width-700 mx-auto mt-2">
+        Leaders who invest in cohesive customer experience architecture drive long-term business resilience and ROI.
+      </p>
+    </div>
+    
+    <div class="row g-4 mb-5">
+      <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <h2 class="orange-color mb-0 fw-bold" style="font-size: 3rem;">90%</h2>
+            <p class="gray-color-3 small mt-2">CEOs stating customer experience dictates platform selection</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <h2 class="orange-color mb-0 fw-bold" style="font-size: 3rem;">84%</h2>
+            <p class="gray-color-3 small mt-2">Brands optimizing CX metrics reporting net revenue increase</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <h2 class="orange-color mb-0 fw-bold" style="font-size: 3rem;">87%</h2>
+            <p class="gray-color-3 small mt-2">Marketers stating personalization engines drive sales uplifts</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="impl-card-v2 text-center p-4">
+          <div class="impl-v2-body align-items-center">
+            <h2 class="orange-color mb-0 fw-bold" style="font-size: 3rem;">82%</h2>
+            <p class="gray-color-3 small mt-2">Companies returning positive ROI on automation tracks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Ops Summary Section -->
+    <div class="impl-card-v2 p-4 mb-5 wow fadeInUp" data-wow-delay="0.2s" style="border-left: 4px solid var(--orange-color);">
+      <div class="impl-v2-body">
+        <div class="row align-items-center">
+          <div class="col-md-9 text-start">
+            <h4 class="white-color fw-bold">Ecosystem Operation and Delivery System</h4>
+            <p class="gray-color-3 small mb-0 mt-2">
+              We leverage cloud monitoring pipelines, secure API gateways, and automated testing templates to keep deployment friction low.
+            </p>
+          </div>
+          <div class="col-md-3 text-md-end mt-3 mt-md-0">
+            <i class="fas fa-shield-haltered fa-3x orange-color"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="container-fluid my-5 py-5 text-center wow fadeInUp">
+    <div class="impl-card-v2 p-5" style="background: linear-gradient(135deg, #111115, #14141c);">
+      <div class="impl-v2-body align-items-center justify-content-center py-4">
+        <h2 class="white-color fw-bold">Ready to Unlock Your Ecosystem Potential?</h2>
+        <p class="gray-color-3 max-width-700 mx-auto mt-3">
+          Schedule a collaborative session with our cloud architects to map your legacy migration path to a composable stack.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+          <a href="#" class="primary-button primary-button-icon">Ecosystem Consultation</a>
+          <a href="#" class="btn-outline-light-custom px-4 py-2 text-decoration-none">Download Architecture PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIFIED FOOTER -->
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row align-items-center pb-4">
+        <div class="col-md-6">
+          <img src="./images/biztech-logo.svg" alt="biztechnosys" />
+        </div>
+        <div class="col-md-6 text-end">
+          <div class="d-flex justify-content-end align-items-center">
+            <div>
+              <p class="white-color me-2 mb-0">Follow Us On Social Media</p>
+            </div>
+            <div class="d-flex column-gap-3">
+              <div>
+                <a href="#" class="tag">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <div>
+                <a href="#" class="tag">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+              </div>
+              <div>
+                <a href="#" class="tag">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="row">
+        <div class="col-12 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
+          <p class="footer-title">Services</p>
+          <ul style="list-style: none" class="p-0 footer-link">
+            <li><a href="#">Upgrade & Migration</a></li>
+            <li><a href="#">Integration Consulting</a></li>
+            <li><a href="#">Marketing Automation</a></li>
+            <li><a href="#">Design & Development</a></li>
+            <li><a href="#">Deployment Consulting</a></li>
+            <li><a href="#">Customization Consulting</a></li>
+            <li><a href="#">Branding & SEO</a></li>
+            <li><a href="#">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="col-12 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
+          <p class="footer-title">Solutions</p>
+          <ul style="list-style: none" class="p-0 footer-link">
+            <li><a href="#">Online Education</a></li>
+            <li><a href="#">Online Healthcare</a></li>
+            <li><a href="#">B2B Marketplace</a></li>
+            <li><a href="#">Government Portals</a></li>
+            <li><a href="#">Government Portals</a></li>
+            <li><a href="#">Tour & Travel Portals</a></li>
+            <li><a href="#">Enterprise Technology</a></li>
+          </ul>
+        </div>
+        <div class="col-4 text-cente text-md-star col-md-4 mt-4 mt-md-0 col-lg-2">
+          <p class="footer-title">About Us</p>
+          <ul style="list-style: none" class="p-0 footer-link">
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Achievements</a></li>
+            <li><a href="#">Awards</a></li>
+            <li><a href="#">Branding</a></li>
+          </ul>
+        </div>
+        <div class="col-4 text-cente text-md-star col-md-3 mt-4 mt-lg-0 col-lg-2">
+          <p class="footer-title">Careers</p>
+          <ul style="list-style: none" class="p-0 footer-link">
+            <li><a href="./career.html">Job Openings</a></li>
+            <li><a href="#">Benefits & Perks</a></li>
+          </ul>
+        </div>
+        <div class="col-4 text-cente text-md-star col-md-3 mt-4 mt-lg-0 col-lg-1">
+          <p class="footer-title">Blogs</p>
+          <ul style="list-style: none" class="p-0 footer-link">
+            <li><a href="./blog.html">Our Blogs</a></li>
+          </ul>
+        </div>
+        <div class="col-md-5 mt-4 mt-lg-0 col-lg-3">
+          <div class="">
+            <a href="#" class="get-in-touch footer-link text-decoration-none d-flex align-items-start gap-2 mb-2">
+              <img src="./images/address-icon.svg" class="tag mt-1" alt="address" />
+              <span>3rd Floor, Above Med Plus, Hansha Plaza, 24th Main Rd, 26 Phase, J.P. Nagar, Bengaluru, Karnataka - 560078</span>
+            </a>
+            <a href="mailto:info@biztechnosys.com" class="get-in-touch footer-link text-decoration-none d-flex align-items-center gap-2 mb-2">
+              <img src="./images/mail-icon.svg" class="tag" alt="mail" />
+              <span>info@biztechnosys.com</span>
+            </a>
+            <a href="tel:+918035827097" class="get-in-touch footer-link text-decoration-none d-flex align-items-center gap-2">
+              <img src="./images/telephone-icon.svg" class="tag" alt="telephone" />
+              <span>+91 8035827097</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="line mt-5"></div>
+      <div class="footer-bottom text-center mt-4 d-md-flex justify-content-between">
+        <div>
+          <p>@2025 Biztechnosys. All Rights Reserved.</p>
+        </div>
+        <div>
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          |
+          <a href="#" class="footer-bottom-link">Terms & Conditions</a>
+          |
+          <a href="#" class="footer-bottom-link">Cookie Policy</a>
+        </div>
+      </div>
+      <div>
+        <img class="w-100" src="./images/footer-text.png" alt="footer-text" />
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- WOW.js Animations -->
+  <script src="lib/wow/wow.min.js"></script>
+  
+  <!-- Main Script -->
+  <script src="./js/script.js"></script>
+  
+  <script>
+    // Initialize WOW.js for animations
+    if (typeof WOW !== 'undefined') {
+      new WOW().init();
+    }
+    
+    // Interactive Composable Stack Builder Toggle Logic
+    $(document).ready(function() {
+      const stackConfigs = {
+        commerce: {
+          active: ['block-web', 'block-mobile', 'block-xm', 'block-commerce', 'block-erp', 'block-search'],
+          dimmed: ['block-iot', 'block-dam', 'block-loc', 'block-cdp', 'block-ai', 'block-crm']
+        },
+        personalization: {
+          active: ['block-web', 'block-xm', 'block-cdp', 'block-ai', 'block-crm', 'block-search'],
+          dimmed: ['block-mobile', 'block-iot', 'block-dam', 'block-loc', 'block-commerce', 'block-erp']
+        },
+        content: {
+          active: ['block-web', 'block-iot', 'block-xm', 'block-dam', 'block-loc', 'block-crm', 'block-search'],
+          dimmed: ['block-mobile', 'block-commerce', 'block-cdp', 'block-ai', 'block-erp']
+        }
+      };
+      
+      $('.stack-builder-btn').on('click', function() {
+        const stackType = $(this).attr('data-stack');
+        
+        // Active button styling
+        $('.stack-builder-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        // Config variables
+        const config = stackConfigs[stackType];
+        
+        // Toggle blocks classes
+        $('.diagram-block').removeClass('stack-active stack-dimmed');
+        
+        config.active.forEach(id => {
+          $(`#${id}`).addClass('stack-active');
+        });
+        
+        config.dimmed.forEach(id => {
+          $(`#${id}`).addClass('stack-dimmed');
+        });
+      });
+      
+      // Ecosystem Hub Satellite Node Tooltips
+      $('.satellite-node').hover(
+        function() {
+          const info = $(this).attr('data-info');
+          $('#hub-info-text').text(info).css('color', '#FFFFFF');
+        },
+        function() {
+          $('#hub-info-text').text('Hover over any node in the diagram to inspect its role inside the Composable Stack reference flow.').css('color', 'rgba(255, 255, 255, 0.5)');
+        }
+      );
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1423 @@
+/* ─────────────────────────────
+   PAGE-SPECIFIC VARIABLES
+───────────────────────────── */
+.gold-partner-page {
+    --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+/* -------------------------------------------------------
+   HEADER NAV DARK INTEGRATION (Scoped to page)
+------------------------------------------------------- */
+.gold-partner-page header {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.gold-partner-page nav.navbar {
+    padding: 10px 0;
+}
+
+.gold-partner-page .navbar-brand img {
+    height: 38px;
+}
+
+.gold-partner-page .nav-link {
+    color: var(--gray-color-3) !important;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition: color 0.25s ease;
+}
+
+.gold-partner-page .nav-link:hover,
+.gold-partner-page .nav-link.active {
+    color: var(--orange-color) !important;
+}
+
+/* -------------------------------------------------------
+   Base overrides scoped to Gold Partner Page
+------------------------------------------------------- */
+body.gold-partner-page {
+    background: var(--black-color-2);
+    color: var(--white-color);
+    overflow-x: hidden;
+}
+
+.gold-partner-page a { text-decoration: none; }
+.gold-partner-page img { display: block; max-width: 100%; }
+.gold-partner-page ul { list-style: none; padding: 0; margin: 0; }
+.gold-partner-page section { padding: 100px 0; }
+
+.gold-partner-page li {
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.85;
+    color: var(--gray-color-2);
+}
+
+.gold-partner-page p {
+    line-height: 1.85;
+    color: var(--gray-color-2);
+}
+
+/* -------------------------------------------------------
+   Layout helpers
+------------------------------------------------------- */
+.gold-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gold-section-label {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange-color);
+    margin-bottom: 14px;
+}
+
+.gold-section-title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.gold-section-title h2 {
+    font-size: 44px;
+    margin-bottom: 16px;
+}
+
+.gold-section-title span { color: var(--orange-color); }
+
+.gold-section-title p {
+    font-size: 17px;
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--gray-color-2);
+}
+
+.gold-accent { color: var(--orange-color); }
+
+/* ===========================
+   HERO BANNER
+=========================== */
+.gold-hero-banner {
+    position: relative;
+    background:
+        linear-gradient(160deg, rgba(20,20,20,0.92) 40%, rgba(247,149,51,0.08) 100%),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072') center/cover no-repeat;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 90px 0 0 0;
+    overflow: hidden;
+}
+
+.gold-hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 700px 500px at 80% 50%, rgba(247,149,51,.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* floating glow orbs */
+.gold-hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: gold-orb-float 6s ease-in-out infinite;
+}
+.gold-hero-orb-1 {
+    width: 400px; height: 400px;
+    background: rgba(247,149,51,.12);
+    top: -100px; right: -80px;
+    animation-delay: 0s;
+}
+.gold-hero-orb-2 {
+    width: 280px; height: 280px;
+    background: rgba(234,131,27,.1);
+    bottom: -60px; right: 200px;
+    animation-delay: 2s;
+}
+
+@keyframes gold-orb-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+}
+
+.gold-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    padding: 60px 0;
+}
+
+.gold-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(247,149,51,.15);
+    border: 1px solid rgba(247,149,51,.35);
+    color: var(--orange-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+.gold-hero-badge i { font-size: 14px; }
+
+.gold-hero-content h1 {
+    font-size: 58px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    color: var(--white-color);
+}
+
+.gold-hero-content h1 span { color: var(--orange-color); }
+
+.gold-hero-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray-color-2);
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.gold-hero-actions {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* SITECORE LOGO BADGE on hero */
+.gold-hero-logo-card {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 44px 40px;
+    text-align: center;
+    max-width: 340px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    z-index: 2;
+    transition: .4s;
+}
+
+.gold-hero-logo-card:hover {
+    border-color: var(--orange-color);
+    transform: translateY(-50%) translateY(-8px);
+}
+
+.gold-hero-logo-card img.sitecore-logo {
+    width: 200px;
+    height: 75px;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 auto 24px;
+}
+
+.gold-hero-logo-card .gold-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+    color: var(--white-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.gold-hero-logo-card p {
+    font-size: 15px;
+    color: var(--gray-color-2);
+    line-height: 1.8;
+}
+
+@media (max-width: 1100px) {
+    .gold-hero-logo-card { display: none; }
+    .gold-hero-content { max-width: 100%; }
+    .gold-hero-content h1 { font-size: 44px; }
+}
+
+@media (max-width: 768px) {
+    .gold-hero-content h1 { font-size: 34px; }
+    .gold-hero-content p { font-size: 16px; }
+}
+
+/* ===========================
+   CREDENTIALS & ACHIEVEMENTS
+=========================== */
+.gold-credentials {
+    background: var(--black-color-2);
+    overflow: hidden;
+}
+
+.gold-credentials-track-wrapper {
+    position: relative;
+    margin-top: 10px;
+}
+
+/* fade edges */
+.gold-credentials-track-wrapper::before,
+.gold-credentials-track-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 3;
+    pointer-events: none;
+}
+.gold-credentials-track-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--black-color-2), transparent);
+}
+.gold-credentials-track-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--black-color-2), transparent);
+}
+
+.gold-credentials-track {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 20px 90px;
+    scroll-behavior: smooth;
+}
+.gold-credentials-track::-webkit-scrollbar { display: none; }
+
+.gold-cred-card {
+    flex: 0 0 240px;
+    scroll-snap-align: center;
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 34px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: .35s;
+    position: relative;
+}
+
+.gold-cred-card:hover {
+    border-color: var(--orange-color);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(247,149,51,.15);
+}
+
+/* badge image container */
+.gold-cred-badge-wrap {
+    width: 160px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-color);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    padding: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    overflow: hidden;
+}
+
+.gold-cred-badge-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* gold partner special card */
+.gold-cred-card.gold .gold-cred-badge-wrap {
+    background: linear-gradient(135deg, #c8a84b, #f0d060, #c8a84b);
+}
+
+.gold-cred-card h4 {
+    font-size: 14px;
+    color: var(--white-color);
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.gold-cred-card p {
+    font-size: 13px;
+    color: var(--gray-color);
+    line-height: 1.6;
+}
+
+.gold-cred-card .cred-tag {
+    display: inline-block;
+    background: rgba(247,149,51,.12);
+    border: 1px solid rgba(247,149,51,.3);
+    color: var(--orange-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+}
+
+/* arrow nav buttons */
+.gold-cred-nav {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 36px;
+}
+
+.gold-cred-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(247,149,51,.4);
+    background: rgba(247,149,51,.08);
+    color: var(--orange-color);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+    flex-shrink: 0;
+}
+
+.gold-cred-arrow:hover {
+    background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+    color: var(--white-color);
+    border-color: var(--orange-color);
+    transform: scale(1.08);
+}
+
+/* stat-counts row inside credentials */
+.gold-cred-stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+}
+
+.gold-cred-stat {
+    text-align: center;
+}
+
+.gold-cred-stat .num {
+    font-family: "Orbitron", sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--orange-color);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.gold-cred-stat .lbl {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-color-2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .gold-cred-stats-row { gap: 30px; }
+    .gold-cred-stat .num { font-size: 30px; }
+    .gold-cred-card { flex: 0 0 200px; }
+}
+
+/* ===========================
+   PARTNER STATS STRIP
+=========================== */
+.gold-stats-strip {
+    background: linear-gradient(135deg, var(--black-color-5), var(--black-color-3));
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0;
+}
+
+.gold-stats-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.gold-stat-item {
+    padding: 42px 30px;
+    text-align: center;
+    border-right: 1px solid var(--border-subtle);
+    transition: .3s;
+    position: relative;
+}
+
+.gold-stat-item:last-child { border-right: none; }
+
+.gold-stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--orange-color-3), var(--orange-color));
+    transition: width .4s;
+    border-radius: 3px;
+}
+
+.gold-stat-item:hover::after { width: 80%; }
+
+.gold-stat-number {
+    font-family: "Orbitron", sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    color: var(--orange-color);
+    line-height: 1;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.gold-stat-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-color-2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .gold-stats-strip-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gold-stat-item:nth-child(2) { border-right: none; }
+    .gold-stat-item:nth-child(3) { border-top: 1px solid var(--border-subtle); }
+    .gold-stat-item:nth-child(4) { border-top: 1px solid var(--border-subtle); border-right: none; }
+}
+
+@media (max-width: 480px) {
+    .gold-stats-strip-inner { grid-template-columns: 1fr; }
+    .gold-stat-item { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+}
+
+/* ===========================
+   WHY SITECORE
+=========================== */
+.gold-why-sitecore { background: var(--black-color-2); }
+
+.gold-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.gold-why-list { padding-left: 0; }
+
+.gold-why-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+    font-size: 16px;
+    color: var(--gray-color-2);
+}
+
+.gold-why-list li .check-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(247,149,51,.15);
+    border: 1px solid rgba(247,149,51,.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-color);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Sitecore brand card */
+.gold-sitecore-brand-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    transition: .4s;
+}
+
+.gold-sitecore-brand-card:hover {
+    border-color: var(--orange-color);
+    transform: translateY(-8px);
+    box-shadow: 0 28px 70px rgba(247,149,51,.15);
+}
+
+.gold-sitecore-brand-card img.logo {
+    width: 200px;
+    height: 78px;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 auto 28px;
+}
+
+.gold-sitecore-brand-card p {
+    color: var(--gray-color-2);
+    line-height: 1.9;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.gold-sitecore-brand-card .partner-tier {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+    .gold-why-grid { grid-template-columns: 1fr; gap: 50px; }
+}
+
+/* ===========================
+   PRODUCT OFFERINGS
+=========================== */
+.gold-product-offerings { background: var(--black-color-5); }
+
+.gold-product-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.gold-product-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gold-product-tab {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    padding: 22px 20px;
+    border-radius: 14px;
+    color: var(--white-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gold-product-tab i {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(247,149,51,.12);
+    border: 1px solid rgba(247,149,51,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-color);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.gold-product-tab:hover {
+    transform: translateX(6px);
+    border-color: var(--orange-color);
+}
+
+.gold-product-tab.active {
+    background: linear-gradient(135deg, rgba(247,149,51,.2), rgba(247,149,51,.08));
+    border-left: 4px solid var(--orange-color);
+    color: var(--orange-color);
+}
+
+.gold-product-tab.active i {
+    background: rgba(247,149,51,.25);
+}
+
+/* right panel */
+.gold-product-panels { position: relative; }
+
+.gold-product-panel { display: none; }
+.gold-product-panel.active { display: block; }
+
+.gold-product-img-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gold-product-img-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(20,20,20,.7), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gold-product-img-wrap img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+
+.gold-product-img-wrap:hover img { transform: scale(1.04); }
+
+.gold-product-info-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    padding: 38px;
+    border-radius: 18px;
+    max-width: 88%;
+    margin-top: -70px;
+    margin-left: 36px;
+    position: relative;
+    z-index: 10;
+    border-left: 5px solid var(--orange-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.gold-product-info-card h3 {
+    font-size: 26px;
+    margin-bottom: 16px;
+    color: var(--white-color);
+}
+
+.gold-product-info-card p {
+    color: var(--gray-color-2);
+    line-height: 1.9;
+}
+
+@media (max-width: 992px) {
+    .gold-product-layout { grid-template-columns: 1fr; }
+    .gold-product-info-card { max-width: 100%; margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .gold-product-info-card { padding: 28px; }
+    .gold-product-info-card h3 { font-size: 20px; }
+    .gold-product-img-wrap img { height: 280px; }
+}
+
+/* ===========================
+   SERVICE OFFERINGS
+=========================== */
+.gold-service-offerings { background: var(--black-color-2); }
+
+.gold-service-layout {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.gold-service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gold-service-tab {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    padding: 22px 20px;
+    border-radius: 14px;
+    color: var(--white-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.gold-service-tab:hover {
+    transform: translateX(6px);
+    border-color: var(--orange-color);
+}
+
+.gold-service-tab.active {
+    border-left: 5px solid var(--orange-color);
+    background: linear-gradient(145deg, rgba(247,149,51,.15), rgba(247,149,51,.05));
+    color: var(--orange-color);
+}
+
+.gold-service-tab .tab-arrow {
+    color: var(--orange-color);
+    font-size: 18px;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+/* right panel */
+.gold-service-panels { position: relative; }
+.gold-service-panel { display: none; }
+.gold-service-panel.active { display: block; }
+
+.gold-service-img-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gold-service-img-wrap::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    width: 160px; height: 160px;
+    border-top: 7px solid var(--orange-color);
+    border-left: 7px solid var(--orange-color);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gold-service-img-wrap img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+
+.gold-service-img-wrap:hover img { transform: scale(1.04); }
+
+.gold-service-info-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    padding: 38px;
+    border-radius: 18px;
+    max-width: 88%;
+    margin-top: -80px;
+    margin-left: 36px;
+    position: relative;
+    z-index: 10;
+    border-left: 5px solid var(--orange-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.gold-service-info-card h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+    color: var(--white-color);
+}
+
+.gold-service-info-card p {
+    color: var(--gray-color-2);
+    line-height: 1.9;
+    margin-bottom: 14px;
+}
+
+@media (max-width: 992px) {
+    .gold-service-layout { grid-template-columns: 1fr; }
+    .gold-service-info-card { max-width: 100%; margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .gold-service-img-wrap img { height: 280px; }
+    .gold-service-info-card { padding: 28px; }
+    .gold-service-info-card h3 { font-size: 20px; }
+    .gold-service-tab { font-size: 14px; }
+}
+
+/* ===========================
+   XM CLOUD ACCELERATOR
+=========================== */
+.gold-accelerator { background: var(--black-color-5); }
+
+.gold-accelerator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.gold-accelerator-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.gold-accelerator-image::before {
+    content: '';
+    position: absolute;
+    top: -12px; right: -12px;
+    width: 160px; height: 160px;
+    border-top: 7px solid var(--orange-color);
+    border-right: 7px solid var(--orange-color);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gold-accelerator-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+
+.gold-accelerator-image:hover img { transform: scale(1.04); }
+
+.gold-accelerator-content h2 {
+    font-size: 40px;
+    margin-bottom: 18px;
+}
+
+.gold-accelerator-content > p {
+    color: var(--gray-color-2);
+    margin-bottom: 36px;
+}
+
+.gold-accel-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.gold-accel-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 26px 22px;
+    transition: .3s;
+}
+
+.gold-accel-card:hover {
+    border-color: var(--orange-color);
+    transform: translateY(-4px);
+}
+
+.gold-accel-card .gold-accel-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(247,149,51,.12);
+    border: 1px solid rgba(247,149,51,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-color);
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.gold-accel-card h5 {
+    font-size: 15px;
+    color: var(--white-color);
+    margin-bottom: 8px;
+}
+
+.gold-accel-card p {
+    font-size: 14px;
+    color: var(--gray-color);
+    line-height: 1.7;
+}
+
+@media (max-width: 992px) {
+    .gold-accelerator-grid { grid-template-columns: 1fr; gap: 50px; }
+    .gold-accelerator-image img { height: 360px; }
+}
+
+@media (max-width: 600px) {
+    .gold-accel-cards { grid-template-columns: 1fr; }
+    .gold-accelerator-content h2 { font-size: 28px; }
+}
+
+/* ===========================
+   CERTIFICATION SECTION
+=========================== */
+.gold-certification { background: var(--black-color-2); }
+
+.gold-cert-intro {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.gold-cert-intro h2 { font-size: 42px; margin-bottom: 16px; }
+
+.gold-cert-intro p { color: var(--gray-color-2); }
+
+.gold-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.gold-cert-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 0;
+    background: linear-gradient(to bottom, var(--orange-color), var(--orange-color-3));
+    transition: height .4s;
+    border-radius: 0 0 4px 4px;
+}
+
+.gold-cert-card:hover::before { height: 100%; }
+
+.gold-cert-card:hover {
+    border-color: rgba(247,149,51,.3);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.3);
+}
+
+.gold-cert-card .cert-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(247,149,51,.1);
+    border: 1px solid rgba(247,149,51,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-color);
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.gold-cert-card h4 {
+    font-size: 17px;
+    color: var(--white-color);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.gold-cert-card p {
+    font-size: 14px;
+    color: var(--gray-color);
+    line-height: 1.75;
+    margin-bottom: 22px;
+}
+
+.gold-cert-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange-color);
+    transition: gap .3s;
+}
+
+.gold-cert-card a:hover { gap: 10px; }
+
+@media (max-width: 992px) {
+    .gold-cert-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+    .gold-cert-grid { grid-template-columns: 1fr; }
+    .gold-cert-intro h2 { font-size: 28px; }
+}
+
+/* ===========================
+   EXPERIENCE ECOSYSTEM
+=========================== */
+.gold-ecosystem { background: var(--black-color-5); }
+
+.gold-ecosystem-header {
+    max-width: 680px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.gold-ecosystem-header h2 { font-size: 42px; margin-bottom: 16px; }
+
+.gold-ecosystem-header p { color: var(--gray-color-2); }
+
+.gold-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.gold-step-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: .35s;
+    position: relative;
+}
+
+.gold-step-card:hover {
+    border-color: var(--orange-color);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(247,149,51,.1);
+}
+
+.gold-step-number {
+    font-family: "Orbitron", sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: rgba(247,149,51,.12);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.gold-step-card h4 {
+    font-size: 19px;
+    color: var(--orange-color);
+    margin-bottom: 16px;
+}
+
+.gold-step-check-list { padding-left: 0; }
+
+.gold-step-check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--gray-color-2);
+    margin-bottom: 10px;
+}
+
+.gold-step-check-list li i {
+    color: var(--orange-color);
+    font-size: 12px;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+    .gold-steps-grid { grid-template-columns: 1fr; }
+    .gold-ecosystem-header h2 { font-size: 30px; }
+}
+
+/* ===========================
+   SUCCESS STORIES
+=========================== */
+.gold-success-stories { background: var(--black-color-2); }
+
+.gold-success-wrapper {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.gold-success-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.gold-success-image::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    width: 160px; height: 160px;
+    border-top: 7px solid var(--orange-color);
+    border-left: 7px solid var(--orange-color);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gold-success-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+
+.gold-success-image:hover img { transform: scale(1.05); }
+
+.gold-success-content {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-left: 5px solid var(--orange-color);
+    border-radius: 24px;
+    padding: 50px 44px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.gold-success-content .industry-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(247,149,51,.12);
+    border: 1px solid rgba(247,149,51,.3);
+    color: var(--orange-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.gold-success-content h3 {
+    font-size: 32px;
+    line-height: 1.35;
+    margin-bottom: 22px;
+    color: var(--white-color);
+}
+
+.gold-success-content p {
+    color: var(--gray-color-2);
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+.gold-success-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 28px 0;
+}
+
+.gold-metric-box {
+    text-align: center;
+    padding: 18px 10px;
+    background: rgba(247,149,51,.06);
+    border: 1px solid rgba(247,149,51,.15);
+    border-radius: 12px;
+}
+
+.gold-metric-box .metric-val {
+    font-family: "Orbitron", sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--orange-color);
+    display: block;
+}
+
+.gold-metric-box .metric-lbl {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    color: var(--gray-color);
+    display: block;
+    margin-top: 4px;
+}
+
+@media (max-width: 992px) {
+    .gold-success-wrapper { grid-template-columns: 1fr; gap: 50px; }
+    .gold-success-image img { height: 350px; }
+}
+
+@media (max-width: 600px) {
+    .gold-success-content { padding: 34px 26px; }
+    .gold-success-content h3 { font-size: 22px; }
+    .gold-success-metrics { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   GLOBAL PRESENCE
+=========================== */
+.gold-global-presence { background: var(--black-color-5); }
+
+.gold-presence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.gold-presence-card {
+    background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: .35s;
+}
+
+.gold-presence-card:hover {
+    border-color: rgba(247,149,51,.4);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+
+.gold-presence-card .pcard-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(247,149,51,.1);
+    border: 1px solid rgba(247,149,51,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-color);
+    font-size: 22px;
+    margin-bottom: 22px;
+}
+
+.gold-presence-card h4 {
+    font-size: 18px;
+    color: var(--white-color);
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.gold-presence-card p {
+    font-size: 15px;
+    color: var(--gray-color);
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.gold-presence-card .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray-color-2);
+    margin-bottom: 10px;
+}
+
+.gold-presence-card .check-item i {
+    color: var(--orange-color);
+    font-size: 12px;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+    .gold-presence-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   CTA BANNER
+=========================== */
+.gold-cta-banner {
+    padding: 100px 0;
+    background:
+        linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(247,149,51,0.08) 100%),
+        url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(247,149,51,.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.gold-cta-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.gold-cta-inner h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.gold-cta-inner p {
+    font-size: 18px;
+    color: var(--gray-color-2);
+    margin-bottom: 44px;
+    line-height: 1.8;
+}
+
+.gold-cta-actions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .gold-cta-inner h2 { font-size: 30px; }
+    .gold-cta-inner p { font-size: 16px; }
+}
+
+/* ===========================
+   RESPONSIVE SECTION TITLE
+=========================== */
+@media (max-width: 768px) {
+    .gold-section-title h2 { font-size: 28px; }
+    .gold-partner-page section { padding: 70px 0; }
+}
+
+/* ===========================
+   FADE-IN ANIMATION
+=========================== */
+.gold-fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+.gold-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

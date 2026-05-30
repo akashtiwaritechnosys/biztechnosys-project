@@ -1,0 +1,3152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BizTechnosys is a certified Sitecore Gold Partner delivering end-to-end digital experience solutions â€” XM Cloud, Content Hub, OrderCloud, personalization and more.">
+
+    <title>Sitecore Gold Partner | BizTechnosys</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap 5  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+
+    <!-- ROOT THEME â€” fonts, color tokens, buttons, typography, scrollbar -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <style>
+        /* -------------------------------------------------------
+           Page-specific variables not in root.css
+        ------------------------------------------------------- */
+        /* :root {
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        } */
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black-color-2);
+            color: var(--white-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange-color);
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 44px;
+            margin-bottom: 16px;
+        }
+
+        .section-title span {
+            color: var(--orange-color);
+        }
+
+        .section-title p {
+            font-size: 17px;
+            max-width: 620px;
+            margin: 0 auto;
+            color: var(--gray-color-2);
+        }
+
+        .accent {
+            color: var(--orange-color);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2), var(--orange-color-3));
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            color: var(--white-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 30px rgba(247, 149, 51, .35);
+            letter-spacing: .5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(247, 149, 51, .6);
+        }
+
+        .btn-primary i {
+            font-size: 14px;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border: 2px solid var(--orange-color);
+            color: var(--orange-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: .3s;
+            letter-spacing: .5px;
+        }
+
+        .btn-outline:hover {
+            background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+            color: var(--white-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(247, 149, 51, .4);
+        }
+
+        /* ===========================
+           HERO BANNER
+        =========================== */
+        .hero-banner {
+            position: relative;
+            background:
+                linear-gradient(160deg, rgba(20, 20, 20, 0.92) 40%, rgba(247, 149, 51, 0.08) 100%),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072') center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 80% 50%, rgba(247, 149, 51, .08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* floating glow orbs */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: orb-float 6s ease-in-out infinite;
+        }
+
+        .hero-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(247, 149, 51, .12);
+            top: -100px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+
+        .hero-orb-2 {
+            width: 280px;
+            height: 280px;
+            background: rgba(234, 131, 27, .1);
+            bottom: -60px;
+            right: 200px;
+            animation-delay: 2s;
+        }
+
+        @keyframes orb-float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 60px 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(247, 149, 51, .15);
+            border: 1px solid rgba(247, 149, 51, .35);
+            color: var(--orange-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        .hero-badge i {
+            font-size: 14px;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--white-color);
+        }
+
+        .hero-content h1 span {
+            color: var(--orange-color);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray-color-2);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* SITECORE LOGO BADGE on hero */
+        .hero-logo-card {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 44px 40px;
+            text-align: center;
+            max-width: 340px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            z-index: 2;
+            transition: .4s;
+        }
+
+        .hero-logo-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-50%) translateY(-8px);
+        }
+
+        .hero-logo-card img.sitecore-logo {
+            width: 200px;
+            height: 75px;
+            object-fit: contain;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 0 auto 24px;
+        }
+
+        .hero-logo-card .gold-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+            color: var(--white-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .hero-logo-card p {
+            font-size: 15px;
+            color: var(--gray-color-2);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1100px) {
+            .hero-logo-card {
+                display: none;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 34px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===========================
+           PARTNER STATS STRIP
+        =========================== */
+        /* ===========================
+           CREDENTIALS & ACHIEVEMENTS
+        =========================== */
+        .credentials {
+            background: var(--black-color-2);
+            overflow: hidden;
+        }
+
+        .credentials-track-wrapper {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        /* fade edges */
+        .credentials-track-wrapper::before,
+        .credentials-track-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .credentials-track-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--black-color-2), transparent);
+        }
+
+        .credentials-track-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--black-color-2), transparent);
+        }
+
+        .credentials-track {
+            display: flex;
+            gap: 28px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 20px 90px;
+            scroll-behavior: smooth;
+        }
+
+        .credentials-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cred-card {
+            flex: 0 0 240px;
+            scroll-snap-align: center;
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 34px 26px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: .35s;
+            position: relative;
+        }
+
+        .cred-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(247, 149, 51, .15);
+        }
+
+        /* badge image container */
+        .cred-badge-wrap {
+            width: 160px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white-color);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            padding: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .25);
+            overflow: hidden;
+        }
+
+        .cred-badge-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* gold partner special card */
+        .cred-card.gold .cred-badge-wrap {
+            background: linear-gradient(135deg, #c8a84b, #f0d060, #c8a84b);
+        }
+
+        .cred-card h4 {
+            font-size: 14px;
+            color: var(--white-color);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .cred-card p {
+            font-size: 13px;
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+
+        .cred-card .cred-tag {
+            display: inline-block;
+            background: rgba(247, 149, 51, .12);
+            border: 1px solid rgba(247, 149, 51, .3);
+            color: var(--orange-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+        }
+
+        /* arrow nav buttons */
+        .cred-nav {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .cred-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(247, 149, 51, .4);
+            background: rgba(247, 149, 51, .08);
+            color: var(--orange-color);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .3s;
+            flex-shrink: 0;
+        }
+
+        .cred-arrow:hover {
+            background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+            color: var(--white-color);
+            border-color: var(--orange-color);
+            transform: scale(1.08);
+        }
+
+        /* stat-counts row inside credentials */
+        .cred-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 52px;
+            flex-wrap: wrap;
+        }
+
+        .cred-stat {
+            text-align: center;
+        }
+
+        .cred-stat .num {
+            font-family: "Orbitron", sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--orange-color);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .cred-stat .lbl {
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-color-2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .cred-stats-row {
+                gap: 30px;
+            }
+
+            .cred-stat .num {
+                font-size: 30px;
+            }
+
+            .cred-card {
+                flex: 0 0 200px;
+            }
+        }
+
+        /* ===========================
+           STATS STRIP
+        =========================== */
+        .stats-strip {
+            background: linear-gradient(135deg, var(--black-color-5), var(--black-color-3));
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0;
+        }
+
+        .stats-strip-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-item {
+            padding: 42px 30px;
+            text-align: center;
+            border-right: 1px solid var(--border-subtle);
+            transition: .3s;
+            position: relative;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--orange-color-3), var(--orange-color));
+            transition: width .4s;
+            border-radius: 3px;
+        }
+
+        .stat-item:hover::after {
+            width: 80%;
+        }
+
+        .stat-number {
+            font-family: "Orbitron", sans-serif;
+            font-size: 46px;
+            font-weight: 800;
+            color: var(--orange-color);
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-color-2);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .stats-strip-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .stat-item:nth-child(3) {
+                border-top: 1px solid var(--border-subtle);
+            }
+
+            .stat-item:nth-child(4) {
+                border-top: 1px solid var(--border-subtle);
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-strip-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+        }
+
+        /* ===========================
+           WHY SITECORE
+        =========================== */
+        .why-sitecore {
+            background: var(--black-color-2);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .why-list {
+            padding-left: 0;
+        }
+
+        .why-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 22px;
+            font-size: 16px;
+            color: var(--gray-color-2);
+        }
+
+        .why-list li .check-icon {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(247, 149, 51, .15);
+            border: 1px solid rgba(247, 149, 51, .4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-color);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* Sitecore brand card */
+        .sitecore-brand-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+            transition: .4s;
+        }
+
+        .sitecore-brand-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-8px);
+            box-shadow: 0 28px 70px rgba(247, 149, 51, .15);
+        }
+
+        .sitecore-brand-card img.logo {
+            width: 200px;
+            height: 78px;
+            object-fit: contain;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 0 auto 28px;
+        }
+
+        .sitecore-brand-card p {
+            color: var(--gray-color-2);
+            line-height: 1.9;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .sitecore-brand-card .partner-tier {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--orange-color-3), var(--orange-color-2));
+            color: white;
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        /* ===========================
+           PRODUCT OFFERINGS
+        =========================== */
+        .product-offerings {
+            background: var(--black-color-5);
+        }
+
+        .product-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .product-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .product-tab {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            padding: 22px 20px;
+            border-radius: 14px;
+            color: var(--white-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .3s;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product-tab i {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(247, 149, 51, .12);
+            border: 1px solid rgba(247, 149, 51, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-color);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .product-tab:hover {
+            transform: translateX(6px);
+            border-color: var(--orange-color);
+        }
+
+        .product-tab.active {
+            background: linear-gradient(135deg, rgba(247, 149, 51, .2), rgba(247, 149, 51, .08));
+            border-left: 4px solid var(--orange-color);
+            color: var(--orange-color);
+        }
+
+        .product-tab.active i {
+            background: rgba(247, 149, 51, .25);
+        }
+
+        /* right panel */
+        .product-panels {
+            position: relative;
+        }
+
+        .product-panel {
+            display: none;
+        }
+
+        .product-panel.active {
+            display: block;
+        }
+
+        .product-img-wrap {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img-wrap::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(20, 20, 20, .7), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .product-img-wrap:hover img {
+            transform: scale(1.04);
+        }
+
+        .product-info-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            padding: 38px;
+            border-radius: 18px;
+            max-width: 88%;
+            margin-top: -70px;
+            margin-left: 36px;
+            position: relative;
+            z-index: 10;
+            border-left: 5px solid var(--orange-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+        }
+
+        .product-info-card h3 {
+            font-size: 26px;
+            margin-bottom: 16px;
+            color: var(--white-color);
+        }
+
+        .product-info-card p {
+            color: var(--gray-color-2);
+            line-height: 1.9;
+        }
+
+        @media (max-width: 992px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .product-info-card {
+                max-width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-info-card {
+                padding: 28px;
+            }
+
+            .product-info-card h3 {
+                font-size: 20px;
+            }
+
+            .product-img-wrap img {
+                height: 280px;
+            }
+        }
+
+        /* ===========================
+           SERVICE OFFERINGS
+        =========================== */
+        .service-offerings {
+            background: var(--black-color-2);
+        }
+
+        .service-layout {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .service-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .service-tab {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            padding: 22px 20px;
+            border-radius: 14px;
+            color: var(--white-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .3s;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .service-tab:hover {
+            transform: translateX(6px);
+            border-color: var(--orange-color);
+        }
+
+        .service-tab.active {
+            border-left: 5px solid var(--orange-color);
+            background: linear-gradient(145deg, rgba(247, 149, 51, .15), rgba(247, 149, 51, .05));
+            color: var(--orange-color);
+        }
+
+        .service-tab .tab-arrow {
+            color: var(--orange-color);
+            font-size: 18px;
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+
+        /* right panel */
+        .service-panels {
+            position: relative;
+        }
+
+        .service-panel {
+            display: none;
+        }
+
+        .service-panel.active {
+            display: block;
+        }
+
+        .service-img-wrap {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img-wrap::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 160px;
+            height: 160px;
+            border-top: 7px solid var(--orange-color);
+            border-left: 7px solid var(--orange-color);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .service-img-wrap img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .service-img-wrap:hover img {
+            transform: scale(1.04);
+        }
+
+        .service-info-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            padding: 38px;
+            border-radius: 18px;
+            max-width: 88%;
+            margin-top: -80px;
+            margin-left: 36px;
+            position: relative;
+            z-index: 10;
+            border-left: 5px solid var(--orange-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+        }
+
+        .service-info-card h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: var(--white-color);
+        }
+
+        .service-info-card p {
+            color: var(--gray-color-2);
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .service-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .service-info-card {
+                max-width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-img-wrap img {
+                height: 280px;
+            }
+
+            .service-info-card {
+                padding: 28px;
+            }
+
+            .service-info-card h3 {
+                font-size: 20px;
+            }
+
+            .service-tab {
+                font-size: 14px;
+            }
+        }
+
+        /* ===========================
+           XM CLOUD ACCELERATOR
+        =========================== */
+        .accelerator {
+            background: var(--black-color-5);
+        }
+
+        .accelerator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .accelerator-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .accelerator-image::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 160px;
+            height: 160px;
+            border-top: 7px solid var(--orange-color);
+            border-right: 7px solid var(--orange-color);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .accelerator-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .accelerator-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .accelerator-content h2 {
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        .accelerator-content>p {
+            color: var(--gray-color-2);
+            margin-bottom: 36px;
+        }
+
+        .accel-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .accel-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 26px 22px;
+            transition: .3s;
+        }
+
+        .accel-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-4px);
+        }
+
+        .accel-card .accel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(247, 149, 51, .12);
+            border: 1px solid rgba(247, 149, 51, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-color);
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .accel-card h5 {
+            font-size: 15px;
+            color: var(--white-color);
+            margin-bottom: 8px;
+        }
+
+        .accel-card p {
+            font-size: 14px;
+            color: var(--gray-color);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 992px) {
+            .accelerator-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .accelerator-image img {
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .accel-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .accelerator-content h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ===========================
+           CERTIFICATION SECTION
+        =========================== */
+        .certification {
+            background: var(--black-color-2);
+        }
+
+        .cert-intro {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .cert-intro h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .cert-intro p {
+            color: var(--gray-color-2);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .cert-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 36px 28px;
+            transition: .3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--orange-color), var(--orange-color-3));
+            transition: height .4s;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .cert-card:hover::before {
+            height: 100%;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(247, 149, 51, .3);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+        }
+
+        .cert-card .cert-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(247, 149, 51, .1);
+            border: 1px solid rgba(247, 149, 51, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-color);
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .cert-card h4 {
+            font-size: 17px;
+            color: var(--white-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .cert-card p {
+            font-size: 14px;
+            color: var(--gray-color);
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        .cert-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--orange-color);
+            transition: gap .3s;
+        }
+
+        .cert-card a:hover {
+            gap: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .cert-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-intro h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ===========================
+           EXPERIENCE ECOSYSTEM
+        =========================== */
+        .ecosystem {
+            background: var(--black-color-5);
+        }
+
+        .ecosystem-header {
+            max-width: 680px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .ecosystem-header h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .ecosystem-header p {
+            color: var(--gray-color-2);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .step-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: .35s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            border-color: var(--orange-color);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(247, 149, 51, .1);
+        }
+
+        .step-number {
+            font-family: "Orbitron", sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: rgba(247, 149, 51, .12);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .step-card h4 {
+            font-size: 19px;
+            color: var(--orange-color);
+            margin-bottom: 16px;
+        }
+
+        .step-check-list {
+            padding-left: 0;
+        }
+
+        .step-check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--gray-color-2);
+            margin-bottom: 10px;
+        }
+
+        .step-check-list li i {
+            color: var(--orange-color);
+            font-size: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 992px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-header h2 {
+                font-size: 30px;
+            }
+        }
+
+        /* ===========================
+           SUCCESS STORIES
+        =========================== */
+        .success-stories {
+            background: var(--black-color-2);
+        }
+
+        .success-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .success-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .success-image::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 160px;
+            height: 160px;
+            border-top: 7px solid var(--orange-color);
+            border-left: 7px solid var(--orange-color);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .success-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .success-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .success-content {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-left: 5px solid var(--orange-color);
+            border-radius: 24px;
+            padding: 50px 44px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+        }
+
+        .success-content .industry-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(247, 149, 51, .12);
+            border: 1px solid rgba(247, 149, 51, .3);
+            color: var(--orange-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+        }
+
+        .success-content h3 {
+            font-size: 32px;
+            line-height: 1.35;
+            margin-bottom: 22px;
+            color: var(--white-color);
+        }
+
+        .success-content p {
+            color: var(--gray-color-2);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .success-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin: 28px 0;
+        }
+
+        .metric-box {
+            text-align: center;
+            padding: 18px 10px;
+            background: rgba(247, 149, 51, .06);
+            border: 1px solid rgba(247, 149, 51, .15);
+            border-radius: 12px;
+        }
+
+        .metric-box .metric-val {
+            font-family: "Orbitron", sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--orange-color);
+            display: block;
+        }
+
+        .metric-box .metric-lbl {
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            color: var(--gray-color);
+            display: block;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 992px) {
+            .success-wrapper {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .success-image img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .success-content {
+                padding: 34px 26px;
+            }
+
+            .success-content h3 {
+                font-size: 22px;
+            }
+
+            .success-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================
+           GLOBAL PRESENCE
+        =========================== */
+        .global-presence {
+            background: var(--black-color-5);
+        }
+
+        .presence-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .presence-card {
+            background: linear-gradient(145deg, var(--black-color-3), var(--black-color-4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 36px 28px;
+            transition: .35s;
+        }
+
+        .presence-card:hover {
+            border-color: rgba(247, 149, 51, .4);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+        }
+
+        .presence-card .pcard-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(247, 149, 51, .1);
+            border: 1px solid rgba(247, 149, 51, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-color);
+            font-size: 22px;
+            margin-bottom: 22px;
+        }
+
+        .presence-card h4 {
+            font-size: 18px;
+            color: var(--white-color);
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .presence-card p {
+            font-size: 15px;
+            color: var(--gray-color);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .presence-card .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--gray-color-2);
+            margin-bottom: 10px;
+        }
+
+        .presence-card .check-item i {
+            color: var(--orange-color);
+            font-size: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 992px) {
+            .presence-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================
+           CTA BANNER
+        =========================== */
+        .cta-banner {
+            padding: 100px 0;
+            background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(247, 149, 51, 0.08) 100%),
+                url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(247, 149, 51, .07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta-inner h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .cta-inner p {
+            font-size: 18px;
+            color: var(--gray-color-2);
+            margin-bottom: 44px;
+            line-height: 1.8;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .cta-inner h2 {
+                font-size: 30px;
+            }
+
+            .cta-inner p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===========================
+           RESPONSIVE SECTION TITLE
+        =========================== */
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        /* ===========================
+           FADE-IN ANIMATION
+        =========================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+</head>
+
+<body>
+  <header class="py-4 px-3 px-md-2 px-lg-3 px-xl-5">
+      <nav class="navbar navbar-expand-lg navbar-bg-clr">
+        <div class="container-fluid px-md-4 px-lg-2 px-xl-4">
+
+          <a class="navbar-brand fw-bold" href="./index.html">
+            <img src="./images/biztech-logo.svg" class="navbar-logo" alt="Biztechnosys" />
+          </a>
+
+          <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars toggle-btn"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+              <!-- AI EXPERIENCE PLATFORM -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="sitecoreDropdown" role="button" aria-expanded="false">
+
+                  AI + Sitecore
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="sitecoreDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="agentic-dxp">
+                        <span>Agentic DXP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-content">
+                        <span>AI Content Operations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-ai">
+                        <span>Sitecore XM Cloud + AI
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-personalization">
+                        <span>AI Personalization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-search">
+                        <span>AI Search & Recommendations
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="workflow-automation">
+                        <span>AI Workflow Automation</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="ai-lab">
+                        <span>AI Lab</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- AGENTIC DXP -->
+                      <div class="mega-content active" id="agentic-dxp">
+                        <h4>Agentic Sitecore DXP Implementation</h4>
+
+                        <p>
+                          Deploy autonomous AI agents inside your Sitecore ecosystem
+                          for self-optimizing digital experiences.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="./ai-sitecore.html">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+                      <div class="mega-content" id="ai-lab">
+
+                        <h4>AI Lab</h4>
+
+                        <p>
+                          Explore the latest AI innovations and applications.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Experience Assistant</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- SOLUTIONS -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="solutionDropdown" role="button" aria-expanded="false">
+
+                  Solution
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="solutionDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="sitecore-modernization">
+                        <span>Sitecore Modernization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-migration">
+                        <span>XM Cloud Migration</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="composable-dxp">
+                        <span>Composable DXP
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-cdp">
+                        <span>Sitecore CDP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-dam">
+                        <span>Sitecore DAM
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="managed-dxp-services">
+                        <span>Managed DXP Services</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="enterprise-integrations">
+                        <span>Enterprise Integrations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- SITECORE MODERNIZATION -->
+                      <div class="mega-content active" id="sitecore-modernization">
+                        <h4>Sitecore Modernization</h4>
+
+                        <p>
+                          Transform your Sitecore environment with the latest technologies and best practices.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+                          <li><a class="dropdown-item" href="#">Legacy to Headless Transformation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+              <!-- INSIGHTS -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+
+                  Insights
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+
+                  <li><a class="dropdown-item" href="#">AI + Sitecore</a></li>
+                  <li><a class="dropdown-item" href="#">XM Cloud</a></li>
+                  <li><a class="dropdown-item" href="#">DXP Strategy</a></li>
+                  <li><a class="dropdown-item" href="#">Personalization</a></li>
+                  <li><a class="dropdown-item" href="#">Composable Architecture</a></li>
+                  <li><a class="dropdown-item" href="./case-studies.html">Case Studies</a></li>
+                  <li><a class="dropdown-item" href="./Insights-ai-sitecore.html">Insights</a></li>
+
+
+
+                </ul>
+
+              </li>
+
+              <!-- COMPANY -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="companyDropdown" role="button" aria-expanded="false">
+
+                  Partner
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+
+                  <li><a class="dropdown-item" href="./sitecore-gold-partner.html">🥇 Sitecore Gold Partner</a></li>
+                  <li><a class="dropdown-item" href="./technology-ecosystem.html">Technology Ecosystem</a></li>
+                  <li><a class="dropdown-item" href="./sitecore-delivery-modal.html">Delivery Model</a></li>
+                  <hr>  
+                  <li><a class="dropdown-item" href="./about-us.html">About Us</a></li>
+                  <li><a class="dropdown-item" href="./career.html">Careers</a></li>
+                  <li><a class="dropdown-item" href="./blog.html">Blogs</a></li>
+                  <li><a class="dropdown-item" href="./contact.html">Contact Us</a></li>
+
+                </ul>
+
+              </li>
+
+              <!-- AI LAB -->
+
+
+            </ul>
+
+            <a href="./new-menu.html" class="fourth-button px-4 py-2" target="_blank">
+              New Menu
+            </a>
+            <a href="./contact.html" class="third-button px-4 py-2">
+              Live Demo
+            </a>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="hero-banner">
+        
+        <!-- floating orbs -->
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+
+        <div class="container" style="position:relative; z-index:2;">
+            <div class="hero-content fade-in">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-star"></i>
+                    Sitecore Gold Partner Â· Certified Experts
+                </div>
+
+                <h1>
+                    Transforming Digital<br>
+                    Experiences with<br>
+                    <span>Sitecore</span>
+                </h1>
+
+                <p>
+                    BizTechnosys is a certified Sitecore Gold Partner delivering end-to-end DXP
+                    solutions â€” from XM Cloud migrations to omnichannel personalization â€”
+                    helping enterprises accelerate growth and delight customers.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#cta" class="btn-primary" id="hero-cta-primary">
+                        <i class="fa-solid fa-rocket"></i>
+                        Talk To Our Expert
+                    </a>
+                    <a href="#why-sitecore" class="btn-outline" id="hero-cta-secondary">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+
+            <!-- floating logo card -->
+            <div class="hero-logo-card">
+                <img class="sitecore-logo"
+                    src="https://www.espire.com/-/media/feature/partners/sitecore.jpg?h=135&iar=0&w=254&hash=9FED92F683EFEF811293D80FDADF7407"
+                    alt="Sitecore Logo">
+                <div class="gold-badge">
+                    <i class="fa-solid fa-award"></i>
+                    Gold Partner
+                </div>
+                <p>
+                    Sitecore's leading composable DXP â€” powering personalized, scalable
+                    digital experiences for enterprises worldwide.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         2. PARTNER STATS STRIP
+    ================================ -->
+    <div class="stats-strip" id="stats">
+        <div class="container">
+            <div class="stats-strip-inner">
+                <div class="stat-item fade-in">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years of Sitecore Expertise</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Certified Sitecore Professionals</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number">120+</span>
+                    <span class="stat-label">Successful Implementations</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Sitecore MVPs in Our Team</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===============================
+         2b. CREDENTIALS & ACHIEVEMENTS
+    ================================ -->
+    <section class="credentials" id="credentials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">Recognition & Awards</span>
+                <h2>OUR CREDENTIALS <span>&amp; ACHIEVEMENTS</span></h2>
+                <p>A track record of excellence â€” recognised by Sitecore and trusted by enterprises worldwide.</p>
+            </div>
+
+            <!-- stat counts -->
+            <div class="cred-stats-row fade-in">
+                <div class="cred-stat">
+                    <span class="num">75+</span>
+                    <span class="lbl">Sitecore Resources</span>
+                </div>
+                <div class="cred-stat">
+                    <span class="num">4</span>
+                    <span class="lbl">Sitecore MVPs</span>
+                </div>
+                <div class="cred-stat">
+                    <span class="num">Gold</span>
+                    <span class="lbl">Partner Status</span>
+                </div>
+                <div class="cred-stat">
+                    <span class="num">120+</span>
+                    <span class="lbl">Clients Served</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAROUSEL (full-width) -->
+        <div class="credentials-track-wrapper">
+            <div class="credentials-track" id="credTrack">
+
+                <!-- Card: Clients Served stat -->
+                <div class="cred-card" id="cred-c1">
+                    <span class="cred-tag">Since 2009</span>
+                    <div class="cred-badge-wrap" style="background: linear-gradient(145deg,#252525,#262626);">
+                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="36" cy="24" r="13" stroke="#F79533" stroke-width="3" fill="none" />
+                            <path d="M12 60c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#F79533" stroke-width="3"
+                                stroke-linecap="round" fill="none" />
+                        </svg>
+                    </div>
+                    <h4>120+ Clients Served</h4>
+                    <p>Enterprises across ANZ, EMEA &amp; AMER</p>
+                </div>
+
+                <!-- Card: MVP 2024 Technology - Raman Gupta -->
+                <div class="cred-card" id="cred-c2">
+                    <span class="cred-tag">MVP 2024</span>
+                    <div class="cred-badge-wrap">
+                        <img src="https://www.espire.com/-/media/feature/partners/sitecore.jpg?h=135&iar=0&w=254&hash=9FED92F683EFEF811293D80FDADF7407"
+                            alt="Sitecore MVP 2024 Technology">
+                    </div>
+                    <h4>MVP 2024 â€” Technology</h4>
+                    <p>Raman Gupta<br><em style="font-size:12px;color:var(--gray-color)">Technical Architect,
+                            Sitecore</em></p>
+                </div>
+
+                <!-- Card: MVP 2024 Ambassador - Vikas Kumar -->
+                <div class="cred-card" id="cred-c3">
+                    <span class="cred-tag">MVP 2024</span>
+                    <div class="cred-badge-wrap">
+                        <img src="https://www.espire.com/-/media/feature/partners/sitecore.jpg?h=135&iar=0&w=254&hash=9FED92F683EFEF811293D80FDADF7407"
+                            alt="Sitecore MVP 2024 Ambassador">
+                    </div>
+                    <h4>MVP 2024 â€” Ambassador</h4>
+                    <p>Vikas Kumar<br><em style="font-size:12px;color:var(--gray-color)">Director, CX &amp; DXP
+                            Services</em></p>
+                </div>
+
+                <!-- Card: Gold Partner -->
+                <div class="cred-card gold" id="cred-c4">
+                    <span class="cred-tag"
+                        style="background:rgba(200,168,75,.18);border-color:rgba(200,168,75,.4);color:#d4aa50;">Gold
+                        Partner</span>
+                    <div class="cred-badge-wrap">
+                        <img src="https://www.espire.com/-/media/feature/partners/sitecore.jpg?h=135&iar=0&w=254&hash=9FED92F683EFEF811293D80FDADF7407"
+                            alt="Sitecore Gold Partner">
+                    </div>
+                    <h4>Sitecore Gold Partner</h4>
+                    <p>Gold Partner â€“ ANZ<br>Silver Partner â€“ UK, US, Singapore</p>
+                </div>
+
+                <!-- Card: Experience Award 2021 -->
+                <div class="cred-card" id="cred-c5">
+                    <span class="cred-tag">Award</span>
+                    <div class="cred-badge-wrap" style="background:linear-gradient(145deg,#252525,#262626);">
+                        <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M34 8l6.5 13.2L56 23.4l-11 10.7 2.6 15.1L34 42l-13.6 7.2 2.6-15.1-11-10.7 15.5-2.2L34 8z"
+                                stroke="#F79533" stroke-width="2.5" fill="none" stroke-linejoin="round" />
+                            <line x1="24" y1="58" x2="44" y2="58" stroke="#F79533" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <line x1="34" y1="49" x2="34" y2="58" stroke="#F79533" stroke-width="2.5"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h4>Sitecore Experience Award 2021</h4>
+                    <p>Best Digital Experience â€” Higher Education category</p>
+                </div>
+
+                <!-- Card: Experience Award 2019 -->
+                <div class="cred-card" id="cred-c6">
+                    <span class="cred-tag">Award</span>
+                    <div class="cred-badge-wrap" style="background:linear-gradient(145deg,#252525,#262626);">
+                        <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M34 8l6.5 13.2L56 23.4l-11 10.7 2.6 15.1L34 42l-13.6 7.2 2.6-15.1-11-10.7 15.5-2.2L34 8z"
+                                stroke="#EA831B" stroke-width="2.5" fill="none" stroke-linejoin="round" />
+                            <line x1="24" y1="58" x2="44" y2="58" stroke="#EA831B" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <line x1="34" y1="49" x2="34" y2="58" stroke="#EA831B" stroke-width="2.5"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h4>Sitecore Experience Award 2019</h4>
+                    <p>Best Personalisation Strategy â€” Retail sector</p>
+                </div>
+
+                <!-- Card: 75+ Sitecore Resources -->
+                <div class="cred-card" id="cred-c7">
+                    <span class="cred-tag">Team</span>
+                    <div class="cred-badge-wrap" style="background:linear-gradient(145deg,#252525,#262626);">
+                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="26" r="10" stroke="#F79533" stroke-width="2.5" fill="none" />
+                            <circle cx="48" cy="26" r="10" stroke="#F79533" stroke-width="2.5" fill="none" />
+                            <path d="M4 58c0-11.046 8.954-20 20-20" stroke="#F79533" stroke-width="2.5"
+                                stroke-linecap="round" fill="none" />
+                            <path d="M48 38c11.046 0 20 8.954 20 20" stroke="#F79533" stroke-width="2.5"
+                                stroke-linecap="round" fill="none" />
+                            <path d="M28 38h16" stroke="#F79533" stroke-width="2.5" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h4>75+ Sitecore Certified Resources</h4>
+                    <p>Developers, architects, marketers &amp; consultants</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Nav Arrows -->
+        <div class="cred-nav">
+            <button class="cred-arrow" id="credPrev" aria-label="Previous">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="cred-arrow" id="credNext" aria-label="Next">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===============================
+         3. WHY SITECORE
+    ================================ -->
+    <section class="why-sitecore" id="why-sitecore">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">Technology Partner | Global</span>
+                <h2>WHY <span>SITECORE?</span></h2>
+                <p>A composable, cloud-native DXP built for enterprises that demand personalisation at scale.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-content fade-in">
+                    <ul class="why-list">
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            Sitecore is a leading digital experience platform enabling marketers to create engaging
+                            customer experiences across all digital touchpoints.
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            Advanced analytics, API-based architecture, and omnichannel delivery help brands deliver
+                            personalized experiences at enterprise scale.
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            Powerful marketing automation, AI-driven personalization, and customer journey mapping
+                            put the right message in front of the right audience.
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            Cloud-native and composable architecture enables enterprises to modernise their digital
+                            ecosystems without disruption.
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            Scalability, flexibility, and seamless third-party integrations make Sitecore the
+                            enterprise platform of choice for digital leaders.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="why-image fade-in">
+                    <div class="sitecore-brand-card">
+                        <img class="logo"
+                            src="https://www.espire.com/-/media/feature/partners/sitecore.jpg?h=135&iar=0&w=254&hash=9FED92F683EFEF811293D80FDADF7407"
+                            alt="Sitecore">
+                        <div class="partner-tier">
+                            <i class="fa-solid fa-award"></i>
+                            Gold Partner
+                        </div>
+                        <p>
+                            Sitecore is one of the leading Digital Experience Platforms â€” comprehensive and
+                            cloud-based,
+                            designed to deliver personalised experiences. Built for enterprises that need scalability,
+                            personalization, and seamless integration.
+                        </p>
+                        <a href="https://www.sitecore.com/" target="_blank" class="btn-primary">
+                            View Sitecore Website
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         4. SITECORE PRODUCT OFFERINGS
+    ================================ -->
+    <section class="product-offerings" id="products">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">Composable DXP Suite</span>
+                <h2>SITECORE <span>PRODUCT OFFERINGS</span></h2>
+                <p>Select the right Sitecore product to power your digital strategy.</p>
+            </div>
+
+            <div class="product-layout">
+                <!-- SIDEBAR TABS -->
+                <div class="product-sidebar" id="product-sidebar">
+                    <div class="product-tab active" data-panel="prod-1" id="prod-tab-1">
+                        <i class="fa-solid fa-cloud"></i>
+                        Sitecore XM Cloud
+                    </div>
+                    <div class="product-tab" data-panel="prod-2" id="prod-tab-2">
+                        <i class="fa-solid fa-user-check"></i>
+                        Sitecore CDP & Personalize
+                    </div>
+                    <div class="product-tab" data-panel="prod-3" id="prod-tab-3">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Sitecore OrderCloud
+                    </div>
+                    <div class="product-tab" data-panel="prod-4" id="prod-tab-4">
+                        <i class="fa-solid fa-photo-film"></i>
+                        Sitecore Content Hub
+                    </div>
+                    <div class="product-tab" data-panel="prod-5" id="prod-tab-5">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Sitecore Headless CMS
+                    </div>
+                    <div class="product-tab" data-panel="prod-6" id="prod-tab-6">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        Sitecore Send
+                    </div>
+                </div>
+
+                <!-- RIGHT PANELS -->
+                <div class="product-panels">
+
+                    <div class="product-panel active" id="prod-1">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072"
+                                alt="Sitecore XM Cloud">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore XM Cloud | Composable, Headless Content Management</h3>
+                            <p>
+                                XM Cloud is Sitecore's fully SaaS content management solution. We help brands adopt
+                                headless, composable architecture â€” delivering faster time-to-market, reduced
+                                infrastructure overhead, and seamless omnichannel content delivery via Next.js and SXA.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="prod-2">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015"
+                                alt="Sitecore CDP">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore CDP & Personalize | Data-Driven Customer Intelligence</h3>
+                            <p>
+                                Unify customer data across touchpoints with Sitecore CDP and activate real-time
+                                personalization through Sitecore Personalize. We design segmentation strategies,
+                                customer profiles, and A/B testing frameworks that lift conversion rates measurably.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="prod-3">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070"
+                                alt="Sitecore OrderCloud">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore OrderCloud | API-First B2B & B2C Commerce</h3>
+                            <p>
+                                OrderCloud's headless commerce engine enables complex B2B and B2C scenarios â€”
+                                multi-buyer organisations, custom pricing, workflows, and marketplace models â€”
+                                all via a RESTful API that integrates with any frontend or backend system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="prod-4">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2070"
+                                alt="Sitecore Content Hub">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore Content Hub | Centralised DAM & Content Operations</h3>
+                            <p>
+                                Manage your entire content lifecycle â€” creation, approval, DAM, and distribution â€”
+                                from a single platform. Our teams implement Content Hub to streamline brand
+                                governance, reduce production costs, and accelerate campaign delivery.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="prod-5">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072"
+                                alt="Sitecore Headless CMS">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore Headless CMS | Decoupled Delivery at Scale</h3>
+                            <p>
+                                Leverage Sitecore's headless capabilities via JSS (JavaScript Services) to build
+                                lightning-fast, SEO-optimised frontends in React, Next.js, or Angular while
+                                editors retain a full WYSIWYG experience in the Experience Editor.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="prod-6">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=2048"
+                                alt="Sitecore Send">
+                        </div>
+                        <div class="product-info-card">
+                            <h3>Sitecore Send | Intelligent Email & Marketing Automation</h3>
+                            <p>
+                                Design and automate personalised email campaigns with Sitecore Send's AI-powered
+                                recommendations, behavioral triggers, and real-time analytics â€” integrating natively
+                                with your Sitecore DXP stack for unified customer journeys.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         5. SITECORE SERVICE OFFERINGS
+    ================================ -->
+    <section class="service-offerings" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">What We Do</span>
+                <h2>SITECORE <span>SERVICE OFFERINGS</span></h2>
+                <p>End-to-end Sitecore delivery â€” from strategy and implementation to managed services and beyond.</p>
+            </div>
+
+            <div class="service-layout">
+                <!-- SIDEBAR TABS -->
+                <div class="service-sidebar" id="service-sidebar">
+                    <div class="service-tab active" data-panel="svc-1" id="svc-tab-1">
+                        <span>Sitecore Development & Implementation</span>
+                        <i class="fa-solid fa-chevron-right tab-arrow"></i>
+                    </div>
+                    <div class="service-tab" data-panel="svc-2" id="svc-tab-2">
+                        <span>Sitecore Migration & Upgrade</span>
+                        <i class="fa-solid fa-chevron-right tab-arrow"></i>
+                    </div>
+                    <div class="service-tab" data-panel="svc-3" id="svc-tab-3">
+                        <span>Sitecore Consulting Services</span>
+                        <i class="fa-solid fa-chevron-right tab-arrow"></i>
+                    </div>
+                    <div class="service-tab" data-panel="svc-4" id="svc-tab-4">
+                        <span>Sitecore Cloud-Managed Services</span>
+                        <i class="fa-solid fa-chevron-right tab-arrow"></i>
+                    </div>
+                    <div class="service-tab" data-panel="svc-5" id="svc-tab-5">
+                        <span>Sitecore Cross-Enterprise Integrations</span>
+                        <i class="fa-solid fa-chevron-right tab-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- RIGHT PANELS -->
+                <div class="service-panels">
+
+                    <div class="service-panel active" id="svc-1">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070"
+                                alt="Development">
+                        </div>
+                        <div class="service-info-card">
+                            <h3>Sitecore Development & Implementation | Agile Solutions for Business Growth</h3>
+                            <p>
+                                Our experts deliver end-to-end Sitecore development and implementation services,
+                                unlocking greater business growth through tailored digital solutions.
+                            </p>
+                            <p>
+                                We build state-of-the-art technology solutions on the latest Sitecore platforms â€”
+                                meeting dynamic customer demands and keeping your brand ahead of the curve.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-panel" id="svc-2">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069"
+                                alt="Migration">
+                        </div>
+                        <div class="service-info-card">
+                            <h3>Sitecore Migration & Upgrade | Risk-Free Transition to the Latest Platform</h3>
+                            <p>
+                                Seamlessly migrate from legacy Sitecore versions (XP, XM) to XM Cloud or other
+                                composable DXP products with our proven migration methodology.
+                            </p>
+                            <p>
+                                We handle data migration, template restructuring, component library rebuilds,
+                                and thorough regression testing â€” minimising downtime and business disruption.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-panel" id="svc-3">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071"
+                                alt="Consulting">
+                        </div>
+                        <div class="service-info-card">
+                            <h3>Sitecore Consulting Services | Strategic Roadmapping & Assessment</h3>
+                            <p>
+                                We perform in-depth Sitecore platform assessments â€” reviewing architecture, code
+                                frameworks, DevOps pipelines, security posture, and marketing automation maturity.
+                            </p>
+                            <p>
+                                Our consultants deliver actionable roadmaps that align your Sitecore investment
+                                with your business objectives and long-term digital strategy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-panel" id="svc-4">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034"
+                                alt="Managed Services">
+                        </div>
+                        <div class="service-info-card">
+                            <h3>Sitecore Cloud-Managed Services | 24/7 Platform Health & Optimisation</h3>
+                            <p>
+                                Our managed services team handles platform monitoring, performance tuning, security
+                                patching, and feature enablement â€” keeping your Sitecore environment healthy and
+                                continuously improving.
+                            </p>
+                            <p>
+                                With SLA-backed support and proactive monitoring, you get peace of mind while
+                                your marketing team focuses on creating outstanding experiences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-panel" id="svc-5">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072"
+                                alt="Integrations">
+                        </div>
+                        <div class="service-info-card">
+                            <h3>Sitecore Cross-Enterprise Integrations | Unified Digital Ecosystem</h3>
+                            <p>
+                                We connect Sitecore seamlessly with your CRM (Salesforce, Dynamics), ERP, CDP,
+                                marketing automation, analytics, and third-party APIs â€” creating a unified,
+                                data-driven digital ecosystem.
+                            </p>
+                            <p>
+                                Our integration expertise ensures real-time data flow, consistent customer profiles,
+                                and orchestrated journeys across every channel and system.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         6. XM CLOUD ACCELERATOR
+    ================================ -->
+    <section class="accelerator" id="accelerator">
+        <div class="container">
+            <div class="accelerator-grid">
+                <div class="accelerator-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070"
+                        alt="XM Cloud Accelerator">
+                </div>
+                <div class="accelerator-content fade-in">
+                    <span class="section-label">Solution Accelerator</span>
+                    <h2>BizTechnosys <span class="accent">XM Cloud</span> Accelerator</h2>
+                    <p>
+                        Our proprietary XM Cloud Accelerator â€” built with composable headless architecture
+                        (Next.js + Headless SXA) â€” dramatically reduces migration time and cost, giving
+                        your team a production-ready foundation from day one.
+                    </p>
+
+                    <div class="accel-cards">
+                        <div class="accel-card">
+                            <div class="accel-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                            <h5>Pre-Built Components</h5>
+                            <p>Ready-made, accessible component library aligned with your brand.</p>
+                        </div>
+                        <div class="accel-card">
+                            <div class="accel-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h5>Enhanced Security</h5>
+                            <p>VAPT-hardened infrastructure with automated compliance checks.</p>
+                        </div>
+                        <div class="accel-card">
+                            <div class="accel-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <h5>Automated Deployment</h5>
+                            <p>CI/CD pipelines for efficient, zero-downtime deployments.</p>
+                        </div>
+                        <div class="accel-card">
+                            <div class="accel-icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <h5>Personalization Ready</h5>
+                            <p>CDP & Personalize hooks built in for instant audience targeting.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 34px;">
+                        <a href="#cta" class="btn-primary">
+                            <i class="fa-solid fa-rocket"></i>
+                            Get a Free Assessment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         7. CERTIFICATION
+    ================================ -->
+    <section class="certification" id="certification">
+        <div class="container">
+            <div class="cert-intro fade-in">
+                <span class="section-label">Knowledge & Credentials</span>
+                <h2>SITECORE <span class="accent">CERTIFICATIONS</span></h2>
+                <p>
+                    Our team holds the full breadth of Sitecore certifications â€” equipping us to deliver
+                    best-practice solutions across the entire product suite.
+                </p>
+            </div>
+
+            <div class="cert-grid">
+
+                <div class="cert-card fade-in" id="cert-1">
+                    <div class="cert-icon"><i class="fa-solid fa-code"></i></div>
+                    <h4>Sitecore XP Developer Certification</h4>
+                    <p>Expertise in designing, building, and deploying solutions on the Sitecore Experience Platform.
+                    </p>
+                    <a href="#" id="cert-link-1">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="cert-card fade-in" id="cert-2">
+                    <div class="cert-icon"><i class="fa-solid fa-store"></i></div>
+                    <h4>Sitecore Experience Commerce Developer</h4>
+                    <p>Certified expertise in designing and implementing Sitecore Experience Commerce solutions.</p>
+                    <a href="#" id="cert-link-2">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="cert-card fade-in" id="cert-3">
+                    <div class="cert-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h4>Sitecore XP Marketer Certification</h4>
+                    <p>Leveraging Sitecore to deliver personalized, relevant, and engaging customer experiences.</p>
+                    <a href="#" id="cert-link-3">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="cert-card fade-in" id="cert-4">
+                    <div class="cert-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h4>Sitecore Commerce Business User</h4>
+                    <p>Proficiency in leveraging Sitecore Commerce to manage and optimize online business operations.
+                    </p>
+                    <a href="#" id="cert-link-4">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="cert-card fade-in" id="cert-5">
+                    <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+                    <h4>Sitecore Content Hub Business User</h4>
+                    <p>Expertise in utilizing Content Hub to efficiently manage and optimize content operations.</p>
+                    <a href="#" id="cert-link-5">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="cert-card fade-in" id="cert-6">
+                    <div class="cert-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h4>Sitecore Content Hub Developer</h4>
+                    <p>Proficiency in designing, building, and implementing solutions on Sitecore Content Hub.</p>
+                    <a href="#" id="cert-link-6">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         8. EXPERIENCE ECOSYSTEM
+    ================================ -->
+    <section class="ecosystem" id="ecosystem">
+        <div class="container">
+            <div class="ecosystem-header fade-in">
+                <span class="section-label">Our Approach</span>
+                <h2>THE EXPERIENCE <span class="accent">ECOSYSTEM</span></h2>
+                <p>
+                    Companies that excel in customer experience outperform competitors by nearly 80%.
+                    Our three-step Experience Ecosystem approach unifies CX, EX, and BX â€” powered
+                    by Sitecore, your CRM, and marketing automation.
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card fade-in" id="step-1">
+                    <div class="step-number">01</div>
+                    <h4>Experience Campaign</h4>
+                    <ul class="step-check-list">
+                        <li><i class="fa-solid fa-check"></i> Launch pilot formats to create low-cost entry
+                            opportunities.</li>
+                        <li><i class="fa-solid fa-check"></i> Accurately measure marketing ROI across channels.</li>
+                        <li><i class="fa-solid fa-check"></i> Identify and focus on campaigns that deliver true value.
+                        </li>
+                        <li><i class="fa-solid fa-check"></i> Segment and orchestrate campaigns seamlessly.</li>
+                    </ul>
+                </div>
+
+                <div class="step-card fade-in" id="step-2">
+                    <div class="step-number">02</div>
+                    <h4>Experience Website</h4>
+                    <ul class="step-check-list">
+                        <li><i class="fa-solid fa-check"></i> Drive higher campaign conversions with personalisation.
+                        </li>
+                        <li><i class="fa-solid fa-check"></i> Build actionable Sitecore analytics dashboards.</li>
+                        <li><i class="fa-solid fa-check"></i> Implement personalization strategies that convert.</li>
+                        <li><i class="fa-solid fa-check"></i> Leverage A/B testing for continuous improvement.</li>
+                    </ul>
+                </div>
+
+                <div class="step-card fade-in" id="step-3">
+                    <div class="step-number">03</div>
+                    <h4>Experience Ecosystem</h4>
+                    <ul class="step-check-list">
+                        <li><i class="fa-solid fa-check"></i> Deliver actionable customer intelligence to sales &
+                            marketing.</li>
+                        <li><i class="fa-solid fa-check"></i> Harness data-driven marketing strategies at scale.</li>
+                        <li><i class="fa-solid fa-check"></i> Demonstrate measurable ROI from your martech stack.</li>
+                        <li><i class="fa-solid fa-check"></i> Establish a foundation for machine learning & AI adoption.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         9. SUCCESS STORIES
+    ================================ -->
+    <section class="success-stories" id="success-stories">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">Case Study</span>
+                <h2>SUCCESS <span>STORIES</span></h2>
+                <p>Real outcomes delivered for real clients â€” powered by Sitecore and BizTechnosys expertise.</p>
+            </div>
+
+            <div class="success-wrapper">
+                <!-- LEFT IMAGE -->
+                <div class="success-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071"
+                        alt="Success Story â€“ Higher Education">
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="success-content fade-in">
+                    <span class="industry-tag">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Higher Education
+                    </span>
+                    <h3>
+                        Digital Enablement for a Multi-Campus Australian University
+                    </h3>
+                    <p>
+                        The client â€” a publicly funded university with multiple campuses across Australia â€”
+                        wanted to deliver a highly personalised website learning experience that understood
+                        student needs, behaviours, and interests.
+                    </p>
+                    <p>
+                        We implemented Sitecore XP with advanced personalisation rules, xDB analytics, and
+                        custom student journey mapping â€” guiding each student toward programs best suited
+                        for their academic path.
+                    </p>
+
+                    <div class="success-metrics">
+                        <div class="metric-box">
+                            <span class="metric-val">75%</span>
+                            <span class="metric-lbl">Faster Deployment</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-val">3Ã—</span>
+                            <span class="metric-lbl">Engagement Lift</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-val">40%</span>
+                            <span class="metric-lbl">Lower TCO</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-primary" id="case-study-link">
+                        Read Case Study
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+         10. GLOBAL PRESENCE
+    ================================ -->
+    <section class="global-presence" id="global">
+        <div class="container">
+            <div class="section-title fade-in">
+                <span class="section-label">Worldwide Reach</span>
+                <h2>GLOBAL <span>PRESENCE</span></h2>
+                <p>
+                    Sitecore maintains a robust global presence with over 2,200 employees across 32 offices.
+                    BizTechnosys delivers Sitecore solutions to clients across APJ, EMEA, and AMER.
+                </p>
+            </div>
+
+            <div class="presence-grid">
+
+                <div class="presence-card fade-in" id="pres-1">
+                    <div class="pcard-icon"><i class="fa-solid fa-server"></i></div>
+                    <h4>Infrastructure & Data Sovereignty</h4>
+                    <p>Cloud operations through strategically situated global regions.</p>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Regional Data Centers: US East, US West, Europe, Australia & Japan</span>
+                    </div>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Sovereign Cloud deployments catering to regional data laws & compliance</span>
+                    </div>
+                </div>
+
+                <div class="presence-card fade-in" id="pres-2">
+                    <div class="pcard-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h4>Global Content Management</h4>
+                    <p>Enterprise teams standardise their brand across geographies effortlessly.</p>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Multilingual Localisation: Auto-translation, regional SEO & localised asset
+                            injection</span>
+                    </div>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Omnichannel scaling â€” centralised workflows output to any app or channel</span>
+                    </div>
+                </div>
+
+                <div class="presence-card fade-in" id="pres-3">
+                    <div class="pcard-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>Strategic Alliances & Partner Network</h4>
+                    <p>Multi-tiered global delivery through certified partner ecosystems.</p>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Microsoft Partnership: Co-engineered cloud infrastructure via Azure Innovation Hubs</span>
+                    </div>
+                    <div class="check-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Composable XM Cloud deployments reducing site delivery times by up to 40%</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- for get in touch section  -->
+    <section class="container-fluid text-center my-3 my-md-5">
+        <h3 class="white-color mt-md-5">
+            Ready to Elevate Your
+            Digital Experience?
+        </h3>
+        <p class="white-color">
+            Talk to our Sitecore experts and discover how BizTechnosys can help you unlock the full power of Sitecore
+            â€” faster, smarter, and at scale.
+        </p>
+
+        <div class="cta-actions">
+            <a href="#" class="primary-button my-3 primary-button-icon" id="cta-btn-primary">
+
+                Book a Free Consultation
+            </a>
+            <a href="#" class="fourth-button my-3 fourth-button-icon" id="cta-btn-secondary">
+                View All Case Studies
+            </a>
+        </div>
+    </section>
+
+    <!-- ===============================
+         JAVASCRIPT â€“ TABS & SCROLL
+    ================================ -->
+    <script>
+        /* ---- Product Tabs ---- */
+        const productSidebar = document.getElementById('product-sidebar');
+        productSidebar.addEventListener('click', function (e) {
+            const tab = e.target.closest('.product-tab');
+            if (!tab) return;
+
+            document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            const panelId = tab.dataset.panel;
+            document.getElementById(panelId).classList.add('active');
+        });
+
+        /* ---- Service Tabs ---- */
+        const serviceSidebar = document.getElementById('service-sidebar');
+        serviceSidebar.addEventListener('click', function (e) {
+            const tab = e.target.closest('.service-tab');
+            if (!tab) return;
+
+            document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            const panelId = tab.dataset.panel;
+            document.getElementById(panelId).classList.add('active');
+        });
+
+        /* ---- Credentials Carousel ---- */
+        (function () {
+            const track = document.getElementById('credTrack');
+            const prevBtn = document.getElementById('credPrev');
+            const nextBtn = document.getElementById('credNext');
+
+            if (!track || !prevBtn || !nextBtn) return;
+
+            const CARD_WIDTH = () => {
+                const card = track.querySelector('.cred-card');
+                if (!card) return 268;
+                return card.offsetWidth + 28; /* card width + gap */
+            };
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -CARD_WIDTH(), behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: CARD_WIDTH(), behavior: 'smooth' });
+            });
+
+            /* loop: when reaching end, jump back; when at start, jump to end */
+            track.addEventListener('scroll', () => {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                if (track.scrollLeft >= maxScroll - 2) {
+                    /* silently reset to start after a brief delay */
+                    setTimeout(() => {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    }, 600);
+                }
+            });
+        })();
+
+        /* ---- Intersection Observer â€“ fade-in ---- */
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>
