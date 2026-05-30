@@ -38,147 +38,486 @@
 
   <body>
     <section class="biz-about-banner">
-      <header class="py-4 px-3 px-md-2 px-lg-3 px-xl-5">
-        <nav class="navbar navbar-expand-lg navbar-bg-clr">
-          <div class="container-fluid px-3 px-md-4 px-lg-2 px-xl-4">
-            <a class="navbar-brand fw-bold" href="./index.html">
-              <img
-                src="./images/biztech-logo.svg"
-                class="navbar-logo"
-                alt="Biztechnosys"
-              />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa-solid fa-bars toggle-btn"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <div class="hori-selector">
-                  <div class="left"></div>
-                  <div class="right"></div>
-                </div>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link "
-                    href="./about-sitecore.html"
-                 
-                    
-                  >
-                    Sitecore
-                  </a>
-                
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" aria-current="page" href="./about-us.html">About Us</a>
-                </li>
+       <header class="py-4 px-3 px-md-2 px-lg-3 px-xl-5">
+      <nav class="navbar navbar-expand-lg navbar-bg-clr">
+        <div class="container-fluid px-md-4 px-lg-2 px-xl-4">
 
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                   
-                  >
-                    Solutions
-                  </a>
-                  <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul> -->
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Services
-                  </a>
-                  <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul> -->
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Projects
-                  </a>
-                  <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul> -->
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Resources
-                  </a>
-                  <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul> -->
-                </li>
-              </ul>
-              <a href="./contact.html" class="third-button px-4 py-2">Contact Us</a>
-            </div>
+          <a class="navbar-brand fw-bold" href="./index.html">
+            <img src="./images/biztech-logo.svg" class="navbar-logo" alt="Biztechnosys" />
+          </a>
+
+          <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars toggle-btn"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+              <!-- AI EXPERIENCE PLATFORM -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="sitecoreDropdown" role="button" aria-expanded="false">
+
+                  AI + Sitecore
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="sitecoreDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="agentic-dxp">
+                        <span>Agentic DXP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-content">
+                        <span>AI Content Operations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-ai">
+                        <span>Sitecore XM Cloud + AI
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-personalization">
+                        <span>AI Personalization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="ai-search">
+                        <span>AI Search & Recommendations
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="workflow-automation">
+                        <span>AI Workflow Automation</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="ai-lab">
+                        <span>AI Lab</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- AGENTIC DXP -->
+                      <div class="mega-content active" id="agentic-dxp">
+                        <h4>Agentic Sitecore DXP Implementation</h4>
+
+                        <p>
+                          Deploy autonomous AI agents inside your Sitecore ecosystem
+                          for self-optimizing digital experiences.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="./ai-sitecore.html">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+                      <div class="mega-content" id="ai-lab">
+
+                        <h4>AI Lab</h4>
+
+                        <p>
+                          Explore the latest AI innovations and applications.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Experience Assistant</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- SOLUTIONS -->
+              <li class="nav-item dropdown mega-tab-dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="solutionDropdown" role="button" aria-expanded="false">
+
+                  Solution
+
+                </a>
+
+                <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="solutionDropdown">
+
+                  <div class="mega-tabs-wrapper">
+
+                    <!-- LEFT TABS -->
+                    <div class="mega-tabs-nav">
+
+                      <button class="mega-tab-btn active" data-tab="sitecore-modernization">
+                        <span>Sitecore Modernization</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="xm-cloud-migration">
+                        <span>XM Cloud Migration</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="composable-dxp">
+                        <span>Composable DXP
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-cdp">
+                        <span>Sitecore CDP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="sitecore-dam">
+                        <span>Sitecore DAM
+                        </span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                      <button class="mega-tab-btn" data-tab="managed-dxp-services">
+                        <span>Managed DXP Services</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                      <button class="mega-tab-btn" data-tab="enterprise-integrations">
+                        <span>Enterprise Integrations</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="mega-tabs-content">
+                      <!-- SITECORE MODERNIZATION -->
+                      <div class="mega-content active" id="sitecore-modernization">
+                        <h4>Sitecore Modernization</h4>
+
+                        <p>
+                          Transform your Sitecore environment with the latest technologies and best practices.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+                          <li><a class="dropdown-item" href="#">Legacy to Headless Transformation</a></li>
+                          <li><a class="dropdown-item" href="#">Migration to Sitecore in 8 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Upgrade in 6 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Implementation in 12 weeks</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Cloud Managed Services</a></li>
+                          <li><a class="dropdown-item" href="#">Agentic DXP Implementation</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Health Check</a></li>
+                          <li><a class="dropdown-item" href="#">Composable DXPs</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore Accelerator</a></li>
+                          <li><a class="dropdown-item" href="#">Design Support</a></li>
+                        </ul>
+
+                      </div>
+
+                      <!-- AI CONTENT OPERATIONS -->
+                      <div class="mega-content" id="ai-content">
+
+                        <h4>AI Content Operations</h4>
+
+                        <p>
+                          Automate and scale your content lifecycle with AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Content Generator</a></li>
+                          <li><a class="dropdown-item" href="#">Multilingual & Localization AI</a></li>
+                          <li><a class="dropdown-item" href="#">AI SEO Assistant</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Content Automation</a></li>
+                          <li><a class="dropdown-item" href="#">AI Governance Workflows</a></li>
+                          <li><a class="dropdown-item" href="#">Content Lifecycle Management</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- XM CLOUD + AI -->
+                      <div class="mega-content" id="xm-cloud-ai">
+                        <h4>Sitecore XM Cloud + AI</h4>
+                        <p>
+                          Cloud-native CMS with embedded AI capabilities.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">XM Cloud Migration</a></li>
+                          <li><a class="dropdown-item" href="#">Headless Architecture Build</a></li>
+                          <li><a class="dropdown-item" href="#">AI-Powered Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">XM Cloud AI Toolkit</a></li>
+                          <li><a class="dropdown-item" href="#">Multi-Site XM Cloud</a></li>
+                          <li><a class="dropdown-item" href="#">Legacy to XM Cloud</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI PERSONALIZATION -->
+                      <div class="mega-content" id="ai-personalization">
+                        <h4>AI Personalization</h4>
+                        <p>
+                          Deliver real-time personalized experiences at scale.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Real-Time Personalization</a></li>
+                          <li><a class="dropdown-item" href="#">Audience Segmentation AI</a></li>
+                          <li><a class="dropdown-item" href="#">Customer Journey Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">Sitecore CDP Integration</a></li>
+                          <li><a class="dropdown-item" href="#">Identity Resolution</a></li>
+                          <li><a class="dropdown-item" href="#">Omnichannel Data Activation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI SEARCH -->
+                      <div class="mega-content" id="ai-search">
+
+                        <h4>AI Search & Recommendations</h4>
+
+                        <p>
+                          Intelligent semantic search and recommendations powered by AI.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">AI Smart Search</a></li>
+                          <li><a class="dropdown-item" href="#">Semantic Search</a></li>
+                          <li><a class="dropdown-item" href="#">Content Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Product Recommendations</a></li>
+                          <li><a class="dropdown-item" href="#">Knowledge Base Search</a></li>
+                          <li><a class="dropdown-item" href="#">Search Analytics</a></li>
+
+                        </ul>
+
+                      </div>
+
+                      <!-- AI WORKFLOW -->
+                      <div class="mega-content" id="workflow-automation">
+
+                        <h4>AI Workflow Automation</h4>
+
+                        <p>
+                          Eliminate manual bottlenecks with AI-powered workflows.
+                        </p>
+
+                        <ul class="dropdown-menu sub-dropdown-grid">
+
+                          <li><a class="dropdown-item" href="#">Approval Workflow AI</a></li>
+                          <li><a class="dropdown-item" href="#">Automated Publishing</a></li>
+                          <li><a class="dropdown-item" href="#">Campaign Orchestration</a></li>
+                          <li><a class="dropdown-item" href="#">DAM Workflow Automation</a></li>
+                          <li><a class="dropdown-item" href="#">Pharma Compliance Automation</a></li>
+                          <li><a class="dropdown-item" href="#">MLR Review Automation</a></li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+              <!-- INSIGHTS -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" aria-expanded="false">
+
+                  Insights
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+
+                  <li><a class="dropdown-item" href="#">AI + Sitecore</a></li>
+                  <li><a class="dropdown-item" href="#">XM Cloud</a></li>
+                  <li><a class="dropdown-item" href="#">DXP Strategy</a></li>
+                  <li><a class="dropdown-item" href="#">Personalization</a></li>
+                  <li><a class="dropdown-item" href="#">Composable Architecture</a></li>
+                  <li><a class="dropdown-item" href="./case-studies.html">Case Studies</a></li>
+                  <li><a class="dropdown-item" href="./Insights-ai-sitecore.html">Insights</a></li>
+
+
+
+                </ul>
+
+              </li>
+
+              <!-- COMPANY -->
+              <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" id="companyDropdown" role="button" aria-expanded="false">
+
+                  Partner
+
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+
+                  <li><a class="dropdown-item" href="./sitecore-gold-partner.html">🥇 Sitecore Gold Partner</a></li>
+                  <li><a class="dropdown-item" href="./technology-ecosystem.html">Technology Ecosystem</a></li>
+                  <li><a class="dropdown-item" href="./sitecore-delivery-modal.html">Delivery Model</a></li>
+                  <hr>  
+                  <li><a class="dropdown-item" href="./about-us.html">About Us</a></li>
+                  <li><a class="dropdown-item" href="./career.html">Careers</a></li>
+                  <li><a class="dropdown-item" href="./blog.html">Blogs</a></li>
+                  <li><a class="dropdown-item" href="./contact.html">Contact Us</a></li>
+
+                </ul>
+
+              </li>
+
+              <!-- AI LAB -->
+
+
+            </ul>
+
+            <a href="./new-menu.html" class="fourth-button px-4 py-2" target="_blank">
+              New Menu
+            </a>
+            <a href="./contact.html" class="third-button px-4 py-2">
+              Live Demo
+            </a>
+
           </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
+    </header>
     </section>
 
     <!--New text start here-->
